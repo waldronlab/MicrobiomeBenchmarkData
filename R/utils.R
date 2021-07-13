@@ -30,7 +30,7 @@ utils::globalVariables(c("ps_list_16S", "HMP_BODY_SUBSITE", "SEX", "SAMPLE", "n"
 #' A SummarizedExperiment imported with V13 or V35 functions.
 #'
 #' @param intersect
-#' A list of intersects of samples and subjects (internal data of the \code{MSEBenchmarkData}).
+#' A list of intersects of samples and subjects (internal data of the \code{MicrobiomeBenchmarkData}).
 #'
 #' @return
 #' A TreeSummarizedExperiment.

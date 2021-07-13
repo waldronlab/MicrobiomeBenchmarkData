@@ -18,7 +18,7 @@ to the output of \code{\link{dataSets}}.
 }
 \examples{
 
-library(MSEBenchmarkData)
+library(MicrobiomeBenchmarkData)
 datasets <- getDataSets(x = 1)
 datasets
 

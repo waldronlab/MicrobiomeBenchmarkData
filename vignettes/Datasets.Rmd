@@ -1,10 +1,10 @@
 ---
-title: "Datasets in MSEBenchmarkData"
+title: "Datasets in MicrobiomeBenchmarkData"
 output: 
   rmarkdown::html_vignette:
     toc: yes
 vignette: >
-  %\VignetteIndexEntry{Datasets in MSEBenchmarkData}
+  %\VignetteIndexEntry{Datasets in MicrobiomeBenchmarkData}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(MSEBenchmarkData)
+library(MicrobiomeBenchmarkData)
 library(magrittr)
 ```
 

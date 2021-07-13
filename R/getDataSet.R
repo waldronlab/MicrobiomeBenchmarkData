@@ -13,7 +13,7 @@
 #'
 #' @examples
 #'
-#' library(MSEBenchmarkData)
+#' library(MicrobiomeBenchmarkData)
 #' datasets <- getDataSets(x = 1)
 #' datasets
 #'
@@ -26,7 +26,7 @@ getDataSets <- function(x) {
 }
 
 #' Data Sets
-#' \code{dataSets} returns the available datasets in the  `MSEBenchmarkData` package.
+#' \code{dataSets} returns the available datasets in the  `MicrobiomeBenchmarkData` package.
 #'
 #' @return
 #' A tibble with all available datasets.
@@ -37,11 +37,11 @@ getDataSets <- function(x) {
 #'
 #' @examples
 #'
-#' library(MSEBenchmarkData)
+#' library(MicrobiomeBenchmarkData)
 #' datasets <- dataSets()
 #'
 dataSets <- function() {
-  datasets_fname <- system.file("extdata/datasets.tsv", package = "MSEBenchmarkData")
+  datasets_fname <- system.file("extdata/datasets.tsv", package = "MicrobiomeBenchmarkData")
   datasets <- readr::read_tsv(datasets_fname, col_types = "dccccc")
   return(datasets)
 }

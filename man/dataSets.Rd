@@ -3,7 +3,7 @@
 \name{dataSets}
 \alias{dataSets}
 \title{Data Sets
-\code{dataSets} returns the available datasets in the  \code{MSEBenchmarkData} package.}
+\code{dataSets} returns the available datasets in the  \code{MicrobiomeBenchmarkData} package.}
 \usage{
 dataSets()
 }
@@ -12,11 +12,11 @@ A tibble with all available datasets.
 }
 \description{
 Data Sets
-\code{dataSets} returns the available datasets in the  \code{MSEBenchmarkData} package.
+\code{dataSets} returns the available datasets in the  \code{MicrobiomeBenchmarkData} package.
 }
 \examples{
 
-library(MSEBenchmarkData)
+library(MicrobiomeBenchmarkData)
 datasets <- dataSets()
 
 }

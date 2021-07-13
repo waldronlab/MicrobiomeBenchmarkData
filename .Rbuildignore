@@ -1,4 +1,5 @@
-^MSEBenchmarkData\.Rproj$
+^MicrobiomeBenchmarkData\.Rproj$
 ^\.Rproj\.user$
 ^data-raw$
 ^LICENSE\.md$
+^_pkgdown\.yml

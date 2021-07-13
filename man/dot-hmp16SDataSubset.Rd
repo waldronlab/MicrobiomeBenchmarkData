@@ -9,7 +9,7 @@
 \arguments{
 \item{se}{A SummarizedExperiment imported with V13 or V35 functions.}
 
-\item{intersect}{A list of intersects of samples and subjects (internal data of the \code{MSEBenchmarkData}).}
+\item{intersect}{A list of intersects of samples and subjects (internal data of the \code{MicrobiomeBenchmarkData}).}
 }
 \value{
 A TreeSummarizedExperiment.
