@@ -3,5 +3,8 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   Datasets: Datasets.html
-last_built: 2021-07-13T13:52Z
+last_built: 2021-07-13T16:10Z
+urls:
+  reference: https://waldronlab.io/MicrobiomeBenchmarkData//reference
+  article: https://waldronlab.io/MicrobiomeBenchmarkData//articles
 
