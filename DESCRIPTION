@@ -1,0 +1,34 @@
+Package: MSEBenchmarkData
+Title: Benchmark Datasets for Microbe Set Enrichment
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Samuel David",
+           family = "Gamboa Tuz",
+           role = c("aut", "cre"),
+           email = "Samuel.Gamboa.Tuz@gmail.com",
+           comment = c(ORCID = "0000-0002-6863-7943"))
+Description: MSEBenchmarkData provides access to different datasets for benchmarking microbe set
+    enrichment analyses.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Depends: 
+    R (>= 4.1)
+Imports: 
+    SummarizedExperiment,
+    HMP16SData,
+    TreeSummarizedExperiment,
+    S4Vectors,
+    mia,
+    readr,
+    dplyr,
+    magrittr,
+    tibble,
+    phyloseq,
+    curatedMetagenomicData
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr

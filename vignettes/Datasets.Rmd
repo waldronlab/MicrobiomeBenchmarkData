@@ -1,0 +1,42 @@
+---
+title: "Datasets in MSEBenchmarkData"
+output: 
+  rmarkdown::html_vignette:
+    toc: yes
+vignette: >
+  %\VignetteIndexEntry{Datasets in MSEBenchmarkData}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r setup}
+library(MSEBenchmarkData)
+library(magrittr)
+```
+
+
+Show datasets
+
+```{r}
+df <- dataSets() 
+df %>% 
+  knitr::kable()
+```
+
+Import packages by index:
+
+```{r}
+# stool and tongue dorsum samples from the HMP 2012 study in curatedMetagenomicData
+x <- getDataSets(x = 7)
+x
+```
+

@@ -1,0 +1,8 @@
+"index"	"dataset"	"function_name"	"source_name"	"source_link"	"description"
+"1"	"Subgingival_vs_Supragingival_Plaque_HMP16S_Calgaro_2020"	"subgingivalVsSupragingivalDataset1"	"GitHub"	"https://github.com/mcalgaro93/sc2meta"	"Dataset used in Calgaro, 2020."
+"2"	"Subgingival_vs_Supragingival_Plaque_HMP16S_V13"	"subgingivalVsSupragingivalDataset2"	"HMP16SData R package"	"https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html"	"V13 dataset from the HMP16SData package."
+"3"	"Subgingival_vs_Supragingival_Plaque_HMP16S_V35"	"subgingivalVsSupragingivalDataset3"	"HMP16SData R package"	"https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html"	"V35 dataset from the HMP16SData package."
+"4"	"Stool_vs_Tongue_Dorsum_HMP16S_Calgaro_2020"	"stoolVsTongueDorsumDataset1"	"GitHub"	"https://github.com/mcalgaro93/sc2meta"	"Dataset used in Calgaro, 2020."
+"5"	"Stool_vs_Tongue_Dorsum_HMP16S_V13"	"stoolVsTongueDorsumDataset2"	"HMP16SData R package"	"https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html"	"V13 dataset from the HMP16SData."
+"6"	"Stool_vs_Tongue_Dorsum_HMP16S_V35"	"stoolVsTongueDorsumDataset3"	"HMP16SData R package"	"https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html"	"V35 dataset from the HMP16SData."
+"7"	"Stool_vs_Tongue_Dorsum_cMD_HMP_2012"	"stoolVsTongueDorsumDataset4"	"curatedMetagenomicData R package"	"https://bioconductor.org/packages/release/data/experiment/html/curatedMetagenomicData.html"	"HMP_2012 data from cMD."
