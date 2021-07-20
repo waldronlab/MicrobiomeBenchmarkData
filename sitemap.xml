@@ -4,7 +4,19 @@
     <loc>https://waldronlab.io/MicrobiomeBenchmarkData//index.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dataSets.html</loc>
+    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-beghini2019Nychanesmicrobiome.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-calgaro2020Datasets.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-datasets.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-getCache.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-getResourceFromCache.html</loc>
   </url>
   <url>
     <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-hmp16SDataCalgaro2020.html</loc>
@@ -22,28 +34,10 @@
     <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-sampleSEBySex.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/getDataSets.html</loc>
+    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/getDatasets.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/stoolVsTongueDorsumDataset1.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/stoolVsTongueDorsumDataset2.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/stoolVsTongueDorsumDataset3.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/stoolVsTongueDorsumDataset4.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/subgingivalVsSupragingivalDataset1.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/subgingivalVsSupragingivalDataset2.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/subgingivalVsSupragingivalDataset3.html</loc>
+    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/showDatasets.html</loc>
   </url>
   <url>
     <loc>https://waldronlab.io/MicrobiomeBenchmarkData//articles/Datasets.html</loc>

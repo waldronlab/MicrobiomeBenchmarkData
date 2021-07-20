@@ -87,197 +87,147 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span></code></pre></div>
 <p>Show datasets</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dataSets.html">dataSets</a></span><span class="op">(</span><span class="op">)</span> 
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/showDatasets.html">showDatasets</a></span><span class="op">(</span><span class="op">)</span> 
 <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
-<thead><tr>
-<th style="text-align:right;">
-index
-</th>
-<th style="text-align:left;">
-dataset
-</th>
-<th style="text-align:left;">
-function_name
-</th>
-<th style="text-align:left;">
-source_name
-</th>
-<th style="text-align:left;">
-source_link
-</th>
-<th style="text-align:left;">
-description
-</th>
+<colgroup>
+<col width="2%">
+<col width="21%">
+<col width="15%">
+<col width="41%">
+<col width="18%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">index</th>
+<th align="left">dataset</th>
+<th align="left">source_name</th>
+<th align="left">source_link</th>
+<th align="left">description</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Subgingival_vs_Supragingival_Plaque_HMP16S_Calgaro_2020
-</td>
-<td style="text-align:left;">
-subgingivalVsSupragingivalDataset1
-</td>
-<td style="text-align:left;">
-GitHub
-</td>
-<td style="text-align:left;">
-<a href="https://github.com/mcalgaro93/sc2meta" class="uri">https://github.com/mcalgaro93/sc2meta</a>
-</td>
-<td style="text-align:left;">
-Dataset used in Calgaro, 2020.
-</td>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Calgaro_2020_16S_Stool_TongueDorsum</td>
+<td align="left">GitHub</td>
+<td align="left"><a href="https://github.com/mcalgaro93/sc2meta/data" class="uri">https://github.com/mcalgaro93/sc2meta/data</a></td>
+<td align="left">Dataset used in Calgaro, 2020.</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Subgingival_vs_Supragingival_Plaque_HMP16S_V13
-</td>
-<td style="text-align:left;">
-subgingivalVsSupragingivalDataset2
-</td>
-<td style="text-align:left;">
-HMP16SData R package
-</td>
-<td style="text-align:left;">
-<a href="https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html" class="uri">https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html</a>
-</td>
-<td style="text-align:left;">
-V13 dataset from the HMP16SData package.
-</td>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">Calgaro_2020_16S_Gingiva_Mucosa</td>
+<td align="left">GitHub</td>
+<td align="left"><a href="https://github.com/mcalgaro93/sc2meta/data" class="uri">https://github.com/mcalgaro93/sc2meta/data</a></td>
+<td align="left">Dataset used in Calgaro, 2020.</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Subgingival_vs_Supragingival_Plaque_HMP16S_V35
-</td>
-<td style="text-align:left;">
-subgingivalVsSupragingivalDataset3
-</td>
-<td style="text-align:left;">
-HMP16SData R package
-</td>
-<td style="text-align:left;">
-<a href="https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html" class="uri">https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html</a>
-</td>
-<td style="text-align:left;">
-V35 dataset from the HMP16SData package.
-</td>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">Calgaro_2020_16S_Subgingival_Supragingival</td>
+<td align="left">GitHub</td>
+<td align="left"><a href="https://github.com/mcalgaro93/sc2meta/data" class="uri">https://github.com/mcalgaro93/sc2meta/data</a></td>
+<td align="left">Dataset used in Calgaro, 2020.</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-Stool_vs_Tongue_Dorsum_HMP16S_Calgaro_2020
-</td>
-<td style="text-align:left;">
-stoolVsTongueDorsumDataset1
-</td>
-<td style="text-align:left;">
-GitHub
-</td>
-<td style="text-align:left;">
-<a href="https://github.com/mcalgaro93/sc2meta" class="uri">https://github.com/mcalgaro93/sc2meta</a>
-</td>
-<td style="text-align:left;">
-Dataset used in Calgaro, 2020.
-</td>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">Calgaro_2020_WMS_Stool_TongueDorsum</td>
+<td align="left">GitHub</td>
+<td align="left"><a href="https://github.com/mcalgaro93/sc2meta/data" class="uri">https://github.com/mcalgaro93/sc2meta/data</a></td>
+<td align="left">Dataset used in Calgaro, 2020.</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:left;">
-Stool_vs_Tongue_Dorsum_HMP16S_V13
-</td>
-<td style="text-align:left;">
-stoolVsTongueDorsumDataset2
-</td>
-<td style="text-align:left;">
-HMP16SData R package
-</td>
-<td style="text-align:left;">
-<a href="https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html" class="uri">https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html</a>
-</td>
-<td style="text-align:left;">
-V13 dataset from the HMP16SData.
-</td>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">Calgaro_2020_WMS_Schizophrenia</td>
+<td align="left">GitHub</td>
+<td align="left"><a href="https://github.com/mcalgaro93/sc2meta/data" class="uri">https://github.com/mcalgaro93/sc2meta/data</a></td>
+<td align="left">Dataset used in Calgaro, 2020.</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:left;">
-Stool_vs_Tongue_Dorsum_HMP16S_V35
-</td>
-<td style="text-align:left;">
-stoolVsTongueDorsumDataset3
-</td>
-<td style="text-align:left;">
-HMP16SData R package
-</td>
-<td style="text-align:left;">
-<a href="https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html" class="uri">https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html</a>
-</td>
-<td style="text-align:left;">
-V35 dataset from the HMP16SData.
-</td>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">Calgaro_2020_WMS_CRC</td>
+<td align="left">GitHub</td>
+<td align="left"><a href="https://github.com/mcalgaro93/sc2meta/data" class="uri">https://github.com/mcalgaro93/sc2meta/data</a></td>
+<td align="left">Dataset used in Calgaro, 2020.</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:left;">
-Stool_vs_Tongue_Dorsum_cMD_HMP_2012
-</td>
-<td style="text-align:left;">
-stoolVsTongueDorsumDataset4
-</td>
-<td style="text-align:left;">
-curatedMetagenomicData R package
-</td>
-<td style="text-align:left;">
-<a href="https://bioconductor.org/packages/release/data/experiment/html/curatedMetagenomicData.html" class="uri">https://bioconductor.org/packages/release/data/experiment/html/curatedMetagenomicData.html</a>
-</td>
-<td style="text-align:left;">
-HMP_2012 data from cMD.
-</td>
+<tr class="odd">
+<td align="right">7</td>
+<td align="left">Beghini_2019_nychanesmicrobiome</td>
+<td align="left">GitHub</td>
+<td align="left"><a href="https://github.com/waldronlab/nychanesmicrobiome/inst/extdata" class="uri">https://github.com/waldronlab/nychanesmicrobiome/inst/extdata</a></td>
+<td align="left">R package used in Beghini, 2019.</td>
+</tr>
+<tr class="even">
+<td align="right">NA</td>
+<td align="left">Subgingival_vs_Supragingival_Plaque_HMP16S_V13</td>
+<td align="left">HMP16SData R package</td>
+<td align="left"><a href="https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html" class="uri">https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html</a></td>
+<td align="left">V13 dataset from the HMP16SData package.</td>
+</tr>
+<tr class="odd">
+<td align="right">NA</td>
+<td align="left">Subgingival_vs_Supragingival_Plaque_HMP16S_V35</td>
+<td align="left">HMP16SData R package</td>
+<td align="left"><a href="https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html" class="uri">https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html</a></td>
+<td align="left">V35 dataset from the HMP16SData package.</td>
+</tr>
+<tr class="even">
+<td align="right">NA</td>
+<td align="left">Stool_vs_Tongue_Dorsum_HMP16S_V13</td>
+<td align="left">HMP16SData R package</td>
+<td align="left"><a href="https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html" class="uri">https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html</a></td>
+<td align="left">V13 dataset from the HMP16SData.</td>
+</tr>
+<tr class="odd">
+<td align="right">NA</td>
+<td align="left">Stool_vs_Tongue_Dorsum_HMP16S_V35</td>
+<td align="left">HMP16SData R package</td>
+<td align="left"><a href="https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html" class="uri">https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html</a></td>
+<td align="left">V35 dataset from the HMP16SData.</td>
+</tr>
+<tr class="even">
+<td align="right">NA</td>
+<td align="left">Stool_vs_Tongue_Dorsum_cMD_HMP_2012</td>
+<td align="left">curatedMetagenomicData R package</td>
+<td align="left"><a href="https://bioconductor.org/packages/release/data/experiment/html/curatedMetagenomicData.html" class="uri">https://bioconductor.org/packages/release/data/experiment/html/curatedMetagenomicData.html</a></td>
+<td align="left">HMP_2012 data from cMD.</td>
 </tr>
 </tbody>
 </table>
 <p>Import packages by index:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># stool and tongue dorsum samples from the HMP 2012 study in curatedMetagenomicData</span>
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getDataSets.html">getDataSets</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">7</span><span class="op">)</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getDatasets.html">getDatasets</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>
 <span class="va">x</span>
-<span class="co">#&gt; $Stool_vs_Tongue_Dorsum_cMD_HMP_2012</span>
+<span class="co">#&gt; $Calgaro_2020_16S_Stool_TongueDorsum</span>
 <span class="co">#&gt; class: TreeSummarizedExperiment </span>
-<span class="co">#&gt; dim: 613 185 </span>
+<span class="co">#&gt; dim: 1298 78 </span>
 <span class="co">#&gt; metadata(0):</span>
-<span class="co">#&gt; assays(2): counts relative_abundance</span>
-<span class="co">#&gt; rownames(613):</span>
-<span class="co">#&gt;   k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Tannerellaceae|g__Parabacteroides|s__Parabacteroides_merdae</span>
-<span class="co">#&gt;   k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__Bacteroides|s__Bacteroides_vulgatus</span>
-<span class="co">#&gt;   ...</span>
-<span class="co">#&gt;   k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Ruminococcaceae|g__Gemmiger|s__Gemmiger_sp_An194</span>
-<span class="co">#&gt;   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Streptococcus|s__Streptococcus_lutetiensis</span>
-<span class="co">#&gt; rowData names(7): Kingdom Phylum ... Genus Species</span>
-<span class="co">#&gt; colnames(185): SRS021948 SRS012273 ... SRS057791 SRS057539</span>
-<span class="co">#&gt; colData names(21): study_name subject_id ... BMI body_subsite</span>
+<span class="co">#&gt; assays(1): counts</span>
+<span class="co">#&gt; rownames(1298): OTU_97.37504 OTU_97.34346 ... OTU_97.45365 OTU_97.45307</span>
+<span class="co">#&gt; rowData names(6): SUPERKINGDOM PHYLUM ... FAMILY GENUS</span>
+<span class="co">#&gt; colnames(78): 700023058 700023227 ... 700114000 700114717</span>
+<span class="co">#&gt; colData names(7): RSID VISITNO ... HMP_BODY_SUBSITE SRS_SAMPLE_ID</span>
 <span class="co">#&gt; reducedDimNames(0):</span>
 <span class="co">#&gt; mainExpName: NULL</span>
 <span class="co">#&gt; altExpNames(0):</span>
-<span class="co">#&gt; rowLinks: a LinkDataFrame (613 rows)</span>
-<span class="co">#&gt; rowTree: 1 phylo tree(s) (10430 leaves)</span>
+<span class="co">#&gt; rowLinks: a LinkDataFrame (1298 rows)</span>
+<span class="co">#&gt; rowTree: 1 phylo tree(s) (1298 leaves)</span>
+<span class="co">#&gt; colLinks: NULL</span>
+<span class="co">#&gt; colTree: NULL</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $Calgaro_2020_16S_Subgingival_Supragingival</span>
+<span class="co">#&gt; class: TreeSummarizedExperiment </span>
+<span class="co">#&gt; dim: 892 76 </span>
+<span class="co">#&gt; metadata(0):</span>
+<span class="co">#&gt; assays(1): counts</span>
+<span class="co">#&gt; rownames(892): OTU_97.31247 OTU_97.44487 ... OTU_97.45365 OTU_97.45307</span>
+<span class="co">#&gt; rowData names(6): SUPERKINGDOM PHYLUM ... FAMILY GENUS</span>
+<span class="co">#&gt; colnames(76): 700023057 700023179 ... 700114009 700114338</span>
+<span class="co">#&gt; colData names(7): RSID VISITNO ... HMP_BODY_SUBSITE SRS_SAMPLE_ID</span>
+<span class="co">#&gt; reducedDimNames(0):</span>
+<span class="co">#&gt; mainExpName: NULL</span>
+<span class="co">#&gt; altExpNames(0):</span>
+<span class="co">#&gt; rowLinks: a LinkDataFrame (892 rows)</span>
+<span class="co">#&gt; rowTree: 1 phylo tree(s) (892 leaves)</span>
 <span class="co">#&gt; colLinks: NULL</span>
 <span class="co">#&gt; colTree: NULL</span></code></pre></div>
   </div>
