@@ -22,3 +22,4 @@ Common subjects between the V13 and V35 datasets.
 \code{.intersectSubjects} creates a vector with the intersect of subjects present in
 two body subsites of an HMP16SData (imported with V13 or V35).
 }
+\keyword{internal}

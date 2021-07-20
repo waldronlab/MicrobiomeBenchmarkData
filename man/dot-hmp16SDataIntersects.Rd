@@ -16,3 +16,4 @@ A list of common samples and subjects between the V13 and V35 datasets.
 \code{.hmp16SDataIntersects} creates a list of common samples and subjects of the V13 and V35
 datasets from the \code{HMP16SData} package based on two body subsites.
 }
+\keyword{internal}

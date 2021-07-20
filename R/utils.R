@@ -14,6 +14,8 @@ utils::globalVariables(c("ps_list_16S", "HMP_BODY_SUBSITE", "SEX", "SAMPLE", "n"
 #'
 #' @import phyloseq
 #'
+#' @keywords internal
+#'
 .hmp16SDataCalgaro2020 <- function(x) {
   load(url("https://github.com/mcalgaro93/sc2meta/blob/master/data/16Sdatasets_for_replicability_filtered.RData?raw=true"))
   ps <- ps_list_16S[[x]]
@@ -42,6 +44,8 @@ utils::globalVariables(c("ps_list_16S", "HMP_BODY_SUBSITE", "SEX", "SAMPLE", "n"
 #' @importFrom TreeSummarizedExperiment rowTree
 #' @importFrom S4Vectors SimpleList
 #' @importFrom S4Vectors metadata
+#'
+#' @keywords internal
 #'
 .hmp16SDataSubset <- function(se, intersect) {
 
@@ -88,6 +92,7 @@ utils::globalVariables(c("ps_list_16S", "HMP_BODY_SUBSITE", "SEX", "SAMPLE", "n"
 #' @return
 #' A SummarizedExperiment with equal number of males and females in samples.
 #'
+#' @keywords internal
 #'
 .sampleSEBySex <- function(x) {
   min_n <- SummarizedExperiment::colData(x) %>%
@@ -118,6 +123,8 @@ utils::globalVariables(c("ps_list_16S", "HMP_BODY_SUBSITE", "SEX", "SAMPLE", "n"
 #'
 #' @return
 #' A list of common samples and subjects between the V13 and V35 datasets.
+#'
+#' @keywords internal
 #'
 .hmp16SDataIntersects <- function(subsites) {
   if (!(length(subsites) == 2 & class(subsites) == "character"))
@@ -154,6 +161,8 @@ utils::globalVariables(c("ps_list_16S", "HMP_BODY_SUBSITE", "SEX", "SAMPLE", "n"
 #' @return
 #' Common subjects between the V13 and V35 datasets.
 #'
+#' @keywords internal
+#'
 .intersectSubjects <- function(x, subsite1, subsite2, visit = 1) {
 
   x1 <- x$RSID[x$HMP_BODY_SUBSITE == subsite1 & x$VISITNO == visit]
@@ -165,3 +174,35 @@ utils::globalVariables(c("ps_list_16S", "HMP_BODY_SUBSITE", "SEX", "SAMPLE", "n"
   output <- intersect(x1, x2)
   return(output)
 }
+
+
+# New functions ------------------------------------------------------------------------------
+
+
+
+
+
+# test_function1 <- function() {
+#   tse <- curatedMetagenomicData::curatedMetagenomicData(pattern = "HMP_2012.relative_abundance",
+#                                                  dryrun = FALSE, counts = TRUE)[[1]]
+#   samples <- calgaro2020_names$WMS_Stool_TongueDorsum$samples
+#   tse <- tse[,samples]
+#   return(tse)
+# }
+#
+# test_function2 <- function() {
+#   tse <- curatedMetagenomicData::curatedMetagenomicData(pattern = "Castro-NallarE_2015.relative_abundance",
+#                                                         dryrun = FALSE, counts = TRUE)[[1]]
+#   samples <- calgaro2020_names$WMS_Schizophrenia$samples
+#   tse <- tse[,samples]
+#   return(tse)
+# }
+#
+# test_function3 <- function() {
+#   tse <- curatedMetagenomicData::curatedMetagenomicData(pattern = "ZellerG_2014.relative_abundance",
+#                                                         dryrun = FALSE, counts = TRUE)[[1]]
+#   samples <- calgaro2020_names$WMS_CRC$samples
+#   tse <- tse[,samples]
+#   return(tse)
+# }
+#

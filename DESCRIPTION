@@ -15,9 +15,9 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Depends: 
-    R (>= 4.1)
+    R (>= 4.1),
+    SummarizedExperiment
 Imports: 
-    SummarizedExperiment,
     HMP16SData,
     TreeSummarizedExperiment,
     S4Vectors,
@@ -27,7 +27,9 @@ Imports:
     magrittr,
     tibble,
     phyloseq,
-    curatedMetagenomicData
+    curatedMetagenomicData,
+    BiocFileCache,
+    sas7bdat
 Suggests: 
     rmarkdown,
     knitr

@@ -16,3 +16,4 @@ A TreeSummarizedExperiment
 \code{.hmp16SDataCalgaro2020} imports the HMP16S filtered data from Calgaro, 2020,  which was
 used for enrichment analysis in that paper.
 }
+\keyword{internal}

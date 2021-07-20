@@ -1,146 +1,177 @@
-utils::globalVariables(c("body_subsite", "subject_id"))
-#' Subgingival vs Supragingival Plaque Dataset 1
+utils::globalVariables(c("Class", "Family", "ps_list_WMS", "ps_list_16S", "function_call"))
+# utils::globalVariables(c("body_subsite", "subject_id"))
+
+#' Datasets Used in Calgaro, 2020
 #'
-#' \code{subgingivalVsSupragingivalDataset1} loads a TreeSummarizedExperiment of Subgingival vs
-#' Supragingival Plaque from the HMP16S project used in Calgaro, 2020 for enrichment analysis.
+#' \code{.calgaro2020Datasets} imports one of the six datasets used in the paper of Calgaro, 2020
+#' for benchmarking of methods for differential abundance (DA) analysis on microbiome data. Three
+#' of the datasets were generated with 16S rRNA sequencing and come from the V35 dataset in the
+#' \code{\link{HMP16SData}} package (v1.2.0). The other three datasets were generated with Whole
+#' Metagenome Sequencing and come from the HMP_2012 (Stool_TongueDorsum), Castro-NallarE_2015
+#' (Schizophrenia), and ZellerG_2014 (CRC) datasets in the curatedMetagenomicData (v1.12.3)
+#' package.
+#'
+#' Reference:
+#' Calgaro, M., Romualdi, C., Waldron, L. et al. Assessment of statistical methods from single
+#' cell, bulk RNA-seq, and metagenomics applied to microbiome data. Genome Biol 21, 191 (2020).
+#' https://doi.org/10.1186/s13059-020-02104-1
+#'
+#' @param x
+#' A character vector of length 1. Valid options: 16S_Stool_TongueDorsum, 16S_Gingiva_Mucosa,
+#' 16S_Subgingival_Supragingival, WMS_Stool_TongueDorsum, WMS_Schizophrenia, WMS_CRC.
 #'
 #' @return
 #' A TreeSummarizedExperiment.
 #'
-subgingivalVsSupragingivalDataset1 <- function() {
-  output <- .hmp16SDataCalgaro2020("Subgingival_Supragingival")
-  return(output)
+#' @keywords internal
+#'
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' library(MicrobiomeBenchmarkData)
+#' library(SummarizedExperiment)
+#'
+#' x <- .calgaro2020Datasets(x = "16S_Subgingival_Supragingival")
+#' table(colData(x)$HMP_BODY_SUBSITE)
+#'
+#' y <- .calgaro2020Datasets(x = "WMS_Stool_TongueDorsum")
+#' table(colData(y)$body_subsite)
+#'
+#' }
+#'
+.calgaro2020Datasets <- function(x) {
+
+  datasets_16s <- c("16S_Stool_TongueDorsum", "16S_Gingiva_Mucosa", "16S_Subgingival_Supragingival")
+  datasets_wms <- c("WMS_Stool_TongueDorsum", "WMS_Schizophrenia", "WMS_CRC")
+
+  valid_datasets <- c(datasets_16s, datasets_wms)
+  if (!x %in% valid_datasets)
+    stop("Input must be a character string. One of the following: 16S_Stool_TongueDorsum, 16S_Gingiva_Mucosa, 16S_Subgingival_Supragingival, WMS_Stool_TongueDorsum, WMS_Schizophrenia, WMS_CRC.",
+         call. = FALSE)
+
+  if (x %in% datasets_16s) {
+    fpath <- urls$calgaro2020_16S
+    rpath <- .getResourceFromCache(fpath)
+    load(rpath)
+    dataset_name <- sub("^16S_", "", x)
+    ps <- ps_list_16S[[dataset_name]]
+    tse <- mia::makeTreeSummarizedExperimentFromphyloseq(ps)
+    return(tse)
+
+  } else if (x %in% datasets_wms) {
+    fpath <- urls$calgaro2020_WMS
+    rpath <- .getResourceFromCache(fpath)
+    load(rpath)
+    dataset_name <- sub("^WMS_", "", x)
+    ps <- ps_list_WMS[[dataset_name]]
+    tse <- mia::makeTreeSummarizedExperimentFromphyloseq(ps)
+    return(tse)
+  }
 }
 
-#' Subgingival vs Supragingival Plaque Dataset 2
+#' Dataset used Beghini, 2019 (nychanesmicrobiome)
 #'
-#' \code{subgingivalVsSupragingivalDataset2} loads a TreeSummarizedExperiment of Subgingival vs
-#' Supragingival Plaque from the V13 dataset from the \code{\link{HMP16SData}} package. The samples
-#' have been filtered to only include subjects present in both the V13 and V35 datasets of the
-#' HMP16SData package and include only the visit number 1 to the research center. Furthermore, the samples
-#' include equal numbers of males and females.
+#' \code{.beghini2019Nychanesmicrobiome} imports the dataset used in the nychanes paper.
+#' A good portion of this code was taken directly from the github repository
+#' of the \code{nychnamesmicrobiome} package at
+#' \url{https://github.com/waldronlab/nychanesmicrobiome/blob/master/R/loadQiimeData.R}.
 #'
-#' @return
-#' A TreeSummarizedExperiment.
-#'
-#'
-subgingivalVsSupragingivalDataset2 <- function() {
-  v13 <- HMP16SData::V13()
-  v13tse <- .hmp16SDataSubset(v13, subgingival_supragingival_hmp16s_intersects)
-  return(v13tse)
-
-}
-
-#' Subgingival vs Supragingival Plaque Dataset 3
-#'
-#' \code{subgingivalVsSupragingivalDataset3} loads a TreeSummarizedExperiment of Subgingival vs
-#' Supragingival Plaque from the V35 dataset from the \code{\link{HMP16SData}} package. The samples
-#' have been filtered to only include subjects present in both the V13 and V35 datasets of the
-#' HMP16SData package and include only the visit number 1 to the research center. Furthermore, the samples
-#' include equal numbers of males and females.
+#' Reference:
+#' Beghini, F., Renson, A., Zolnik, C. P., Geistlinger, L., Usyk, M., Moody,
+#' T. U., ... & Waldron, L. (2019). Tobacco exposure associated with oral
+#' microbiota oxygen utilization in the New York City Health and Nutrition
+#' Examination Study. Annals of epidemiology, 34, 18-25.
 #'
 #' @return
-#' A TreeSummarizedExperiment.
+#' A TreeSummarizedExperiment object
 #'
-#' @importFrom HMP16SData V35
+#' @importFrom sas7bdat read.sas7bdat
+#' @importFrom phyloseq import_biom
+#' @importFrom phyloseq parse_taxonomy_default
+#' @importFrom phyloseq tax_table
+#' @importFrom phyloseq prune_samples
+#' @importFrom phyloseq sample_names
+#' @importFrom phyloseq sample_data
+#' @importFrom phyloseq subset_taxa
+#' @importFrom phyloseq sample_sums
+#' @importFrom utils read.delim
+#' @importFrom mia makeTreeSummarizedExperimentFromphyloseq
 #'
-subgingivalVsSupragingivalDataset3 <- function() {
-  v35 <- HMP16SData::V35()
-  v35tse <- .hmp16SDataSubset(v35, subgingival_supragingival_hmp16s_intersects)
-  return(v35tse)
+#' @keywords internal
+#'
+.beghini2019Nychanesmicrobiome <- function() {
 
-}
+  list_of_urls <- list(
+    metadata = urls$nychanes_metadata,
+    otu_table = urls$nychanes_otu_table,
+    taxa_tree = urls$nychanes_taxa_tree,
+    rep_set = urls$nychanes_rep_set,
+    original_map = urls$nychanes_original_map,
+    smokingsampleselection = urls$nychanes_smokingsampleselection
+  )
 
-#' Stool vs Tongue Dorsum Dataset 1
-#'
-#' \code{stoolVsTongueDorsumDataset1} loads a TreeSummarizedExperiment of Stool vs
-#' Tongue Dorsum from the HMP16S project used in Calgaro, 2020 for enrichment analysis.
-#'
-#' @return
-#' A TreeSummarizedExperiment.
-#'
-stoolVsTongueDorsumDataset1 <- function() {
-  output <- .hmp16SDataCalgaro2020("Stool_TongueDorsum")
-  return(output)
-}
+  fpaths <- lapply(list_of_urls, .getResourceFromCache)
 
-#' Stool vs Tongue Dorsum Dataset 2
-#'
-#' \code{stoolVsTongueDorsumDataset2} loads a TreeSummarizedExperiment of Stool vs Tongue Dorsum
-#' from the V35 dataset from the \code{\link{HMP16SData}} package. The samples
-#' have been filtered to only include subjects present in both the V13 and V35 datasets of the
-#' HMP16SData package and include only the visit number 1 to the research center. Furthermore, the samples
-#' include equal numbers of males and females.
-#'
-#' @return
-#' A TreeSummarizedExperiment.
-#'
-#' @importFrom HMP16SData V35
-#'
-stoolVsTongueDorsumDataset2 <- function() {
-  v13 <- HMP16SData::V13()
-  v13tse <- .hmp16SDataSubset(v13, stool_tongue_dorsum_hmp16s_intersects)
-  return(v13tse)
-}
+  ps <- phyloseq::import_biom(BIOMfilename = fpaths$otu_table,
+                              treefilename = fpaths$taxa_tree,
+                              refseqfilename = fpaths$rep_set,
+                              refseqFunction = phyloseq::parse_taxonomy_default)
 
-#' Stool vs Tongue Dorsum Dataset 3
-#'
-#' \code{stoolVsTongueDorsumDataset3} loads a TreeSummarizedExperiment of Stool vs Tongue Dorsum
-#' from the V35 dataset from the \code{\link{HMP16SData}} package. The samples
-#' have been filtered to only include subjects present in both the V13 and V35 datasets of the
-#' HMP16SData package and include only the visit number 1 to the research center. Furthermore, the samples
-#' include equal numbers of males and females.
-#'
-#' @return
-#' A TreeSummarizedExperiment.
-#'
-#' @importFrom HMP16SData V35
-#'
-stoolVsTongueDorsumDataset3 <- function() {
-  v35 <- HMP16SData::V35()
-  v35tse <- .hmp16SDataSubset(v35, stool_tongue_dorsum_hmp16s_intersects)
-  return(v35tse)
-}
+  colnames(phyloseq::tax_table(ps)) <- c("Domain", "Phylum", "Class", "Order", "Family", "Genus", "Species")
 
-#' Stool vs Tongue Dorsum Dataset 4
-#'
-#' \code{stoolVsTongueDorsumDataset4} imports stool and tongue dorsum samples from the HMP_2012
-#' study in curatedMetagenomicData (a single sample per subject).
-#'
-#' @importFrom curatedMetagenomicData curatedMetagenomicData
-#' @importFrom SummarizedExperiment assays
-#' @importFrom SummarizedExperiment colData
-#' @importFrom tibble as_tibble
-#' @importFrom dplyr group_by
-#' @importFrom dplyr slice_sample
-#' @importFrom dplyr ungroup
-#' @importFrom dplyr pull
-#' @importFrom magrittr %>%
-#'
-#' @return
-#' A TreeSummarizedExperiment
-#'
-stoolVsTongueDorsumDataset4 <- function() {
-  tse <- curatedMetagenomicData::curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE)[[1]]
+  # remove controls and replicates
+  pruned_samples <- c(
+    # Controls
+    "20151013CZTME1", "20151020CZE3", "20151020CZE4", "20151020TME1",
+    "NC1", "NC2",
+    # replicates
+    "NYDH0036", "NYDH0051", "NYDH0060", "NYDH0152", "NYDH0213", "NYDH0487",
+    "NYDH0492", "NYDH0522", "NYDH0527", "NYDH0545R", "NYDH0649c", "NYDH0661",
+    "NYDH0691", "NYDH0893", "NYDH0931", "NYDH0988", "NYDH1042", "NYDH1460",
+    "NYDH1353"
+  )
+  ps <- phyloseq::prune_samples(
+    !(phyloseq::sample_names(ps) %in% pruned_samples),
+    ps
+    )
 
-  relative_abundance <- SummarizedExperiment::assays(tse)[[1]]
-  counts <- round(t(t(relative_abundance) * SummarizedExperiment::colData(tse)[["number_reads"]] / 100))
-  mode(counts) <- "integer"
+  # metadata block
+  original_map <- utils::read.delim(fpaths$original_map)
+  metadata <- sas7bdat::read.sas7bdat(fpaths$metadata)
+  metadata$smokingstatus <- NULL # drop the smoking status variable that is coded by annotateFullDataset()
+  metadata <- dplyr::left_join(original_map, metadata, by = 'KEY')
 
-  SummarizedExperiment::assays(tse)[[1]] <- counts
-  SummarizedExperiment::assays(tse)[[2]] <- relative_abundance
-  names(SummarizedExperiment::assays(tse)) <- c("counts", "relative_abundance")
+  phyloseq::sample_names(ps) <- gsub("c|R", "", phyloseq::sample_names(ps))
 
-  tse <- tse[,SummarizedExperiment::colData(tse)$body_subsite %in% c("stool", "tongue_dorsum")]
+  sample_selection <- utils::read.delim(fpaths$smokingsampleselection)
+  sample_selection$smokingstatus <- factor(as.matrix(sample_selection[,-1]) %*% 1:5,
+                                           levels = 1:5,
+                                           labels = c("alternativeonly","never","former","secondhand","cigarette"))
 
-  samples <- SummarizedExperiment::colData(tse) %>%
-    tibble::as_tibble(rownames = "sample") %>%
-    dplyr::group_by(body_subsite, subject_id) %>%
-    dplyr::slice_sample() %>%
-    dplyr::ungroup() %>%
-    dplyr::pull("sample")
+  new_metadata_smokingstatus <- dplyr::full_join(metadata, sample_selection, by = c('KEY' = 'key'))
+  rownames(new_metadata_smokingstatus) <- new_metadata_smokingstatus$Burklab_ID
+  phyloseq::sample_data(ps) <- new_metadata_smokingstatus
 
-  tse <- tse[rowSums(SummarizedExperiment::assays(tse)$counts) > 0, samples]
+  ps <- phyloseq::prune_samples(phyloseq::sample_sums(ps) > 1000, ps)
+
+  #Remove OTU classified as chloroplasts and mitochondria
+  ps <- phyloseq::subset_taxa(ps, !Class %in% c("D_2__Chloroplast") & !Family %in% c("D_4__Mitochondria"))
+
+  #Merge splitted genera
+  splitted_genera <- sapply(data.frame(phyloseq::tax_table(ps)[,"Genus"]), function(x)  grep(" [1-9]",x))
+  phyloseq::tax_table(ps)[splitted_genera,"Genus"] <- sapply(phyloseq::tax_table(ps)[splitted_genera,"Genus"], function(x) gsub(" [1-9]","", x))
+  drop_prefixes <- function(x) {
+    x <- as.character(x)
+    x <- strsplit(x,"__")
+    x <- sapply(x, `[`, 2)
+    x
+  }
+  phyloseq::tax_table(ps)[,"Phylum"] <- drop_prefixes(phyloseq::tax_table(ps)[,"Phylum"])
+  phyloseq::tax_table(ps)[,"Genus"] <- drop_prefixes(phyloseq::tax_table(ps)[,"Genus"] )
+
+  tse <- mia::makeTreeSummarizedExperimentFromphyloseq(ps)
 
   return(tse)
 

@@ -27,7 +27,7 @@ library(magrittr)
 Show datasets
 
 ```{r}
-df <- dataSets() 
+df <- showDatasets() 
 df %>% 
   knitr::kable()
 ```
@@ -36,7 +36,7 @@ Import packages by index:
 
 ```{r}
 # stool and tongue dorsum samples from the HMP 2012 study in curatedMetagenomicData
-x <- getDataSets(x = 7)
+x <- getDatasets(x = c(1,3))
 x
 ```
 

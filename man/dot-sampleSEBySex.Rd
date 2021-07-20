@@ -17,3 +17,4 @@ A SummarizedExperiment with equal number of males and females in samples.
 HMP_BODY_SUBSITE. It implements \code{set.seed} to obtain the same random samples. Currently,
 this only works with datasets from the MP16SData package.
 }
+\keyword{internal}

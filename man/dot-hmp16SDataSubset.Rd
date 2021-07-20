@@ -18,3 +18,4 @@ A TreeSummarizedExperiment.
 \code{.hmp16SDataSubset} subsets a dataset, either V13 or V35, from the \code{\link{HMP16SData}}
 based on common samples and subjects between both datasets.
 }
+\keyword{internal}
