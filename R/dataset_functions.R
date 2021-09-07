@@ -1,178 +1,328 @@
-utils::globalVariables(c("Class", "Family", "ps_list_WMS", "ps_list_16S", "function_call"))
-# utils::globalVariables(c("body_subsite", "subject_id"))
-
-#' Datasets Used in Calgaro, 2020
+utils::globalVariables(
+  c("Class", "Family", "ps_list_WMS", "ps_list_16S", "StudyID", "study-type",
+    "human-readable-description", "function_call", "taxonomy", "submitted_ftp",
+    "sra_ftp", "OTU ID")
+  )
+#' Calgaro 2020 - 16S (subgingival vs supragingival plaque)
 #'
-#' \code{.calgaro2020Datasets} imports one of the six datasets used in the paper of Calgaro, 2020
-#' for benchmarking of methods for differential abundance (DA) analysis on microbiome data. Three
-#' of the datasets were generated with 16S rRNA sequencing and come from the V35 dataset in the
-#' \code{\link{HMP16SData}} package (v1.2.0). The other three datasets were generated with Whole
-#' Metagenome Sequencing and come from the HMP_2012 (Stool_TongueDorsum), Castro-NallarE_2015
-#' (Schizophrenia), and ZellerG_2014 (CRC) datasets in the curatedMetagenomicData (v1.12.3)
-#' package.
+#' \code{calgaro_2020_16S} imports the 16S data used in Calgaro 2020 to
+#' compare subgingival vs supragingival plaque samples. These samples are a
+#' subset taken from the HMP16SData package (v1.2.0).
 #'
-#' Reference:
+#' **Biological signal:** anaerobic and aerobic bacteria are under- and over-
+#' represented in supragingival plaque samples.
+#'
+#' @section Reference:
 #' Calgaro, M., Romualdi, C., Waldron, L. et al. Assessment of statistical methods from single
 #' cell, bulk RNA-seq, and metagenomics applied to microbiome data. Genome Biol 21, 191 (2020).
 #' https://doi.org/10.1186/s13059-020-02104-1
 #'
-#' @param x
-#' A character vector of length 1. Valid options: 16S_Stool_TongueDorsum, 16S_Gingiva_Mucosa,
-#' 16S_Subgingival_Supragingival, WMS_Stool_TongueDorsum, WMS_Schizophrenia, WMS_CRC.
+#' @return A TreeSummarizedExperiment.
 #'
-#' @return
-#' A TreeSummarizedExperiment.
-#'
-#' @keywords internal
-#'
+#' @export
 #'
 #' @examples
 #'
-#' \dontrun{
-#'
 #' library(MicrobiomeBenchmarkData)
-#' library(SummarizedExperiment)
+#' x <- calgaro_2020_16S_gingival_healthy()
 #'
-#' x <- .calgaro2020Datasets(x = "16S_Subgingival_Supragingival")
-#' table(colData(x)$HMP_BODY_SUBSITE)
-#'
-#' y <- .calgaro2020Datasets(x = "WMS_Stool_TongueDorsum")
-#' table(colData(y)$body_subsite)
-#'
-#' }
-#'
-.calgaro2020Datasets <- function(x) {
+calgaro_2020_16S_gingival_healthy <- function() {
 
-  datasets_16s <- c("16S_Stool_TongueDorsum", "16S_Gingiva_Mucosa", "16S_Subgingival_Supragingival")
-  datasets_wms <- c("WMS_Stool_TongueDorsum", "WMS_Schizophrenia", "WMS_CRC")
-
-  valid_datasets <- c(datasets_16s, datasets_wms)
-  if (!x %in% valid_datasets)
-    stop("Input must be a character string. One of the following: 16S_Stool_TongueDorsum, 16S_Gingiva_Mucosa, 16S_Subgingival_Supragingival, WMS_Stool_TongueDorsum, WMS_Schizophrenia, WMS_CRC.",
-         call. = FALSE)
-
-  if (x %in% datasets_16s) {
-    fpath <- urls$calgaro2020_16S
-    rpath <- .getResourceFromCache(fpath)
-    load(rpath)
-    dataset_name <- sub("^16S_", "", x)
-    ps <- ps_list_16S[[dataset_name]]
-    tse <- mia::makeTreeSummarizedExperimentFromphyloseq(ps)
-    return(tse)
-
-  } else if (x %in% datasets_wms) {
-    fpath <- urls$calgaro2020_WMS
-    rpath <- .getResourceFromCache(fpath)
-    load(rpath)
-    dataset_name <- sub("^WMS_", "", x)
-    ps <- ps_list_WMS[[dataset_name]]
-    tse <- mia::makeTreeSummarizedExperimentFromphyloseq(ps)
-    return(tse)
+  download_calgaro_2020_16S_gingival_healthy <- function() {
+    load(url("https://github.com/mcalgaro93/sc2meta/blob/master/data/16Sdatasets_for_replicability_filtered.RData?raw=true"))
+    ps_list_16S[["Subgingival_Supragingival"]] %>%
+      mia::makeTreeSummarizedExperimentFromphyloseq()
   }
+
+  .getResource(
+    resource_name = "calgaro_2020_16S_gingival_healthy",
+    FUN = download_calgaro_2020_16S_gingival_healthy
+  )
 }
 
-#' Dataset used Beghini, 2019 (nychanesmicrobiome)
+#' Calgaro 2020 - WGS cMD3 (subgingival vs supragingival plaque)
 #'
-#' \code{.beghini2019Nychanesmicrobiome} imports the dataset used in the nychanes paper.
+#' \code{calgaro_2020_WGS_cMD3} imports the WGS samples used in Calgaro 2020
+#' to compare subgingival vs supragingival plaque. This is an updated dataset
+#' taken from curatedMetagenomicData v3 instead of curatedMetagenomicData v1.
+#'
+#' **Biological signal:** anaerobic and aerobic bacteria are under- and over-
+#' represented in supragingival plaque samples.
+#'
+#' @section Reference:
+#' Calgaro, M., Romualdi, C., Waldron, L. et al. Assessment of statistical methods from single
+#' cell, bulk RNA-seq, and metagenomics applied to microbiome data. Genome Biol 21, 191 (2020).
+#' https://doi.org/10.1186/s13059-020-02104-1.
+#'
+#' @return A TreeSummarizedExperiment.
+#'
+#' @export
+#'
+#' @examples
+#'
+#' library(MicrobiomeBenchmarkData)
+#' x <- HMP_WMS_cMD3_gingival_healthy
+#'
+HMP_WMS_cMD3_gingival_healthy <- function() {
+
+  load_HMP_WMS_cMD3_gingival_healthy <- function() {
+    samples <- c("SRS013950", "SRS014107", "SRS014477", "SRS014691", "SRS063215",
+                 "SRS014578", "SRS016092", "SRS018665", "SRS023538", "SRS051378")
+    hmp <- suppressMessages(curatedMetagenomicData::curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE, counts = TRUE)[[1]])
+    hmp_subset <- hmp[,samples]
+    mat <- SummarizedExperiment::assay(hmp_subset)
+    hmp_subset[apply(mat, 1, function(x) any(x >= 10)),]
+  }
+
+  .getResource(
+    resource_name = "HMP_WMS_cMD3_gingival_healthy",
+    FUN = load_HMP_WMS_cMD3_gingival_healthy
+  )
+}
+
+#' HMP16SData V13 - healthy gingival plaque
+#'
+#' \code{HMP_16S_V13_gingival_healthy}
+#'
+#' @section Reference:
+#' TODO
+#'
+#' @return A TreeSummarizedExperiment.
+#' @export
+#'
+#' @examples
+#'
+#' library(MicrobiomeBenchmarkData)
+#' x <- HMP_16S_V13_gingival_healthy()
+#'
+HMP_16S_V13_gingival_healthy <- function() {
+
+  load_HMP_16S_V13_gingival_healthy <- function() {
+    v13se <- HMP16SData::V13()
+    v13se <- v13se[,hmp16s_samples[["v13"]]]
+    counts <- SummarizedExperiment::assay(v13se)
+    v13se[apply(counts, 1, function(x) any(x >= 10)),]
+
+  }
+
+  .getResource(
+    resource_name = "HMP_16S_V13_gingival_healthy",
+    FUN = load_HMP_16S_V13_gingival_healthy
+  )
+
+}
+
+#' HMP16SData V35 - healthy gingival plaque
+#'
+#' \code{HMP_16S_V35_gingival_healthy}
+#'
+#'
+#' @return A TreeSummarizedExperiment.
+#' @export
+#'
+#' @examples
+#'
+#' library(MicrobiomeBenchmarkData)
+#' x <- HMP_16S_V35_gingival_healthy()
+#'
+HMP_16S_V35_gingival_healthy <- function() {
+
+  load_HMP_16S_V35_gingival_healthy <- function() {
+    v35se <- HMP16SData::V35()
+    v35se <- v35se[,hmp16s_samples[["v35"]]]
+    counts <- SummarizedExperiment::assay(v35se)
+    v35se[apply(counts, 1, function(x) any(x >= 10)),]
+  }
+
+  .getResource(
+    resource_name = "HMP_16S_V35_gingival_healthy",
+    FUN = load_HMP_16S_V35_gingival_healthy
+  )
+
+}
+
+#' Beghini 2019 (smoking)
+#'
+#' \code{beghini_2019_16S} imports the dataset used in the nychanes paper.
 #' A good portion of this code was taken directly from the github repository
 #' of the \code{nychnamesmicrobiome} package at
 #' \url{https://github.com/waldronlab/nychanesmicrobiome/blob/master/R/loadQiimeData.R}.
 #'
-#' Reference:
+#' @section Reference:
 #' Beghini, F., Renson, A., Zolnik, C. P., Geistlinger, L., Usyk, M., Moody,
 #' T. U., ... & Waldron, L. (2019). Tobacco exposure associated with oral
 #' microbiota oxygen utilization in the New York City Health and Nutrition
 #' Examination Study. Annals of epidemiology, 34, 18-25.
 #'
 #' @return
-#' A TreeSummarizedExperiment object
-#'
-#' @importFrom sas7bdat read.sas7bdat
-#' @importFrom phyloseq import_biom
-#' @importFrom phyloseq parse_taxonomy_default
-#' @importFrom phyloseq tax_table
-#' @importFrom phyloseq prune_samples
-#' @importFrom phyloseq sample_names
-#' @importFrom phyloseq sample_data
-#' @importFrom phyloseq subset_taxa
-#' @importFrom phyloseq sample_sums
-#' @importFrom utils read.delim
-#' @importFrom mia makeTreeSummarizedExperimentFromphyloseq
+#' A TreeSummarizedExperiment object.
 #'
 #' @keywords internal
 #'
-.beghini2019Nychanesmicrobiome <- function() {
+#' @export
+#'
+#' @examples
+#'
+#' library(MicrobiomeBenchmarkData)
+#' x <- beghini_2019_16S_saliva_smoking()
+#'
+beghini_2019_16S_saliva_smoking <- function() {
 
-  list_of_urls <- list(
-    metadata = urls$nychanes_metadata,
-    otu_table = urls$nychanes_otu_table,
-    taxa_tree = urls$nychanes_taxa_tree,
-    rep_set = urls$nychanes_rep_set,
-    original_map = urls$nychanes_original_map,
-    smokingsampleselection = urls$nychanes_smokingsampleselection
-  )
+  download_beghini_2019_16S_saliva_smoking <- function() {
 
-  fpaths <- lapply(list_of_urls, .getResourceFromCache)
-
-  ps <- phyloseq::import_biom(BIOMfilename = fpaths$otu_table,
-                              treefilename = fpaths$taxa_tree,
-                              refseqfilename = fpaths$rep_set,
-                              refseqFunction = phyloseq::parse_taxonomy_default)
-
-  colnames(phyloseq::tax_table(ps)) <- c("Domain", "Phylum", "Class", "Order", "Family", "Genus", "Species")
-
-  # remove controls and replicates
-  pruned_samples <- c(
-    # Controls
-    "20151013CZTME1", "20151020CZE3", "20151020CZE4", "20151020TME1",
-    "NC1", "NC2",
-    # replicates
-    "NYDH0036", "NYDH0051", "NYDH0060", "NYDH0152", "NYDH0213", "NYDH0487",
-    "NYDH0492", "NYDH0522", "NYDH0527", "NYDH0545R", "NYDH0649c", "NYDH0661",
-    "NYDH0691", "NYDH0893", "NYDH0931", "NYDH0988", "NYDH1042", "NYDH1460",
-    "NYDH1353"
-  )
-  ps <- phyloseq::prune_samples(
-    !(phyloseq::sample_names(ps) %in% pruned_samples),
-    ps
+    list_of_urls <- list(
+      metadata = urls$nychanes_metadata,
+      otu_table = urls$nychanes_otu_table,
+      taxa_tree = urls$nychanes_taxa_tree,
+      rep_set = urls$nychanes_rep_set,
+      original_map = urls$nychanes_original_map,
+      smokingsampleselection = urls$nychanes_smokingsampleselection
     )
 
-  # metadata block
-  original_map <- utils::read.delim(fpaths$original_map)
-  metadata <- sas7bdat::read.sas7bdat(fpaths$metadata)
-  metadata$smokingstatus <- NULL # drop the smoking status variable that is coded by annotateFullDataset()
-  metadata <- dplyr::left_join(original_map, metadata, by = 'KEY')
+    fpaths <- lapply(list_of_urls, function(x) {
+      temp_file <- tempfile()
+      suppressMessages(utils::download.file(url = x, destfile = temp_file))
+      temp_file
+    })
 
-  phyloseq::sample_names(ps) <- gsub("c|R", "", phyloseq::sample_names(ps))
+    ps <- phyloseq::import_biom(BIOMfilename = fpaths$otu_table,
+                                treefilename = fpaths$taxa_tree,
+                                refseqfilename = fpaths$rep_set,
+                                refseqFunction = phyloseq::parse_taxonomy_default)
 
-  sample_selection <- utils::read.delim(fpaths$smokingsampleselection)
-  sample_selection$smokingstatus <- factor(as.matrix(sample_selection[,-1]) %*% 1:5,
-                                           levels = 1:5,
-                                           labels = c("alternativeonly","never","former","secondhand","cigarette"))
+    colnames(phyloseq::tax_table(ps)) <- c("Domain", "Phylum", "Class", "Order", "Family", "Genus", "Species")
 
-  new_metadata_smokingstatus <- dplyr::full_join(metadata, sample_selection, by = c('KEY' = 'key'))
-  rownames(new_metadata_smokingstatus) <- new_metadata_smokingstatus$Burklab_ID
-  phyloseq::sample_data(ps) <- new_metadata_smokingstatus
+    pruned_samples <- c(
+      # Controls
+      "20151013CZTME1", "20151020CZE3", "20151020CZE4", "20151020TME1",
+      "NC1", "NC2",
+      # replicates
+      "NYDH0036", "NYDH0051", "NYDH0060", "NYDH0152", "NYDH0213", "NYDH0487",
+      "NYDH0492", "NYDH0522", "NYDH0527", "NYDH0545R", "NYDH0649c", "NYDH0661",
+      "NYDH0691", "NYDH0893", "NYDH0931", "NYDH0988", "NYDH1042", "NYDH1460",
+      "NYDH1353"
+    )
+    ps <- phyloseq::prune_samples(
+      !(phyloseq::sample_names(ps) %in% pruned_samples),
+      ps
+    )
 
-  ps <- phyloseq::prune_samples(phyloseq::sample_sums(ps) > 1000, ps)
+    original_map <- utils::read.delim(fpaths$original_map)
+    metadata <- sas7bdat::read.sas7bdat(fpaths$metadata)
+    metadata$smokingstatus <- NULL # drop the smoking status variable that is coded by annotateFullDataset()
+    metadata <- dplyr::left_join(original_map, metadata, by = 'KEY')
 
-  #Remove OTU classified as chloroplasts and mitochondria
-  ps <- phyloseq::subset_taxa(ps, !Class %in% c("D_2__Chloroplast") & !Family %in% c("D_4__Mitochondria"))
+    phyloseq::sample_names(ps) <- gsub("c|R", "", phyloseq::sample_names(ps))
 
-  #Merge splitted genera
-  splitted_genera <- sapply(data.frame(phyloseq::tax_table(ps)[,"Genus"]), function(x)  grep(" [1-9]",x))
-  phyloseq::tax_table(ps)[splitted_genera,"Genus"] <- sapply(phyloseq::tax_table(ps)[splitted_genera,"Genus"], function(x) gsub(" [1-9]","", x))
-  drop_prefixes <- function(x) {
-    x <- as.character(x)
-    x <- strsplit(x,"__")
-    x <- sapply(x, `[`, 2)
-    x
+    sample_selection <- utils::read.delim(fpaths$smokingsampleselection)
+    sample_selection$smokingstatus <- factor(as.matrix(sample_selection[,-1]) %*% 1:5,
+                                             levels = 1:5,
+                                             labels = c("alternativeonly","never","former","secondhand","cigarette"))
+
+    new_metadata_smokingstatus <- dplyr::full_join(metadata, sample_selection, by = c('KEY' = 'key'))
+    rownames(new_metadata_smokingstatus) <- new_metadata_smokingstatus$Burklab_ID
+    phyloseq::sample_data(ps) <- new_metadata_smokingstatus
+
+    ps <- phyloseq::prune_samples(phyloseq::sample_sums(ps) > 1000, ps)
+
+    ps <- phyloseq::subset_taxa(ps, !Class %in% c("D_2__Chloroplast") & !Family %in% c("D_4__Mitochondria"))
+
+    splitted_genera <- sapply(data.frame(phyloseq::tax_table(ps)[,"Genus"]), function(x)  grep(" [1-9]",x))
+    phyloseq::tax_table(ps)[splitted_genera,"Genus"] <- sapply(phyloseq::tax_table(ps)[splitted_genera,"Genus"], function(x) gsub(" [1-9]","", x))
+    drop_prefixes <- function(x) {
+      as.character(x) %>%
+        strsplit("__") %>%
+        vapply(function(x) `[`(x, 2), character(1))
+    }
+
+    phyloseq::tax_table(ps)[,"Phylum"] <- drop_prefixes(phyloseq::tax_table(ps)[,"Phylum"])
+    phyloseq::tax_table(ps)[,"Genus"] <- drop_prefixes(phyloseq::tax_table(ps)[,"Genus"] )
+
+    mia::makeTreeSummarizedExperimentFromphyloseq(ps)
+
   }
-  phyloseq::tax_table(ps)[,"Phylum"] <- drop_prefixes(phyloseq::tax_table(ps)[,"Phylum"])
-  phyloseq::tax_table(ps)[,"Genus"] <- drop_prefixes(phyloseq::tax_table(ps)[,"Genus"] )
 
-  tse <- mia::makeTreeSummarizedExperimentFromphyloseq(ps)
+  .getResource(
+    resource_name = "beghini_2019_16S_saliva_smoking",
+    FUN = download_beghini_2019_16S_saliva_smoking
+  )
 
-  return(tse)
+}
+
+#' Spike-in bacteria dataset
+#'
+#' \code{spikeInBacteria} provides a dataset with spike-in bacteria data.
+#' TODO.
+#'
+#' @section Reference:
+#' Stämmler, F., Gläsner, J., Hiergeist, A. et al. Adjusting microbiome
+#' profiles for differences in microbial load by spike-in bacteria.
+#' Microbiome 4, 28 (2016). https://doi.org/10.1186/s40168-016-0175-0
+#'
+#' @return
+#' A TreeSummarizedExperiment
+#'
+#' @export
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' library(MicrobiomeBenchmarkData)
+#' x = spikeInBacteria()
+#' x
+#'
+#' }
+#'
+spikeInBacteria <- function() {
+
+  download_spikeInBacteria <- function() {
+
+    # Download taxa table (with counts)
+    taxa_table_url <- "https://static-content.springer.com/esm/art%3A10.1186%2Fs40168-016-0175-0/MediaObjects/40168_2016_175_MOESM10_ESM.txt"
+    taxa_table_file <- tempfile()
+    utils::download.file(url = taxa_table_url, destfile = taxa_table_file)
+    taxa_table <- readr::read_tsv(taxa_table_file, show_col_types = FALSE, progress = FALSE, comment = "#")
+
+    # Extract counts matrix
+    counts <- taxa_table %>%
+      dplyr::select(-taxonomy) %>%
+      tibble::column_to_rownames(var = "OTU ID") %>%
+      as.matrix()
+
+    # Extract taxonomy for rowData
+    # Most taxa are uncultured, so the taxonomy will be contained in a single table
+    row_data <- taxa_table %>%
+      dplyr::select(`OTU ID`, taxonomy) %>%
+      tibble::column_to_rownames(var = "OTU ID") %>%
+      as.data.frame() %>%
+      S4Vectors::DataFrame()
+
+    # Download sample metadata
+    col_data_url <- "https://www.ebi.ac.uk/ena/portal/api/filereport?accession=PRJEB11953&result=read_run&fields=study_accession,sample_accession,experiment_accession,run_accession,tax_id,scientific_name,fastq_ftp,submitted_ftp,sra_ftp&format=tsv&download=true"
+    col_data_file <- tempfile()
+    utils::download.file(url = col_data_url, destfile = col_data_file)
+    col_data <- readr::read_tsv(col_data_file, show_col_types = FALSE, progress = FALSE) %>%
+      dplyr::filter(grepl("ASCT.MID", submitted_ftp)) %>%
+      dplyr::mutate(sample_name = sub("^.+ASCT\\.(MID[0-9]+)_.+$", "\\1", submitted_ftp)) %>%
+      dplyr::select(-sra_ftp) %>%
+      tibble::column_to_rownames(var = "sample_name") %>%
+      as.data.frame() %>%
+      S4Vectors::DataFrame()
+
+    # Despite the fact that no tree is provided, the data will be assembled into
+    # a TreeSummarizedExperiment object for consistency.
+    TreeSummarizedExperiment::TreeSummarizedExperiment(
+      assays = S4Vectors::SimpleList(counts = counts),
+      colData = col_data,
+      rowData = row_data
+    )
+
+  }
+
+  .getResource(
+    resource_name = "spikeInBacteria",
+    FUN = download_spikeInBacteria
+  )
 
 }

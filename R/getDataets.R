@@ -1,4 +1,4 @@
-#' Get Data Sets
+#' Get datasets
 #'
 #' \code{getDataSets} returns a list containing datasets that have been specified by index according
 #' to the output of \code{\link{showDatasets}}.
@@ -28,7 +28,7 @@ getDatasets <- function(x) {
   return(list_of_datasets)
 }
 
-#' Show Datasets
+#' Show datasets
 #'
 #' \code{showDatasets} shows the list of available datasets in the \code{MicrobiomeBenchmarkData}
 #' package.
@@ -51,14 +51,12 @@ showDatasets <- function() {
     dplyr::select(-function_call)
 }
 
-#' Data Sets
+#' Datasets
 #' \code{dataSets} imports the table containing the list of available datasets in the
 #' \code{MicrobiomeBenchmarkData} package.
 #'
 #' @return
 #' A tibble with all available datasets.
-#'
-#' @importFrom readr read_tsv
 #'
 #' @keywords internal
 #'
@@ -67,4 +65,3 @@ showDatasets <- function() {
   datasets <- readr::read_tsv(datasets_fname, col_types = "dccccc")
   return(datasets)
 }
-

@@ -2,7 +2,7 @@
 % Please edit documentation in R/biocfilecache.R
 \name{.getCache}
 \alias{.getCache}
-\title{Get MicrobiomeBenchmarkData's Cache}
+\title{Get cache for the MicrobiomeBenchmarkData package}
 \usage{
 .getCache()
 }

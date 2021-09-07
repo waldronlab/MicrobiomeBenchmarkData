@@ -1,22 +1,21 @@
 Package: MicrobiomeBenchmarkData
-Title: Benchmark Datasets for Microbe Set Enrichment
-Version: 0.0.0.9000
+Title: Datasets for benchmarking methods in microbiome research
+Version: 0.99.0
+Description: The MicrobiomeBenchmarkData package provides functionality to 
+    access microbiome datasets from different sources. The datasets are imported
+    in R and delivered as (Tree)SummarizedExperiments. The datasets come from
+    previous studies/publications so they contain a known biological truth that
+    can be used to know expected results from methods.
 Authors@R: 
     person(given = "Samuel David",
            family = "Gamboa Tuz",
            role = c("aut", "cre"),
            email = "Samuel.Gamboa.Tuz@gmail.com",
            comment = c(ORCID = "0000-0002-6863-7943"))
-Description: MicrobiomeBenchmarkData provides access to different datasets for benchmarking microbe set
-    enrichment analyses.
 License: MIT + file LICENSE
-Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
 Depends: 
-    R (>= 4.1),
-    SummarizedExperiment
+    R (>= 4.1)
 Imports: 
     HMP16SData,
     TreeSummarizedExperiment,
@@ -29,8 +28,20 @@ Imports:
     phyloseq,
     curatedMetagenomicData,
     BiocFileCache,
-    sas7bdat
+    sas7bdat,
+    SummarizedExperiment
 Suggests: 
     rmarkdown,
-    knitr
+    knitr,
+    BiocStyle
+biocViews:
+    ExperimentData,
+    MicrobiomeData,
+    ReproducibleResearch
+BugReports: https://github.com/waldronlab/MicrobiomeBenchmarkData/issues
+URL: https://github.com/waldronlab/MicrobiomeBenchmarkData
+BiocType: ExperimentData
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr

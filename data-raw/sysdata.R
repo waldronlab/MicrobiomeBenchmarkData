@@ -1,38 +1,13 @@
 ## code to prepare `sysdata` dataset goes here
 
-# Load packages ------------------------------------------------------------------------------
+# Packages
+library(SummarizedExperiment)
+library(dplyr)
 
-# library(SummarizedExperiment)
-# library(mia)
-# library(magrittr)
-# library(dplyr)
 
-# Data from Calgaro, 2020 --------------------------------------------------------------------
-
-# The data from Calgaro, 2020 (https://doi.org/10.1186/s13059-020-02104-1) includes six dataset of
-# paried samples, well-suited for benchmarking of methos to do differential abundance (DA)
-# analyses. The data comes originally from two sources: the HMP16SData and the
-# curatedMetagenomicData packages.
-
-# 16S rRNA data
-# load(url("https://github.com/mcalgaro93/sc2meta/blob/master/data/16Sdatasets_for_replicability_filtered.RData?raw=true"))
-# tse_list_16s <- lapply(ps_list_16S, makeTreeSummarizedExperimentFromphyloseq)
-# names_16s <- lapply(tse_list_16s, function(x) list(features = rownames(x), samples = colnames(x))) %>%
-#   magrittr::set_names(paste0("16S_", names(.)))
-
-# WMS data
-# load(url("https://github.com/mcalgaro93/sc2meta/blob/master/data/WMSdatasets_for_replicability_filtered.RData?raw=true"))
-# tse_list_wms <- lapply(ps_list_WMS, makeTreeSummarizedExperimentFromphyloseq)
-# names_wms <- lapply(tse_list_wms, function(x) list(features = rownames(x), samples = colnames(x))) %>%
-#   magrittr::set_names(paste0("WMS_", names(.)))
-#
-# calgaro2020_names <- c(names_16s, names_wms)
+# Beghini 2019 -----------------------------------------------------------
 
 urls <- list(
-  # For the .calgaro2020Datasets function
-  calgaro2020_16S = "https://github.com/mcalgaro93/sc2meta/raw/master/data/16Sdatasets_for_replicability_filtered.RData",
-  calgaro2020_WMS = "https://github.com/mcalgaro93/sc2meta/raw/master/data/WMSdatasets_for_replicability_filtered.RData",
-  # For the .beghini2019Nychanesmicrobiome function
   nychanes_metadata = "https://github.com/waldronlab/nychanesmicrobiome/raw/master/inst/extdata/public_v2_010518.sas7bdat",
   nychanes_otu_table = "https://github.com/waldronlab/nychanesmicrobiome/raw/master/inst/extdata/otu_table_mc10_w_tax.biom",
   nychanes_taxa_tree = "https://raw.githubusercontent.com/waldronlab/nychanesmicrobiome/master/inst/extdata/rep_set.tre",
@@ -41,7 +16,47 @@ urls <- list(
   nychanes_smokingsampleselection = "https://raw.githubusercontent.com/waldronlab/nychanesmicrobiome/master/inst/extdata/smokingsampleselection.tsv"
 )
 
+
+# HMP16S samples ---------------------------------------------------------
+
+v13se <- HMP16SData::V13()
+v35se <- HMP16SData::V35()
+
+v13se_subgingival <- v13se[,v13se$HMP_BODY_SUBSITE == "Subgingival Plaque"]
+V13se_supragingival <- v13se[,v13se$HMP_BODY_SUBSITE == "Supragingival Plaque"]
+v35se_subgingival <- v35se[,v35se$HMP_BODY_SUBSITE == "Subgingival Plaque"]
+v35se_supragingival <- v35se[,v35se$HMP_BODY_SUBSITE == "Supragingival Plaque"]
+
+list_of_data <- list(colData(v13se_subgingival)$RSID,
+                 colData(V13se_supragingival)$RSID,
+                 colData(v35se_subgingival)$RSID,
+                 colData(v35se_supragingival)$RSID)
+
+intersect_subjects <- purrr::reduce(list_of_data, ~ intersect(.x, .y))
+
+x <- colData(v13se) %>%
+  as.data.frame %>%
+  as_tibble(rownames = "SAMPLE") %>%
+  filter(RSID %in% intersect_subjects, HMP_BODY_SUBSITE %in% c("Subgingival Plaque", "Supragingival Plaque")) %>%
+  group_by(RSID, HMP_BODY_SUBSITE) %>%
+  slice_sample() %>%
+  ungroup()
+
+y <- colData(v35se) %>%
+  as.data.frame %>%
+  as_tibble(rownames = "SAMPLE") %>%
+  filter(RSID %in% intersect_subjects, HMP_BODY_SUBSITE %in% c("Subgingival Plaque", "Supragingival Plaque")) %>%
+  group_by(RSID, HMP_BODY_SUBSITE) %>%
+  slice_sample() %>%
+  ungroup()
+
+hmp16s_samples <- list(v13 = x$SAMPLE, v35 = y$SAMPLE)
+
+
+# save data --------------------------------------------------------------
+
 usethis::use_data(
   urls,
+  hmp16s_samples,
   internal = TRUE, overwrite = TRUE
-  )
+)

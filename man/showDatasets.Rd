@@ -2,7 +2,7 @@
 % Please edit documentation in R/getDataets.R
 \name{showDatasets}
 \alias{showDatasets}
-\title{Show Datasets}
+\title{Show datasets}
 \usage{
 showDatasets()
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/getDataets.R
 \name{.datasets}
 \alias{.datasets}
-\title{Data Sets
+\title{Datasets
 \code{dataSets} imports the table containing the list of available datasets in the
 \code{MicrobiomeBenchmarkData} package.}
 \usage{
@@ -12,7 +12,7 @@
 A tibble with all available datasets.
 }
 \description{
-Data Sets
+Datasets
 \code{dataSets} imports the table containing the list of available datasets in the
 \code{MicrobiomeBenchmarkData} package.
 }
