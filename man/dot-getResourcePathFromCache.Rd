@@ -13,7 +13,9 @@
 A character string indicating the full path to the resource in the cache.
 }
 \description{
-\code{getResourcePathFromCache} gets the path to a resource in the cache generated with
-\code{\link{.getCache}}.
+\code{getResourcePathFromCache} gets the path to a resource in the cache.
+}
+\seealso{
+\code{\link{.getCache}}; \code{\link{.getResource}}
 }
 \keyword{internal}

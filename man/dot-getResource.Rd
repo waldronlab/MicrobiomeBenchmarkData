@@ -16,14 +16,17 @@ dataset.}
 A TreeSummarizedExperiment.
 }
 \description{
-\code{.getResource} loads a resource (dataset) from the
-\code{MicrobiomeBenchmarkData}'s cache; if the resource doesn't exist in the cache,
-it will be downloaded first from the internet with a helper function
-specified with the \code{FUN} argument.
+\code{.getResource} loads a resource (dataset) from the cache.
+If the resource does not exist in the cache, it will be downloaded first
+from the internet with a helper function specified with the \code{FUN} argument.
 }
 \details{
 The \code{.getResource} function is meant to be used inside the functions
-used to download the datasets, e.g.
+used to download the datasets only, e.g.
 \code{\link{calgaro_2020_16S_gingival_healthy}}.
+}
+\seealso{
+\code{\link{.getCache}};
+\code{\link{.getResourcePathFromCache}}
 }
 \keyword{internal}

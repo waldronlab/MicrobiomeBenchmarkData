@@ -4,25 +4,38 @@
 \alias{getDatasets}
 \title{Get datasets}
 \usage{
-getDatasets(x)
+getDatasets(index = NULL, name = NULL)
 }
 \arguments{
-\item{x}{A numeric vector containing the indexes of the datasets to be loaded.}
+\item{index}{A numeric vector containing the indexes of the datasets to be loaded.}
+
+\item{name}{A character vector containing the names of the datasets to be loaded.}
 }
 \value{
-A list of TreeSummarizedExperiments.
+A list vector containing TreeSummarizedExperiments.
 }
 \description{
-\code{getDataSets} returns a list containing datasets that have been specified by index according
-to the output of \code{\link{showDatasets}}.
+\code{getDataSets} imports one or several datasets as
+TreeSummarizedExperiment(s) stored in a list vector. The datasets
+can accessed according to their index or name as specified in the output of
+the \code{\link{listDatasets}} function. The datasets can be loaded
+according to index or name, but not both.
 }
 \examples{
 
 library(MicrobiomeBenchmarkData)
-datasets <- getDatasets(x = c(1,3))
-datasets
+
+## Load datasets by index
+datasets1 <- getDatasets(index = c(1,3))
+datasets1
+
+## Load datasets by name
+datasets_names <- c("calgaro_2020_16S_gingival_healthy",
+                    "beghini_2019_16S_saliva_smoking" )
+datasets2 <- getDatasets(name = datasets_names)
+datasets2
 
 }
 \seealso{
-\code{\link{showDatasets}}
+\code{\link{listDatasets}}
 }

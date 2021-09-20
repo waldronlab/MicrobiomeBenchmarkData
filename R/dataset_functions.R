@@ -171,12 +171,12 @@ beghini_2019_16S_saliva_smoking <- function() {
   download_beghini_2019_16S_saliva_smoking <- function() {
 
     list_of_urls <- list(
-      metadata = urls$nychanes_metadata,
-      otu_table = urls$nychanes_otu_table,
-      taxa_tree = urls$nychanes_taxa_tree,
-      rep_set = urls$nychanes_rep_set,
-      original_map = urls$nychanes_original_map,
-      smokingsampleselection = urls$nychanes_smokingsampleselection
+      metadata = "https://github.com/waldronlab/nychanesmicrobiome/raw/master/inst/extdata/public_v2_010518.sas7bdat",
+      otu_table = "https://github.com/waldronlab/nychanesmicrobiome/raw/master/inst/extdata/otu_table_mc10_w_tax.biom",
+      taxa_tree = "https://raw.githubusercontent.com/waldronlab/nychanesmicrobiome/master/inst/extdata/rep_set.tre",
+      rep_set = "https://raw.githubusercontent.com/waldronlab/nychanesmicrobiome/master/inst/extdata/rep_set.fna",
+      original_map = "https://raw.githubusercontent.com/waldronlab/nychanesmicrobiome/master/inst/extdata/original_map.tsv",
+      smokingsampleselection = "https://raw.githubusercontent.com/waldronlab/nychanesmicrobiome/master/inst/extdata/smokingsampleselection.tsv"
     )
 
     fpaths <- lapply(list_of_urls, function(x) {

@@ -2,12 +2,16 @@
 % Please edit documentation in R/biocfilecache.R
 \name{.getCache}
 \alias{.getCache}
-\title{Get cache for the MicrobiomeBenchmarkData package}
+\title{Get cache}
 \usage{
 .getCache()
 }
 \description{
 \code{.getCache} creates or loads a cache to store files downloaded through the
 \code{MicrobiomeBenchmarkData} package.
+}
+\seealso{
+\code{\link{.getResourcePathFromCache}};
+\code{\link{.getResource}}
 }
 \keyword{internal}

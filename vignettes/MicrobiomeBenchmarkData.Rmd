@@ -34,7 +34,7 @@ library(MicrobiomeBenchmarkData)
 # Alvailable datasets
 
 ```{r}
-showDatasets()
+listDatasets()
 ```
 
 # Accessing datasets
@@ -43,7 +43,7 @@ Datasets can be accessed with the `getDatasets` function, which returns a list
 of TreeSummarizedExperiments:
 
 ```{r, message=FALSE}
-list_of_datasets <- getDatasets(x = c(1,3,6))
+list_of_datasets <- getDatasets(index = c(1, 3, 6))
 class(list_of_datasets)
 length(list_of_datasets)
 list_of_datasets[[1]]

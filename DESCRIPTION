@@ -15,10 +15,11 @@ Authors@R:
 License: MIT + file LICENSE
 LazyData: true
 Depends: 
-    R (>= 4.1)
+    R (>= 4.1),
+    SummarizedExperiment,
+    TreeSummarizedExperiment
 Imports: 
     HMP16SData,
-    TreeSummarizedExperiment,
     S4Vectors,
     mia,
     readr,
@@ -28,12 +29,12 @@ Imports:
     phyloseq,
     curatedMetagenomicData,
     BiocFileCache,
-    sas7bdat,
-    SummarizedExperiment
+    sas7bdat
 Suggests: 
     rmarkdown,
     knitr,
-    BiocStyle
+    BiocStyle,
+    testthat (>= 3.0.0)
 biocViews:
     ExperimentData,
     MicrobiomeData,
@@ -45,3 +46,4 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
+Config/testthat/edition: 3
