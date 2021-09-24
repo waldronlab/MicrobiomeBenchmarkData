@@ -1,8 +1,8 @@
-"index"	"dataset_name"	"source_name"	"source_link"	"description"
-"1"	"calgaro_2020_16S_gingival_healthy"	"GitHub"	"https://github.com/mcalgaro93/sc2meta/data"	"Dataset used in Calgaro, 2020."
-"2"	"HMP_WMS_cMD3_gingival_healthy"	"curatedMetagenomicData R package v3"	"https://bioconductor.org/packages/release/data/experiment/html/curatedMetagenomicData.html"	"Subgingival vs Supragingival".
-"3"	"HMP_16S_V13_gingival_healthy"	"HMP16SData R package"	"https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html"	"V13 dataset from the HMP16SData package."
-"4"	"HMP_16S_V35_gingival_healthy"	"HMP16SData R package"	"https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html"	"V35 dataset from the HMP16SData package."
-"5"	"beghini_2019_16S_saliva_smoking"	"GitHub"	"https://github.com/waldronlab/nychanesmicrobiome/inst/extdata"	"R package used in Beghini, 2019."
-"6"	"spikeInBacteria"	NA	NA	NA
-"7"	NA	NA	NA	NA
+"dataset_name"	"source_name"	"source_link"	"description"
+"calgaro_2020_16S_gingival_healthy"	"GitHub"	"https://github.com/mcalgaro93/sc2meta/data"	"Dataset used in Calgaro, 2020."
+"HMP_WMS_cMD3_gingival_healthy"	"curatedMetagenomicData R package v3"	"https://bioconductor.org/packages/release/data/experiment/html/curatedMetagenomicData.html"	"Subgingival vs Supragingival".
+"HMP_16S_V13_gingival_healthy"	"HMP16SData R package"	"https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html"	"V13 dataset from the HMP16SData package."
+"HMP_16S_V35_gingival_healthy"	"HMP16SData R package"	"https://bioconductor.org/packages/release/data/experiment/html/HMP16SData.html"	"V35 dataset from the HMP16SData package."
+"beghini_2019_16S_saliva_smoking"	"GitHub"	"https://github.com/waldronlab/nychanesmicrobiome/inst/extdata"	"R package used in Beghini, 2019."
+"spikeInBacteria"	NA	NA	NA
+NA	NA	NA	NA

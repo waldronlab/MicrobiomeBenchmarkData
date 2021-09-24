@@ -20,14 +20,4 @@ profiles for differences in microbial load by spike-in bacteria.
 Microbiome 4, 28 (2016). https://doi.org/10.1186/s40168-016-0175-0
 }
 
-\examples{
-
-\dontrun{
-
-library(MicrobiomeBenchmarkData)
-x = spikeInBacteria()
-x
-
-}
-
-}
+\keyword{internal}

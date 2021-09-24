@@ -23,10 +23,4 @@ microbiota oxygen utilization in the New York City Health and Nutrition
 Examination Study. Annals of epidemiology, 34, 18-25.
 }
 
-\examples{
-
-library(MicrobiomeBenchmarkData)
-x <- beghini_2019_16S_saliva_smoking()
-
-}
 \keyword{internal}

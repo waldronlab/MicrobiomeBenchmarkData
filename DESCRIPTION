@@ -16,8 +16,7 @@ License: MIT + file LICENSE
 LazyData: true
 Depends: 
     R (>= 4.1),
-    SummarizedExperiment,
-    TreeSummarizedExperiment
+    SummarizedExperiment
 Imports: 
     HMP16SData,
     S4Vectors,
@@ -29,7 +28,8 @@ Imports:
     phyloseq,
     curatedMetagenomicData,
     BiocFileCache,
-    sas7bdat
+    sas7bdat,
+    TreeSummarizedExperiment
 Suggests: 
     rmarkdown,
     knitr,

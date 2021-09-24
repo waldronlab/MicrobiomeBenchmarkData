@@ -25,9 +25,4 @@ cell, bulk RNA-seq, and metagenomics applied to microbiome data. Genome Biol 21,
 https://doi.org/10.1186/s13059-020-02104-1
 }
 
-\examples{
-
-library(MicrobiomeBenchmarkData)
-x <- calgaro_2020_16S_gingival_healthy()
-
-}
+\keyword{internal}

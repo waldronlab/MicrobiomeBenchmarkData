@@ -12,9 +12,4 @@ A TreeSummarizedExperiment.
 \description{
 \code{HMP_16S_V35_gingival_healthy}
 }
-\examples{
-
-library(MicrobiomeBenchmarkData)
-x <- HMP_16S_V35_gingival_healthy()
-
-}
+\keyword{internal}

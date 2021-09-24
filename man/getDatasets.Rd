@@ -4,38 +4,37 @@
 \alias{getDatasets}
 \title{Get datasets}
 \usage{
-getDatasets(index = NULL, name = NULL)
+getDatasets(dat_name = NULL)
 }
 \arguments{
-\item{index}{A numeric vector containing the indexes of the datasets to be loaded.}
-
-\item{name}{A character vector containing the names of the datasets to be loaded.}
+\item{dat_name}{A character vector containing the names of the datasets to be loaded. If
+'NULL' (default), a message indicating how to get detailed information
+about the datasets is printed along with the names of available datasets;
+furthermore, the list of available datasets is invisibly returned as a
+character vector.}
 }
 \value{
-A list vector containing TreeSummarizedExperiments.
+A list containing TreeSummarizedExperiments. If \code{NULL}, a character vector
+with available datasets (invisibly returned).
 }
 \description{
 \code{getDataSets} imports one or several datasets as
 TreeSummarizedExperiment(s) stored in a list vector. The datasets
 can accessed according to their index or name as specified in the output of
-the \code{\link{listDatasets}} function. The datasets can be loaded
+the \code{\link{.listDatasets}} function. The datasets can be loaded
 according to index or name, but not both.
 }
 \examples{
 
 library(MicrobiomeBenchmarkData)
 
-## Load datasets by index
-datasets1 <- getDatasets(index = c(1,3))
-datasets1
+## Show datasets and save datasets names as a character vector
+datasets <- getDatasets()
 
-## Load datasets by name
-datasets_names <- c("calgaro_2020_16S_gingival_healthy",
-                    "beghini_2019_16S_saliva_smoking" )
-datasets2 <- getDatasets(name = datasets_names)
-datasets2
+## Download datasets 1 and two in the list
+x <- getDatasets(datasets[1:2])
 
-}
-\seealso{
-\code{\link{listDatasets}}
+length(x)
+vapply(x, class, character(1))
+
 }

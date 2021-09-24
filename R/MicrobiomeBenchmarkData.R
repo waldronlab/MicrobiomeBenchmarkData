@@ -7,4 +7,5 @@
 #' @name MicrobiomeBenchmarkDataAnalyses
 #'
 #' @importFrom  magrittr %>%
+#' @import SummarizedExperiment
 NULL

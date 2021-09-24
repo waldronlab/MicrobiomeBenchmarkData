@@ -23,18 +23,24 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(MicrobiomeBenchmarkData)
-```
-
 # Introduction
 
 # Installation
 
-# Alvailable datasets
+```{r installation, eval=FALSE}
+if (!"BiocManager" %in% installed.packages()[,"Package"])
+  install.packages("BiocManager")
 
-```{r}
-listDatasets()
+## Release version
+BiocManager::install("MicrobiomeBenchmarkData")
+
+## Latest development version
+BiocManager::install("waldronlab/MicrobiomeBenchmarkData")
+```
+
+
+```{r, load packages}
+library(MicrobiomeBenchmarkData)
 ```
 
 # Accessing datasets
@@ -42,20 +48,12 @@ listDatasets()
 Datasets can be accessed with the `getDatasets` function, which returns a list
 of TreeSummarizedExperiments:
 
-```{r, message=FALSE}
-list_of_datasets <- getDatasets(index = c(1, 3, 6))
-class(list_of_datasets)
-length(list_of_datasets)
-list_of_datasets[[1]]
+```{r}
+list_of_datasets <- getDatasets()
 ```
 
 Or can be directly accessed trough the specific dataset function, which
 returns a TreeSummarizedExperiment
-
-```{r, message=FALSE}
-tse <- calgaro_2020_16S_gingival_healthy()
-tse
-```
 
 
 # Session information

@@ -17,9 +17,4 @@ A TreeSummarizedExperiment.
 TODO
 }
 
-\examples{
-
-library(MicrobiomeBenchmarkData)
-x <- HMP_16S_V13_gingival_healthy()
-
-}
+\keyword{internal}

@@ -17,14 +17,9 @@ utils::globalVariables(
 #' cell, bulk RNA-seq, and metagenomics applied to microbiome data. Genome Biol 21, 191 (2020).
 #' https://doi.org/10.1186/s13059-020-02104-1
 #'
+#' @keywords internal
+#'
 #' @return A TreeSummarizedExperiment.
-#'
-#' @export
-#'
-#' @examples
-#'
-#' library(MicrobiomeBenchmarkData)
-#' x <- calgaro_2020_16S_gingival_healthy()
 #'
 calgaro_2020_16S_gingival_healthy <- function() {
 
@@ -54,14 +49,9 @@ calgaro_2020_16S_gingival_healthy <- function() {
 #' cell, bulk RNA-seq, and metagenomics applied to microbiome data. Genome Biol 21, 191 (2020).
 #' https://doi.org/10.1186/s13059-020-02104-1.
 #'
+#' @keywords internal
+#'
 #' @return A TreeSummarizedExperiment.
-#'
-#' @export
-#'
-#' @examples
-#'
-#' library(MicrobiomeBenchmarkData)
-#' x <- HMP_WMS_cMD3_gingival_healthy
 #'
 HMP_WMS_cMD3_gingival_healthy <- function() {
 
@@ -87,13 +77,9 @@ HMP_WMS_cMD3_gingival_healthy <- function() {
 #' @section Reference:
 #' TODO
 #'
+#' @keywords internal
+#'
 #' @return A TreeSummarizedExperiment.
-#' @export
-#'
-#' @examples
-#'
-#' library(MicrobiomeBenchmarkData)
-#' x <- HMP_16S_V13_gingival_healthy()
 #'
 HMP_16S_V13_gingival_healthy <- function() {
 
@@ -116,15 +102,9 @@ HMP_16S_V13_gingival_healthy <- function() {
 #'
 #' \code{HMP_16S_V35_gingival_healthy}
 #'
+#' @keywords internal
 #'
 #' @return A TreeSummarizedExperiment.
-#' @export
-#'
-#' @examples
-#'
-#' library(MicrobiomeBenchmarkData)
-#' x <- HMP_16S_V35_gingival_healthy()
-#'
 HMP_16S_V35_gingival_healthy <- function() {
 
   load_HMP_16S_V35_gingival_healthy <- function() {
@@ -154,17 +134,11 @@ HMP_16S_V35_gingival_healthy <- function() {
 #' microbiota oxygen utilization in the New York City Health and Nutrition
 #' Examination Study. Annals of epidemiology, 34, 18-25.
 #'
+#' @keywords internal
+#'
 #' @return
 #' A TreeSummarizedExperiment object.
 #'
-#' @keywords internal
-#'
-#' @export
-#'
-#' @examples
-#'
-#' library(MicrobiomeBenchmarkData)
-#' x <- beghini_2019_16S_saliva_smoking()
 #'
 beghini_2019_16S_saliva_smoking <- function() {
 
@@ -259,20 +233,10 @@ beghini_2019_16S_saliva_smoking <- function() {
 #' profiles for differences in microbial load by spike-in bacteria.
 #' Microbiome 4, 28 (2016). https://doi.org/10.1186/s40168-016-0175-0
 #'
+#' @keywords internal
+#'
 #' @return
 #' A TreeSummarizedExperiment
-#'
-#' @export
-#'
-#' @examples
-#'
-#' \dontrun{
-#'
-#' library(MicrobiomeBenchmarkData)
-#' x = spikeInBacteria()
-#' x
-#'
-#' }
 #'
 spikeInBacteria <- function() {
 
