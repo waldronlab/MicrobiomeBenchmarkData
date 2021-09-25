@@ -212,7 +212,7 @@ beghini_2019_16S_saliva_smoking <- function() {
     phyloseq::tax_table(ps)[,"Phylum"] <- drop_prefixes(phyloseq::tax_table(ps)[,"Phylum"])
     phyloseq::tax_table(ps)[,"Genus"] <- drop_prefixes(phyloseq::tax_table(ps)[,"Genus"] )
 
-    mia::makeTreeSummarizedExperimentFromphyloseq(ps)
+    mia::makeTreeSummarizedExperimentFromPhyloseq(ps)
 
   }
 
