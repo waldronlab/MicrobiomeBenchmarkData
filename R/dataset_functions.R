@@ -26,7 +26,7 @@ calgaro_2020_16S_gingival_healthy <- function() {
   download_calgaro_2020_16S_gingival_healthy <- function() {
     load(url("https://github.com/mcalgaro93/sc2meta/blob/master/data/16Sdatasets_for_replicability_filtered.RData?raw=true"))
     ps_list_16S[["Subgingival_Supragingival"]] %>%
-      mia::makeTreeSummarizedExperimentFromphyloseq()
+      mia::makeTreeSummarizedExperimentFromPhyloseq()
   }
 
   .getResource(
