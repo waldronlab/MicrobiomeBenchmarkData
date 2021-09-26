@@ -1,18 +1,20 @@
 Package: MicrobiomeBenchmarkData
-Title: Datasets for benchmarking methods in microbiome research
+Title: Datasets for benchmarking in microbiome research
 Version: 0.99.0
 Description: The MicrobiomeBenchmarkData package provides functionality to 
-    access microbiome datasets from different sources. The datasets are imported
-    in R and delivered as (Tree)SummarizedExperiments. The datasets come from
-    previous studies/publications so they contain a known biological truth that
-    can be used to know expected results from methods.
+    access microbiome datasets suitable for benchmarking. These datasets
+    have some biological truth, which allows to have expected results for
+    comparison. The datasets come from various published sources and
+    are provided as TreeSummarizedExperiment objects. Currently, 
+    only datasets suitable for benchmarking of differential abundance
+    methods are alvailable.
 Authors@R: 
     person(given = "Samuel David",
            family = "Gamboa Tuz",
            role = c("aut", "cre"),
            email = "Samuel.Gamboa.Tuz@gmail.com",
            comment = c(ORCID = "0000-0002-6863-7943"))
-License: MIT + file LICENSE
+License: Artistic-2.0
 LazyData: true
 Depends: 
     R (>= 4.1),
