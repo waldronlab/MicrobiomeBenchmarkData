@@ -25,8 +25,4 @@ The \code{.getResource} function is meant to be used inside the functions
 used to download the datasets only, e.g.
 \code{\link{.HMP_2012_16S_gingival_a}}.
 }
-\seealso{
-\code{\link{.getCache}};
-\code{\link{.getResourcePathFromCache}}
-}
 \keyword{internal}

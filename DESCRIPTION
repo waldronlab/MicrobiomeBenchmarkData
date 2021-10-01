@@ -31,7 +31,9 @@ Imports:
     curatedMetagenomicData,
     BiocFileCache,
     sas7bdat,
-    TreeSummarizedExperiment
+    TreeSummarizedExperiment,
+    tools,
+    utils
 Suggests: 
     rmarkdown,
     knitr,

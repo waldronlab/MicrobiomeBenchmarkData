@@ -26,8 +26,6 @@ according to index or name, but not both.
 }
 \examples{
 
-library(MicrobiomeBenchmarkData)
-
 ## Show datasets and save datasets names as a character vector
 datasets <- getDatasets()
 

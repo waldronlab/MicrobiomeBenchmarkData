@@ -8,10 +8,6 @@
 #' @importFrom tools R_user_dir
 #' @importFrom BiocFileCache BiocFileCache
 #'
-#' @seealso
-#' \code{\link{.getResourcePathFromCache}};
-#' \code{\link{.getResource}}
-#'
 .getCache <- function() {
   tools::R_user_dir(package = "MicrobiomeBenchmarkData", which = "cache") %>%
     BiocFileCache::BiocFileCache(ask = FALSE)
@@ -33,9 +29,6 @@
 #' @importFrom BiocFileCache bfcpath
 #'
 #' @keywords internal
-#'
-#' @seealso
-#' \code{\link{.getCache}}; \code{\link{.getResource}}
 #'
 .getResourcePathFromCache <- function(resource_name) {
 
@@ -76,9 +69,6 @@
 #'
 #' @keywords internal
 #'
-#' @seealso
-#' \code{\link{.getCache}};
-#' \code{\link{.getResourcePathFromCache}}
 #'
 .getResource <- function(resource_name, FUN) {
 
@@ -103,11 +93,13 @@
 #' \code{removeCache} removes all files saved in the cache. It will ask for
 #' confirmation before removing the cache.
 #'
-#' @return NULL
+#' @export
 #'
-#' @keywords internal
+#' @examples
+#'
+#' removeCache()
 #'
 removeCache <- function() {
-  cache <- .getCache()
+    cache <- .getCache()
   BiocFileCache::removebfc(cache)
 }

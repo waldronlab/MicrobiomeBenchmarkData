@@ -26,8 +26,6 @@ utils::globalVariables(c("dataset_name", ".", "dataset"))
 #'
 #' @examples
 #'
-#' library(MicrobiomeBenchmarkData)
-#'
 #' ## Show datasets and save datasets names as a character vector
 #' datasets <- getDatasets()
 #'
@@ -101,3 +99,4 @@ getDatasets <- function(dat_name = NULL) {
   fname <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTFljQhSJv_bT_d5EWBZIOfZfPGMrdAsVkHN5GsvjW8ZA2GEGtJ-z5vc9kjr5y2Ficmrh7aeQJVO-pS/pub?gid=0&single=true&output=tsv"
   readr::read_tsv(fname, show_col_types = FALSE)
 }
+
