@@ -1,77 +1,3 @@
-## code to prepare `sysdata` dataset goes here
-
-# Packages
-library(SummarizedExperiment)
-library(dplyr)
-
-
-## Calgaro 2020 -----------------------------------------------------------
-
-## Obtain ids of samples and taxa used in the paper of calgaro 2020.
-## This is for both 16S and WMS data. The data comes from the HMP project.
-
-## 16S
-load(url("https://github.com/mcalgaro93/sc2meta/blob/master/data/16Sdatasets_for_replicability_filtered.RData?raw=true"))
-calgaro_2020_16S_samples <- phyloseq::sample_names(ps_list_16S[["Subgingival_Supragingival"]])
-calgaro_2020_16S_taxa <- phyloseq::taxa_names(ps_list_16S[["Subgingival_Supragingival"]])
-
-## WMS
-
-
-
-
-
-
-# Beghini 2019 -----------------------------------------------------------
-
-# urls <- list(
-#   nychanes_metadata = "https://github.com/waldronlab/nychanesmicrobiome/raw/master/inst/extdata/public_v2_010518.sas7bdat",
-#   nychanes_otu_table = "https://github.com/waldronlab/nychanesmicrobiome/raw/master/inst/extdata/otu_table_mc10_w_tax.biom",
-#   nychanes_taxa_tree = "https://raw.githubusercontent.com/waldronlab/nychanesmicrobiome/master/inst/extdata/rep_set.tre",
-#   nychanes_rep_set = "https://raw.githubusercontent.com/waldronlab/nychanesmicrobiome/master/inst/extdata/rep_set.fna",
-#   nychanes_original_map = "https://raw.githubusercontent.com/waldronlab/nychanesmicrobiome/master/inst/extdata/original_map.tsv",
-#   nychanes_smokingsampleselection = "https://raw.githubusercontent.com/waldronlab/nychanesmicrobiome/master/inst/extdata/smokingsampleselection.tsv"
-# )
-
-
-# HMP16S samples ---------------------------------------------------------
-
-v13se <- HMP16SData::V13()
-v35se <- HMP16SData::V35()
-
-v13se_subgingival <- v13se[,v13se$HMP_BODY_SUBSITE == "Subgingival Plaque"]
-V13se_supragingival <- v13se[,v13se$HMP_BODY_SUBSITE == "Supragingival Plaque"]
-v35se_subgingival <- v35se[,v35se$HMP_BODY_SUBSITE == "Subgingival Plaque"]
-v35se_supragingival <- v35se[,v35se$HMP_BODY_SUBSITE == "Supragingival Plaque"]
-
-list_of_data <- list(colData(v13se_subgingival)$RSID,
-                 colData(V13se_supragingival)$RSID,
-                 colData(v35se_subgingival)$RSID,
-                 colData(v35se_supragingival)$RSID)
-
-intersect_subjects <- purrr::reduce(list_of_data, ~ intersect(.x, .y))
-
-x <- colData(v13se) %>%
-  as.data.frame %>%
-  as_tibble(rownames = "SAMPLE") %>%
-  filter(RSID %in% intersect_subjects, HMP_BODY_SUBSITE %in% c("Subgingival Plaque", "Supragingival Plaque")) %>%
-  group_by(RSID, HMP_BODY_SUBSITE) %>%
-  slice_sample() %>%
-  ungroup()
-
-y <- colData(v35se) %>%
-  as.data.frame %>%
-  as_tibble(rownames = "SAMPLE") %>%
-  filter(RSID %in% intersect_subjects, HMP_BODY_SUBSITE %in% c("Subgingival Plaque", "Supragingival Plaque")) %>%
-  group_by(RSID, HMP_BODY_SUBSITE) %>%
-  slice_sample() %>%
-  ungroup()
-
-hmp16s_samples <- list(v13 = x$SAMPLE, v35 = y$SAMPLE)
-
-
-# beghini 2019 ------------------------------------------------------------
-
 
 # Create phyloseq object
 
@@ -249,18 +175,7 @@ phyloseq::sample_data(ps)$DBQ_10_3CAT <- cut(phyloseq::sample_data(ps)$DBQ_10, b
 colnames(phyloseq::sample_data(ps)) <- tolower(colnames(phyloseq::sample_data(ps)))
 
 ps_subset <- phyloseq::subset_samples(ps, smoking_status %in% c("never", "cigarette"))
-ps_subset <- phyloseq::prune_taxa(names(phyloseq::taxa_sums(ps_subset) > 0), ps) # same number of taxa
-tse <- mia::makeTreeSummarizedExperimentFromPhyloseq(ps_subset)
+ps_subset <- phyloseq::prune_taxa(phyloseq::taxa_sums(x) > 0, x) # same number of taxa
 
-# beghini_count_matrix <- as.matrix(as.data.frame(phyloseq::otu_table(ps_subset)))
 
-# save data --------------------------------------------------------------
-
-usethis::use_data(
-  calgaro_2020_16S_samples,
-  calgaro_2020_16S_taxa,
-  hmp16s_samples,
-  tse,
-  # beghini_count_matrix,
-  internal = TRUE, overwrite = TRUE
-)
+beghini_count_matrix <- as.matrix(as.data.frame(phyloseq::otu_table(ps_subset)))

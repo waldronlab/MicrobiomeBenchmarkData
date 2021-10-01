@@ -28,14 +28,14 @@ knitr::opts_chunk$set(
 # Installation
 
 ```{r installation, eval=FALSE}
-if (!"BiocManager" %in% installed.packages()[,"Package"])
+# if (!"BiocManager" %in% installed.packages()[,"Package"])
   install.packages("BiocManager")
 
 ## Release version
-BiocManager::install("MicrobiomeBenchmarkData")
+# BiocManager::install("MicrobiomeBenchmarkData")
 
 ## Latest development version
-BiocManager::install("waldronlab/MicrobiomeBenchmarkData")
+# BiocManager::install("waldronlab/MicrobiomeBenchmarkData")
 ```
 
 

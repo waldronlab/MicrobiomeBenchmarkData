@@ -27,6 +27,11 @@
 #' @return
 #' A character string indicating the full path to the resource in the cache.
 #'
+#' @importFrom dplyr pull
+#' @importFrom BiocFileCache bfcremove
+#' @importFrom BiocFileCache bfcnew
+#' @importFrom BiocFileCache bfcpath
+#'
 #' @keywords internal
 #'
 #' @seealso
@@ -60,7 +65,7 @@
 #'
 #' The \code{.getResource} function is meant to be used inside the functions
 #' used to download the datasets only, e.g.
-#' \code{\link{calgaro_2020_16S_gingival_healthy}}.
+#' \code{\link{.HMP_2012_16S_gingival_a}}.
 #'
 #' @param resource_name A single character string with the name of the
 #' dataset.
@@ -91,4 +96,18 @@
 
   return(tse)
 
+}
+
+#' Remove cache
+#'
+#' \code{removeCache} removes all files saved in the cache. It will ask for
+#' confirmation before removing the cache.
+#'
+#' @return NULL
+#'
+#' @keywords internal
+#'
+removeCache <- function() {
+  cache <- .getCache()
+  BiocFileCache::removebfc(cache)
 }

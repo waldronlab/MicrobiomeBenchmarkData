@@ -4,7 +4,7 @@
 #' various datasets.
 #'
 #' @docType package
-#' @name MicrobiomeBenchmarkDataAnalyses
+#' @name MicrobiomeBenchmarkData
 #'
 #' @importFrom  magrittr %>%
 #' @import SummarizedExperiment

@@ -1,4 +1,4 @@
-utils::globalVariables(c("dataset_name", "."))
+utils::globalVariables(c("dataset_name", ".", "dataset"))
 #' Get datasets
 #'
 #' \code{getDataSets} imports one or several datasets as
@@ -20,6 +20,10 @@ utils::globalVariables(c("dataset_name", "."))
 #'
 #' @export
 #'
+#' @importFrom dplyr arrange
+#' @importFrom dplyr pull
+#' @importFrom magrittr set_names
+#'
 #' @examples
 #'
 #' library(MicrobiomeBenchmarkData)
@@ -36,8 +40,8 @@ utils::globalVariables(c("dataset_name", "."))
 getDatasets <- function(dat_name = NULL) {
 
   datasets_names <- .listDatasets() %>%
-    dplyr::arrange(dataset_name) %>%
-    dplyr::pull(dataset_name)
+    dplyr::arrange(dataset) %>%
+    dplyr::pull(dataset)
 
   if (is.null(dat_name)) {
 
@@ -77,7 +81,7 @@ getDatasets <- function(dat_name = NULL) {
   selected_datasets <- datasets_names[datasets_names %in% dat_name]
 
   selected_datasets %>%
-    lapply(function(x) eval(parse(text = paste0(x, "()")))) %>%
+    lapply(function(x) eval(parse(text = paste0(".", x, "()")))) %>%
       magrittr::set_names(selected_datasets)
 }
 
@@ -88,9 +92,12 @@ getDatasets <- function(dat_name = NULL) {
 #' @return
 #' A tibble with available datasets.
 #'
+#' @importFrom readr read_tsv
+#'
 #' @keywords internal
 #'
 .listDatasets <- function() {
-  datasets_fname <- system.file("extdata/datasets.tsv", package = "MicrobiomeBenchmarkData")
-  readr::read_tsv(datasets_fname, show_col_types = FALSE)
+  # datasets_fname <- system.file("extdata/datasets.tsv", package = "MicrobiomeBenchmarkData")
+  fname <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTFljQhSJv_bT_d5EWBZIOfZfPGMrdAsVkHN5GsvjW8ZA2GEGtJ-z5vc9kjr5y2Ficmrh7aeQJVO-pS/pub?gid=0&single=true&output=tsv"
+  readr::read_tsv(fname, show_col_types = FALSE)
 }

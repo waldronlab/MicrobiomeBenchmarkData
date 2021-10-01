@@ -3,122 +3,160 @@ utils::globalVariables(
     "human-readable-description", "function_call", "taxonomy", "submitted_ftp",
     "sra_ftp", "OTU ID")
   )
-#' Calgaro 2020 - 16S (subgingival vs supragingival plaque)
+#' .HMP_2012_16S_gingival_a
 #'
-#' \code{calgaro_2020_16S} imports the 16S data used in Calgaro 2020 to
+#' \code{.HMP_2012_16S_gingival_a} imports the 16S data used in Calgaro 2020 to
 #' compare subgingival vs supragingival plaque samples. These samples are a
-#' subset taken from the HMP16SData package (v1.2.0).
-#'
-#' **Biological signal:** anaerobic and aerobic bacteria are under- and over-
-#' represented in supragingival plaque samples.
-#'
-#' @section Reference:
-#' Calgaro, M., Romualdi, C., Waldron, L. et al. Assessment of statistical methods from single
-#' cell, bulk RNA-seq, and metagenomics applied to microbiome data. Genome Biol 21, 191 (2020).
-#' https://doi.org/10.1186/s13059-020-02104-1
+#' subset taken from the HMP16SData package (v1.2.0). Variable region 3-5.
 #'
 #' @keywords internal
 #'
+#' @importFrom HMP16SData V35
+#' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
+#' @importFrom S4Vectors SimpleList
+#' @importFrom SummarizedExperiment assay
+#' @importFrom SummarizedExperiment colData
+#' @importFrom SummarizedExperiment rowData
+#' @importFrom S4Vectors metadata
+#'
 #' @return A TreeSummarizedExperiment.
 #'
-calgaro_2020_16S_gingival_healthy <- function() {
+.HMP_2012_16S_gingival_a <- function() {
 
-  download_calgaro_2020_16S_gingival_healthy <- function() {
-    load(url("https://github.com/mcalgaro93/sc2meta/blob/master/data/16Sdatasets_for_replicability_filtered.RData?raw=true"))
-    ps_list_16S[["Subgingival_Supragingival"]] %>%
-      mia::makeTreeSummarizedExperimentFromPhyloseq()
+  on.exit(gc())
+
+  import_dataset <- function() {
+    se <- HMP16SData::V35()
+    se <- se[calgaro_2020_16S_taxa, calgaro_2020_16S_samples] # these vectors are encoded in sysdata
+    TreeSummarizedExperiment::TreeSummarizedExperiment(
+      assays = S4Vectors::SimpleList(counts = SummarizedExperiment::assay(se)),
+      colData = SummarizedExperiment::colData(se),
+      rowData = SummarizedExperiment::rowData(se),
+      rowTree = S4Vectors::metadata(se)[["phylogeneticTree"]]
+    )
   }
 
   .getResource(
-    resource_name = "calgaro_2020_16S_gingival_healthy",
-    FUN = download_calgaro_2020_16S_gingival_healthy
+    resource_name = "HMP_2012_16S_gingival_a",
+    FUN = import_dataset
   )
 }
 
-#' Calgaro 2020 - WGS cMD3 (subgingival vs supragingival plaque)
+#' .HMP_2012_16S_gingival_b
 #'
-#' \code{calgaro_2020_WGS_cMD3} imports the WGS samples used in Calgaro 2020
+#' \code{.HMP_2012_16S_gingival_b} imports subgingival and supragingival samples
+#' from the HMP 2012 dataset from subjects that are present in both the V13 and
+#' V35 datasets from the HMP16SData package.
+#'
+#' @return A TreeSummarizedExperiment.
+#'
+#' @importFrom HMP16SData V35
+#' @importFrom SummarizedExperiment assay
+#' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
+#' @importFrom S4Vectors SimpleList
+#' @importFrom SummarizedExperiment colData
+#' @importFrom SummarizedExperiment rowData
+#' @importFrom S4Vectors metadata
+#'
+#' @keywords internal
+#'
+.HMP_2012_16S_gingival_b <- function() {
+
+  on.exit(gc())
+
+  import_dataset <- function() {
+    se <- HMP16SData::V35()
+    se <- se[,hmp16s_samples[["v35"]]] # how the 'hmp16s_samples' was obtained is document in sysdata.R
+    counts <- SummarizedExperiment::assay(se)
+    se <- se[apply(counts, 1, function(x) any(x >= 10)),]
+    TreeSummarizedExperiment::TreeSummarizedExperiment(
+      assays = S4Vectors::SimpleList(counts = SummarizedExperiment::assay(se)),
+      colData = SummarizedExperiment::colData(se),
+      rowData = SummarizedExperiment::rowData(se),
+      rowTree = S4Vectors::metadata(se)[["phylogeneticTree"]]
+    )
+  }
+
+  .getResource(
+    resource_name = "HMP_2012_16S_gingival_b",
+    FUN = import_dataset
+  )
+
+}
+
+#' .HMP_2012_16S_gingival_c
+#'
+#' \code{.HMP_2012_16S_gingival_c} imports subgingival and supragingival samples
+#' from the HMP 2012 dataset from subjects that are present in both the V13 and
+#' V35 datasets from the HMP16SData package.
+#'
+#' @return A TreeSummarizedExperiment
+#'
+#' @importFrom HMP16SData V13
+#' @importFrom SummarizedExperiment assay
+#' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
+#' @importFrom S4Vectors SimpleList
+#' @importFrom SummarizedExperiment colData
+#' @importFrom SummarizedExperiment rowData
+#' @importFrom S4Vectors metadata
+#'
+#' @keywords internal
+#'
+.HMP_2012_16S_gingival_c <- function() {
+
+  on.exit(gc())
+
+  import_dataset <- function() {
+    se <- HMP16SData::V13()
+    se <- se[,hmp16s_samples[["v13"]]] # how the 'hmp16s_samples' was obtained is document in sysdata.R
+    counts <- SummarizedExperiment::assay(se)
+    se <- se[apply(counts, 1, function(x) any(x >= 10)),]
+    TreeSummarizedExperiment::TreeSummarizedExperiment(
+      assays = S4Vectors::SimpleList(counts = SummarizedExperiment::assay(se)),
+      colData = SummarizedExperiment::colData(se),
+      rowData = SummarizedExperiment::rowData(se),
+      rowTree = S4Vectors::metadata(se)[["phylogeneticTree"]]
+    )
+
+  }
+
+  .getResource(
+    resource_name = "HMP_2012_16S_gingival_c",
+    FUN = import_dataset
+  )
+
+}
+
+#' .HMP_2012_WMS_gingival
+#'
+#' \code{.HMP_2012_WMS_gingival} imports the WGS samples used in Calgaro 2020
 #' to compare subgingival vs supragingival plaque. This is an updated dataset
 #' taken from curatedMetagenomicData v3 instead of curatedMetagenomicData v1.
 #'
-#' **Biological signal:** anaerobic and aerobic bacteria are under- and over-
-#' represented in supragingival plaque samples.
-#'
-#' @section Reference:
-#' Calgaro, M., Romualdi, C., Waldron, L. et al. Assessment of statistical methods from single
-#' cell, bulk RNA-seq, and metagenomics applied to microbiome data. Genome Biol 21, 191 (2020).
-#' https://doi.org/10.1186/s13059-020-02104-1.
-#'
 #' @keywords internal
+#'
+#' @importFrom curatedMetagenomicData curatedMetagenomicData
+#' @importFrom SummarizedExperiment assay
 #'
 #' @return A TreeSummarizedExperiment.
 #'
-HMP_WMS_cMD3_gingival_healthy <- function() {
+.HMP_2012_WMS_gingival <- function() {
 
-  load_HMP_WMS_cMD3_gingival_healthy <- function() {
+  on.exit(gc())
+
+  import_dataset <- function() {
     samples <- c("SRS013950", "SRS014107", "SRS014477", "SRS014691", "SRS063215",
                  "SRS014578", "SRS016092", "SRS018665", "SRS023538", "SRS051378")
-    hmp <- suppressMessages(curatedMetagenomicData::curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE, counts = TRUE)[[1]])
-    hmp_subset <- hmp[,samples]
-    mat <- SummarizedExperiment::assay(hmp_subset)
-    hmp_subset[apply(mat, 1, function(x) any(x >= 10)),]
+    tse <- suppressMessages(curatedMetagenomicData::curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE, counts = TRUE)[[1]])
+    tse_subset <- tse[,samples]
+    mat <- SummarizedExperiment::assay(tse_subset)
+    tse_subset[apply(mat, 1, function(x) any(x >= 10)),]
   }
 
   .getResource(
-    resource_name = "HMP_WMS_cMD3_gingival_healthy",
-    FUN = load_HMP_WMS_cMD3_gingival_healthy
+    resource_name = "HMP_2012_WMS_gingival",
+    FUN = import_dataset
   )
-}
-
-#' HMP16SData V13 - healthy gingival plaque
-#'
-#' \code{HMP_16S_V13_gingival_healthy}
-#'
-#' @section Reference:
-#' TODO
-#'
-#' @keywords internal
-#'
-#' @return A TreeSummarizedExperiment.
-#'
-HMP_16S_V13_gingival_healthy <- function() {
-
-  load_HMP_16S_V13_gingival_healthy <- function() {
-    v13se <- HMP16SData::V13()
-    v13se <- v13se[,hmp16s_samples[["v13"]]]
-    counts <- SummarizedExperiment::assay(v13se)
-    v13se[apply(counts, 1, function(x) any(x >= 10)),]
-
-  }
-
-  .getResource(
-    resource_name = "HMP_16S_V13_gingival_healthy",
-    FUN = load_HMP_16S_V13_gingival_healthy
-  )
-
-}
-
-#' HMP16SData V35 - healthy gingival plaque
-#'
-#' \code{HMP_16S_V35_gingival_healthy}
-#'
-#' @keywords internal
-#'
-#' @return A TreeSummarizedExperiment.
-HMP_16S_V35_gingival_healthy <- function() {
-
-  load_HMP_16S_V35_gingival_healthy <- function() {
-    v35se <- HMP16SData::V35()
-    v35se <- v35se[,hmp16s_samples[["v35"]]]
-    counts <- SummarizedExperiment::assay(v35se)
-    v35se[apply(counts, 1, function(x) any(x >= 10)),]
-  }
-
-  .getResource(
-    resource_name = "HMP_16S_V35_gingival_healthy",
-    FUN = load_HMP_16S_V35_gingival_healthy
-  )
-
 }
 
 #' Beghini 2019 (smoking)
@@ -135,14 +173,25 @@ HMP_16S_V35_gingival_healthy <- function() {
 #' Examination Study. Annals of epidemiology, 34, 18-25.
 #'
 #' @keywords internal
-#'
+#' @importFrom utils download.file
+#' @importFrom phyloseq import_biom
+#' @importFrom phyloseq parse_taxonomy_default
+#' @importFrom phyloseq sample_names
+#' @importFrom utils read.delim
+#' @importFrom sas7bdat read.sas7bdat
+#' @importFrom dplyr left_join
+#' @importFrom dplyr full_join
+#' @importFrom phyloseq prune_samples
+#' @importFrom phyloseq subset_taxa
+#' @importFrom phyloseq tax_table
+#' @importFrom mia makeTreeSummarizedExperimentFromPhyloseq
 #' @return
 #' A TreeSummarizedExperiment object.
 #'
 #'
-beghini_2019_16S_saliva_smoking <- function() {
+.Beghini_2019_16S_smoking <- function() {
 
-  download_beghini_2019_16S_saliva_smoking <- function() {
+  import_dataset <- function() {
 
     list_of_urls <- list(
       metadata = "https://github.com/waldronlab/nychanesmicrobiome/raw/master/inst/extdata/public_v2_010518.sas7bdat",
@@ -201,6 +250,8 @@ beghini_2019_16S_saliva_smoking <- function() {
 
     ps <- phyloseq::subset_taxa(ps, !Class %in% c("D_2__Chloroplast") & !Family %in% c("D_4__Mitochondria"))
 
+    # phyloseq::tax_table(ps) <- gsub(" [1-9]", "", phyloseq::tax_table(ps)[,"Genus"])
+
     splitted_genera <- sapply(data.frame(phyloseq::tax_table(ps)[,"Genus"]), function(x)  grep(" [1-9]",x))
     phyloseq::tax_table(ps)[splitted_genera,"Genus"] <- sapply(phyloseq::tax_table(ps)[splitted_genera,"Genus"], function(x) gsub(" [1-9]","", x))
     drop_prefixes <- function(x) {
@@ -217,8 +268,8 @@ beghini_2019_16S_saliva_smoking <- function() {
   }
 
   .getResource(
-    resource_name = "beghini_2019_16S_saliva_smoking",
-    FUN = download_beghini_2019_16S_saliva_smoking
+    resource_name = "Beghini_2019_16S_smoking",
+    FUN = import_dataset
   )
 
 }
@@ -240,7 +291,7 @@ beghini_2019_16S_saliva_smoking <- function() {
 #'
 spikeInBacteria <- function() {
 
-  download_spikeInBacteria <- function() {
+  import_dataset <- function() {
 
     # Download taxa table (with counts)
     taxa_table_url <- "https://static-content.springer.com/esm/art%3A10.1186%2Fs40168-016-0175-0/MediaObjects/40168_2016_175_MOESM10_ESM.txt"
@@ -286,7 +337,7 @@ spikeInBacteria <- function() {
 
   .getResource(
     resource_name = "spikeInBacteria",
-    FUN = download_spikeInBacteria
+    FUN = import_dataset
   )
 
 }

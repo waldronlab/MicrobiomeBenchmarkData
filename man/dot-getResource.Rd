@@ -23,7 +23,7 @@ from the internet with a helper function specified with the \code{FUN} argument.
 \details{
 The \code{.getResource} function is meant to be used inside the functions
 used to download the datasets only, e.g.
-\code{\link{calgaro_2020_16S_gingival_healthy}}.
+\code{\link{.HMP_2012_16S_gingival_a}}.
 }
 \seealso{
 \code{\link{.getCache}};
