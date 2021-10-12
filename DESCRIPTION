@@ -23,7 +23,10 @@ Imports:
     dplyr,
     BiocFileCache,
     magrittr,
-    tools
+    tools,
+    TreeSummarizedExperiment,
+    S4Vectors,
+    purrr
 Suggests: 
     rmarkdown,
     knitr,
