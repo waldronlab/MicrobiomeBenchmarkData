@@ -7,6 +7,7 @@
 #'
 #' @importFrom tools R_user_dir
 #' @importFrom BiocFileCache BiocFileCache
+#' @return A BiocFileCache object.
 #'
 .getCache <- function() {
   tools::R_user_dir(package = "MicrobiomeBenchmarkData", which = "cache") %>%
@@ -94,12 +95,15 @@
 #' confirmation before removing the cache.
 #'
 #' @export
+#' 
+#' @return The cache and all of its contents are removed.
 #'
 #' @examples
 #'
+#' ## Remove cache
 #' removeCache()
 #'
 removeCache <- function() {
     cache <- .getCache()
-  BiocFileCache::removebfc(cache)
+    BiocFileCache::removebfc(cache, ask = interactive())
 }

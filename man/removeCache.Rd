@@ -6,12 +6,16 @@
 \usage{
 removeCache()
 }
+\value{
+The cache and all of its contents are removed.
+}
 \description{
 \code{removeCache} removes all files saved in the cache. It will ask for
 confirmation before removing the cache.
 }
 \examples{
 
+## Remove cache
 removeCache()
 
 }

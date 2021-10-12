@@ -49,7 +49,7 @@ Datasets can be accessed with the `getDatasets` function, which returns a list
 of TreeSummarizedExperiments:
 
 ```{r}
-list_of_datasets <- getDatasets()
+list_of_datasets <- getDataset()
 ```
 
 Or can be directly accessed trough the specific dataset function, which

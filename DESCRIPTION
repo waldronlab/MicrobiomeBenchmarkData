@@ -19,21 +19,11 @@ LazyData: true
 Depends: 
     R (>= 4.1),
     SummarizedExperiment
-Imports: 
-    HMP16SData,
-    S4Vectors,
-    mia,
-    readr,
+Imports:
     dplyr,
-    magrittr,
-    tibble,
-    phyloseq,
-    curatedMetagenomicData,
     BiocFileCache,
-    sas7bdat,
-    TreeSummarizedExperiment,
-    tools,
-    utils
+    magrittr,
+    tools
 Suggests: 
     rmarkdown,
     knitr,

@@ -6,6 +6,9 @@
 \usage{
 .getCache()
 }
+\value{
+A BiocFileCache object.
+}
 \description{
 \code{.getCache} creates or loads a cache to store files downloaded through the
 \code{MicrobiomeBenchmarkData} package.
