@@ -1,3 +1,25 @@
+#' Get dataset
+#'
+#' \code{getDataset} imports the datasets as TreeSummarizedExperiment objects.
+#'
+#' @param x A character vector with the name(s) of the dataset(s). If empty
+#' and dryrun = TRUE, returns a message with the names of the available
+#' datasets. If empty and dryrun = FALSE, returns a list of
+#' TreeSummarizedExperiments with all of the datasets.
+#'
+#' @param dryrun If TRUE, only returns a message and invisibly returns the
+#' names of the datasets as a character vector. If FALSE, it returns the
+#' TreeSummarizedExperiment datasets indicated in the argument 'x'.
+#'
+#' @return A list of TreeSummarizedExperiments.
+#'
+#' @export
+#'
+#' @examples
+#'
+#' dataset_names <- getDataset()
+#' datasets <- getDataset(dryrun = FALSE)
+#'
 getDataset <- function(x, dryrun = TRUE) {
 
   metadata_csv <- system.file("extdata/metadata.csv", package = "MicrobiomeBenchmarkData")
@@ -43,6 +65,17 @@ getDataset <- function(x, dryrun = TRUE) {
 
 }
 
+#' Assemble TreeSummarizedExperiment
+#'
+#' \code{.assembleTreeSummarizedExperiment} assembles a TreeSummarizedDataset
+#' taking as input the name of the dataset and the URL. This is a helper
+#' function for the \code{\link{getDataset}} function.
+#'
+#' @param dat_name A character string with the name of the dataset.
+#' @param dat_url A character string with the URL from Zenodo.
+#'
+#' @return A TreeSummarizedExperiment
+#'
 .assembleTreeSummarizedExperiment <- function(dat_name, dat_url) {
 
   if (dat_name %in% c("HMP_2012_16S_gingival_V13", "HMP_2012_16S_gingival_V35"))
