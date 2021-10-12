@@ -19,3 +19,4 @@ A TreeSummarizedExperiment
 taking as input the name of the dataset and the URL. This is a helper
 function for the \code{\link{getDataset}} function.
 }
+\keyword{internal}

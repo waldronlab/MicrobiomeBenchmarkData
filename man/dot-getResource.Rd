@@ -4,25 +4,18 @@
 \alias{.getResource}
 \title{Get resource}
 \usage{
-.getResource(resource_name, FUN)
+.getResource(dat_name, dat_url)
 }
 \arguments{
-\item{resource_name}{A single character string with the name of the
-dataset.}
+\item{dat_name}{A character string with the name of the dataset.}
 
-\item{FUN}{Function to download the dataset.}
+\item{dat_url}{A character string with the URL from Zenodo.}
 }
 \value{
-A TreeSummarizedExperiment.
+A character string containing the path to the count matrix in the
+cache.
 }
 \description{
-\code{.getResource} loads a resource (dataset) from the cache.
-If the resource does not exist in the cache, it will be downloaded first
-from the internet with a helper function specified with the \code{FUN} argument.
-}
-\details{
-The \code{.getResource} function is meant to be used inside the functions
-used to download the datasets only, e.g.
-\code{\link{.HMP_2012_16S_gingival_a}}.
+\code{.getResource} downloads the count matrix and store it in the cache.
 }
 \keyword{internal}

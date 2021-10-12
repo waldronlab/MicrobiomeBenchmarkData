@@ -14,79 +14,55 @@
     BiocFileCache::BiocFileCache(ask = FALSE)
 }
 
-#' Get resource path from the cache
-#'
-#' \code{getResourcePathFromCache} gets the path to a resource in the cache.
-#'
-#' @param resource_name
-#' A character string indicating the name of a resource.
-#'
-#' @return
-#' A character string indicating the full path to the resource in the cache.
-#'
-#' @importFrom dplyr pull
-#' @importFrom BiocFileCache bfcremove
-#' @importFrom BiocFileCache bfcnew
-#' @importFrom BiocFileCache bfcpath
-#'
-#' @keywords internal
-#'
-.getResourcePathFromCache <- function(resource_name) {
-
-  cache <- .getCache()
-  resources <- BiocFileCache::bfcquery(cache, query = resource_name, field = "rname", exact = TRUE)
-
-  if (nrow(resources) > 1) {
-    rids <- dplyr::pull(resources, "rid")
-    BiocFileCache::bfcremove(cache, rids)
-    resource_path <- BiocFileCache::bfcnew(cache, rname = resource_name, ext = ".rds", rtype = "local")
-    return(resource_path)
-  } else if (nrow(resources) == 0) {
-    resource_path <- BiocFileCache::bfcnew(cache, rname = resource_name, ext = ".rds", rtype = "local")
-    return(resource_path)
-  } else if (nrow(resources) == 1) {
-    resource_path <- BiocFileCache::bfcpath(cache, resources[["rid"]])
-    return(resource_path)
-  }
-
-}
-
 #' Get resource
 #'
-#' \code{.getResource} loads a resource (dataset) from the cache.
-#' If the resource does not exist in the cache, it will be downloaded first
-#' from the internet with a helper function specified with the `FUN` argument.
+#' \code{.getResource} downloads the count matrix and store it in the cache.
 #'
-#' The \code{.getResource} function is meant to be used inside the functions
-#' used to download the datasets only, e.g.
-#' \code{\link{.HMP_2012_16S_gingival_a}}.
+#' @param dat_name A character string with the name of the dataset.
+#' @param dat_url A character string with the URL from Zenodo.
 #'
-#' @param resource_name A single character string with the name of the
-#' dataset.
+#' @return A character string containing the path to the count matrix in the
+#' cache.
 #'
-#' @param FUN Function to download the dataset.
-#'
-#' @return A TreeSummarizedExperiment.
+#' @importFrom BiocFileCache bfcquery
+#' @importFrom BiocFileCache bfcremove
+#' @importFrom BiocFileCache bfcadd
+#' @importFrom dplyr pull
 #'
 #' @keywords internal
 #'
-#'
-.getResource <- function(resource_name, FUN) {
+.getResource <- function(dat_name, dat_url) {
 
-  resource_path <- .getResourcePathFromCache(resource_name)
+  resource_name <- paste0(dat_name, "_count_matrix.tsv")
 
-  if (isTRUE(file.exists(resource_path))) {
-    tse <- readRDS(resource_path)
-  } else if (isFALSE(file.exists(resource_path))) {
-    message("Resource ", resource_name, " not in cache. Downloading and adding to cache.")
-    tse <- FUN()
-    saveRDS(tse, file = resource_path)
+  cache <- .getCache()
+
+  resources <- BiocFileCache::bfcquery(
+    x = cache, query = resource_name, field = "rname", exact = TRUE
+  )
+
+  if (nrow(resources) > 1) {
+
+    rids <- dplyr::pull(resources, "rid")
+    BiocFileCache::bfcremove(cache, rids)
+    resource_path <- BiocFileCache::bfcadd(
+      x = cache, rname = resource_name, fpath = dat_url, download = TRUE
+    )
+    return(resource_path)
+
+  } else if (nrow(resources) == 0) {
+
+    resource_path <- BiocFileCache::bfcadd(
+      x = cache, rname = resource_name, fpath = dat_url, download = TRUE
+    )
+    return(resource_path)
+
+  } else if (nrow(resources) == 1) {
+
+    resource_path <- BiocFileCache::bfcpath(cache, resources[["rid"]])
+
+    return(resource_path)
   }
-
-  message("Loading ", resource_name, " from cache.")
-
-  return(tse)
-
 }
 
 #' Remove cache
@@ -95,7 +71,7 @@
 #' confirmation before removing the cache.
 #'
 #' @export
-#' 
+#'
 #' @return The cache and all of its contents are removed.
 #'
 #' @examples

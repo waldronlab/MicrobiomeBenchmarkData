@@ -1,3 +1,4 @@
+utils::globalVariables(c("sampleMetadata", "dataset", "sample_name"))
 #' Get dataset
 #'
 #' \code{getDataset} imports the datasets as TreeSummarizedExperiment objects.
@@ -15,15 +16,19 @@
 #'
 #' @export
 #'
+#' @importFrom purrr map2
+#' @importFrom utils read.csv
+#'
 #' @examples
 #'
-#' dataset_names <- getDataset()
-#' datasets <- getDataset(dryrun = FALSE)
+#' datasets_names <- getDataset()
+#' datasets <- getDataset("HMP_2012_16S_gingival_V35_subset", dryrun = FALSE)
 #'
 getDataset <- function(x, dryrun = TRUE) {
 
-  metadata_csv <- system.file("extdata/metadata.csv", package = "MicrobiomeBenchmarkData")
-  metadata <- read.csv(metadata_csv)
+  metadata_csv <- system.file("extdata/metadata.csv",
+                              package = "MicrobiomeBenchmarkData")
+  metadata <- utils::read.csv(metadata_csv)
   titles <- sort(metadata[["Title"]])
 
   if (missing(x)) {
@@ -58,7 +63,9 @@ getDataset <- function(x, dryrun = TRUE) {
   } else if (isFALSE(dryrun)) {
 
     urls <- metadata[match(dataset_names, metadata[["Title"]]), "SourceUrl"]
-    output <- purrr::map2(dataset_names, urls, ~ .assembleTreeSummarizedExperiment(.x, .y))
+    output <- purrr::map2(
+      dataset_names, urls, ~ .assembleTreeSummarizedExperiment(.x, .y)
+    )
     names(output) <- dataset_names
     return(output)
   }
@@ -76,22 +83,43 @@ getDataset <- function(x, dryrun = TRUE) {
 #'
 #' @return A TreeSummarizedExperiment
 #'
+#' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
+#' @importFrom S4Vectors SimpleList
+#' @importFrom S4Vectors DataFrame
+#' @importFrom utils read.table
+#' @importFrom dplyr filter
+#' @importFrom purrr keep
+#'
+#' @keywords internal
+#'
 .assembleTreeSummarizedExperiment <- function(dat_name, dat_url) {
 
   if (dat_name %in% c("HMP_2012_16S_gingival_V13", "HMP_2012_16S_gingival_V35"))
     dat_name <- "HMP_2012_16S_gingival"
 
-  count_matrix <- as.matrix(read.table(file = dat_url, header = TRUE, sep = "\t", row.names = 1, check.names = FALSE))
+  count_matrix_file <- .getResource(dat_name, dat_url)
+
+  count_matrix <- utils::read.table(
+    file = count_matrix_file, header = TRUE, sep = "\t", row.names = 1,
+    check.names = FALSE
+  ) %>%
+    as.matrix()
 
   samples <- colnames(count_matrix)
-  col_data <- sampleMetadata[sampleMetadata[["dataset"]] == dat_name & sampleMetadata[["sample_name"]] %in% samples,]
+  col_data <- sampleMetadata %>%
+    dplyr::filter(dataset == dat_name, sample_name %in% samples) %>%
+    purrr::keep(~all(!is.na(.x)))
   rownames(col_data) <- col_data[["sample_name"]]
   col_data <- col_data[, 3:ncol(col_data)]
   col_data <- col_data[colnames(count_matrix), ]
 
-  TreeSummarizedExperiment::TreeSummarizedExperiment(
+  tse <- TreeSummarizedExperiment::TreeSummarizedExperiment(
     assays = S4Vectors::SimpleList(counts = count_matrix),
     colData = S4Vectors::DataFrame(col_data)
   )
+
+  message("Finished ", dat_name, ".")
+
+  tse
 
 }

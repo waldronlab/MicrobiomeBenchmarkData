@@ -24,7 +24,7 @@ A list of TreeSummarizedExperiments.
 }
 \examples{
 
-dataset_names <- getDataset()
-datasets <- getDataset(dryrun = FALSE)
+datasets_names <- getDataset()
+datasets <- getDataset("HMP_2012_16S_gingival_V35_subset", dryrun = FALSE)
 
 }
