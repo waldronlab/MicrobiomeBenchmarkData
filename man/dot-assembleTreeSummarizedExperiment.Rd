@@ -4,12 +4,12 @@
 \alias{.assembleTreeSummarizedExperiment}
 \title{Assemble TreeSummarizedExperiment}
 \usage{
-.assembleTreeSummarizedExperiment(dat_name, dat_url)
+.assembleTreeSummarizedExperiment(x, dat_url)
 }
 \arguments{
-\item{dat_name}{A character string with the name of the dataset.}
-
 \item{dat_url}{A character string with the URL from Zenodo.}
+
+\item{dat_name}{A character string with the name of the dataset.}
 }
 \value{
 A TreeSummarizedExperiment
