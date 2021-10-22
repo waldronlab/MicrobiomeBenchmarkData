@@ -31,3 +31,5 @@ unsrturl.bst
 .seed
 .settings
 .tm_properties
+data-raw/*.tsv
+data-raw/*.newick
