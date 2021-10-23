@@ -36,21 +36,21 @@ row_data <- rowData(tse) %>%
 
 readr::write_tsv(
     x = col_data,
-    file = "inst/extdata/HMP_2012_WMS_gingival_sample_metadata.tsv"
+    file = "HMP_2012_WMS_gingival_sample_metadata.tsv"
 )
 
 write.table(
     x = count_matrix, sep = "\t", row.names = TRUE, col.names = TRUE,
     quote = TRUE,
-    file = "inst/extdata/HMP_2012_WMS_gingival_count_matrix.tsv"
+    file = "HMP_2012_WMS_gingival_count_matrix.tsv"
 )
 
 ape::write.tree(
     phy = row_tree,
-    file = "inst/extdata/HMP_2012_WMS_gingival_taxonomy_tree.newick"
+    file = "HMP_2012_WMS_gingival_taxonomy_tree.newick"
 )
 
 readr::write_tsv(
     x = row_data,
-    file = "inst/extdata/HMP_2012_WMS_gingival_taxonomy_table.tsv"
+    file = "HMP_2012_WMS_gingival_taxonomy_table.tsv"
 )

@@ -6,7 +6,12 @@ library(SummarizedExperiment)
 library(TreeSummarizedExperiment)
 library(dplyr)
 
-source("inst/scripts/functions.R")
+import_calgaro_2020 <- function() {
+    load(url("https://github.com/mcalgaro93/sc2meta/blob/master/data/16Sdatasets_for_replicability_filtered.RData?raw=true"))
+    mia::makeTreeSummarizedExperimentFromPhyloseq(
+        ps_list_16S[["Subgingival_Supragingival"]]
+    )
+}
 
 tse <- import_calgaro_2020()
 
@@ -39,18 +44,18 @@ row_data <-
 # Export files ------------------------------------------------------------
 
 readr::write_tsv(x = col_data,
-                 file = "inst/extdata/HMP_2012_16S_gingival_V35_subset_sample_metadata.tsv")
+                 file = "HMP_2012_16S_gingival_V35_subset_sample_metadata.tsv")
 
 write.table(x = count_matrix,
-            file = "inst/extdata/HMP_2012_16S_gingival_V35_subset_count_matrix.tsv",
+            file = "HMP_2012_16S_gingival_V35_subset_count_matrix.tsv",
             sep = "\t", row.names = TRUE, col.names = TRUE)
 
 ape::write.tree(
     row_tree,
-    file = "inst/extdata/HMP_2012_16S_gingival_V35_subset_taxonomy_tree.newick"
+    file = "HMP_2012_16S_gingival_V35_subset_taxonomy_tree.newick"
 )
 
 readr::write_tsv(
     x = row_data,
-    file = "inst/extdata/HMP_2012_16S_gingival_V35_subset_taxonomy_table.tsv"
+    file = "HMP_2012_16S_gingival_V35_subset_taxonomy_table.tsv"
 )

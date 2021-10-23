@@ -118,39 +118,39 @@ v35_row_data <- rowData(v13_subset) %>%
 ## Save sample metadata
 readr::write_tsv(
     x = col_data,
-    file = "inst/extdata/HMP_2012_16S_gingival_sample_metadata.tsv"
+    file = "HMP_2012_16S_gingival_sample_metadata.tsv"
 )
 
 ## Save count matrix
 write.table(
     x = v35_count_matrix,
-    file = "inst/extdata/HMP_2012_16S_gingival_V35_count_matrix.tsv",
+    file = "HMP_2012_16S_gingival_V35_count_matrix.tsv",
     sep = "\t", row.names = TRUE, col.names = TRUE
 )
 
 write.table(
     x = v13_count_matrix,
-    file = "inst/extdata/HMP_2012_16S_gingival_V13_count_matrix.tsv",
+    file = "HMP_2012_16S_gingival_V13_count_matrix.tsv",
     sep = "\t", row.names = TRUE, col.names = TRUE
 )
 
 ## Save phylogenetic tree
 ape::write.tree(
     phy = v35_row_tree,
-    file = "inst/extdata/HMP_2012_16S_gingival_V35_taxonomy_tree.newick"
+    file = "HMP_2012_16S_gingival_V35_taxonomy_tree.newick"
 )
 ape::write.tree(
     phy = v13_row_tree,
-    file = "inst/extdata/HMP_2012_16S_gingival_V13_taxonomy_tree.newick"
+    file = "HMP_2012_16S_gingival_V13_taxonomy_tree.newick"
 )
 
 ## Save taxonomy table
 readr::write_tsv(
     x = v35_row_data,
-    file = "inst/extdata/HMP_2012_16S_gingival_V35_taxonomy_table.tsv"
+    file = "HMP_2012_16S_gingival_V35_taxonomy_table.tsv"
 )
 
 readr::write_tsv(
     x = v13_row_data,
-    file = "inst/extdata/HMP_2012_16S_gingival_V13_taxonomy_table.tsv"
+    file = "HMP_2012_16S_gingival_V13_taxonomy_table.tsv"
 )
