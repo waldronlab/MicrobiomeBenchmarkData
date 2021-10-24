@@ -1,4 +1,14 @@
-## code to prepare `sysdata` dataset goes here
 
-load("inst/extdata/taxaData.RData")
-usethis::use_data(taxa_data, internal = TRUE, overwrite = TRUE)
+metadata_csv <- system.file(
+    "extdata/metadata.csv",
+    package = "MicrobiomeBenchmarkData"
+)
+metadata <- utils::read.csv(metadata_csv)
+
+titles <- sub("_[a-z]+_[a-z]+$", "", metadata$Title)
+titles <- unique(titles[titles != "sampleMetadata"])
+
+usethis::use_data(
+    metadata, titles,
+    internal = TRUE, overwrite = TRUE
+)
