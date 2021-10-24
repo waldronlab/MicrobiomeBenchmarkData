@@ -27,6 +27,9 @@ Imports:
     TreeSummarizedExperiment,
     S4Vectors,
     purrr,
+    ape,
+    tibble,
+    rlang
 Suggests: 
     rmarkdown,
     knitr,
