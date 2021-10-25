@@ -4,13 +4,13 @@
 This directory contains the R scripts to generate the data to upload to
 Zenodo, and how to create the sampleMetadata.RData and sysdata.rda files.
 
-The scripts must be run in the current directory with (set with `setwd`) or
-from the terminal with the `create_datasets.sh` script
+The scripts must be run in the current directory (set with `setwd`) or
+from the terminal with the create_datasets.sh script
 (commenting and uncommenting lines as necessary).
 
 ## Summary of the main steps
 
-1. Create and run an R script (*.R) with code to generate the following files
+1. Create and run an R script (\*.R) with code to generate the following files
 per dataset:
     1. \*_sample_metadata.tsv
     2. \*_count_matrix.tsv
