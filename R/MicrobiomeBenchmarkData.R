@@ -138,12 +138,17 @@ removeCache <- function() {
         ) %>%
     S4Vectors::DataFrame()
 
-    row_tree <- .getResourcePath(x, "_taxonomy_tree") %>%
-        ape::read.tree()
+    row_tree_path <- .getResourcePath(x, "_taxonomy_tree")
+
+    if (!length(row_tree_path)) {
+        row_tree <- NULL
+    } else {
+        row_tree <- ape::read.tree(row_tree_path)
+    }
 
     tse <- TreeSummarizedExperiment::TreeSummarizedExperiment(
         assays = S4Vectors::SimpleList(counts = count_matrix),
-        colData = S4Vectors::DataFrame(col_data),
+        colData = col_data,
         rowData = row_data,
         rowTree = row_tree
     )
@@ -199,6 +204,14 @@ removeCache <- function() {
     resource_url <- metadata %>%
         dplyr::filter(.data[["Title"]] == .env[["resource_name"]]) %>%
         dplyr::pull(.data[["SourceUrl"]])
+
+    if (!length(resource_url)) {
+        warning(
+            "No ", sub("^_", "", suffix), " available for ", resource, ".",
+            call. = FALSE
+        )
+        return(NULL)
+    }
 
     cache <- .getCache()
 
