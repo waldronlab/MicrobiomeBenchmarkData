@@ -1,6 +1,7 @@
 # Script to generate sample metadata, count matrix, taxonomy table, and
 # taxonomy tree for the HMP WMS data
 
+library(S4Vectors)
 library(SummarizedExperiment)
 library(TreeSummarizedExperiment)
 library(dplyr)
@@ -28,9 +29,29 @@ row_tree <- rowTree(tse)
 
 # Taxonomy table ----------------------------------------------------------
 
-row_data <- rowData(tse) %>%
+row_data <- rowData(tse_subset) %>%
     as.data.frame() %>%
     as_tibble(rownames = "TAXA")
+
+# Check it works ----------------------------------------------------------
+
+colData <- col_data %>%
+    tibble::column_to_rownames(var = "sample_name") %>%
+    as.data.frame() %>%
+    DataFrame()
+
+rowData <- row_data %>%
+    tibble::column_to_rownames(var = "TAXA") %>%
+    as.data.frame() %>%
+    DataFrame()
+
+
+tse <- TreeSummarizedExperiment(
+    assays = SimpleList(counts = count_matrix),
+    colData = colData,
+    rowData = rowData,
+    rowTree = row_tree
+)
 
 # Export files ------------------------------------------------------------
 

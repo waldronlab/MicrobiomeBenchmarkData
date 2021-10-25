@@ -100,18 +100,19 @@ v13_count_matrix <- assay(v13_subset)
 
 # Taxonomy tree -----------------------------------------------------------
 
-v13_row_tree <- rowTree(v13_subset)
 v35_row_tree <- rowTree(v35_subset)
+v13_row_tree <- rowTree(v13_subset)
 
 # Taxonomy table ----------------------------------------------------------
+
+v35_row_data <- rowData(v35_subset) %>%
+    as.data.frame() %>%
+    as_tibble(rownames = "TAXA")
 
 v13_row_data <- rowData(v13_subset) %>%
     as.data.frame() %>%
     as_tibble(rownames = "TAXA")
 
-v35_row_data <- rowData(v13_subset) %>%
-    as.data.frame() %>%
-    as_tibble(rownames = "TAXA")
 
 # Export files ------------------------------------------------------------
 
