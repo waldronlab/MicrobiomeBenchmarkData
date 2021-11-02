@@ -28,7 +28,14 @@ v13tse <- TreeSummarizedExperiment(
 rm(v35se, v13se) # free memory
 gc()
 
-intersect_samples <- intersect(colnames(v35tse), colnames(v13tse))
+
+v35_lgl <- colData(v35tse)$RUN_CENTER == "WUGC" & colData(v35tse)$VISITNO == 1
+v35_cols <- colnames(v35tse[, v35_lgl])
+
+v13_lgl <- colData(v13tse)$RUN_CENTER == "WUGC" & colData(v13tse)$VISITNO == 1
+v13_cols <- colnames(v13tse[, v13_lgl])
+
+intersect_samples <- intersect(v35_cols, v13_cols)
 
 # Sample metadata ---------------------------------------------------------
 
@@ -44,8 +51,9 @@ v35_col_data <- colData(v35tse) %>%
            sample_name %in% intersect_samples,
            # RUN_CENTER == "WUGC",
            # one run center might be incorrectly annotated as "0"
-           RUN_CENTER != "0",
-           !is.na(SRS_SAMPLE_ID)) %>%
+           # RUN_CENTER != "0",
+           !is.na(SRS_SAMPLE_ID)
+        ) %>%
     group_by(HMP_BODY_SUBSITE, RSID) %>%
     slice_min(RSID)
 
@@ -56,8 +64,9 @@ v13_col_data <- colData(v13tse) %>%
            sample_name %in% intersect_samples,
            # RUN_CENTER == "WUGC",
            # one run center might be incorrectly annotated as "0"
-           RUN_CENTER != "0",
-           !is.na(SRS_SAMPLE_ID)) %>%
+           # RUN_CENTER != "0",
+           !is.na(SRS_SAMPLE_ID)
+        ) %>%
     group_by(HMP_BODY_SUBSITE, RSID) %>%
     slice_min(RSID)
 
@@ -113,6 +122,38 @@ v13_row_data <- rowData(v13_subset) %>%
     as.data.frame() %>%
     as_tibble(rownames = "TAXA")
 
+# Check that everything works ---------------------------------------------
+
+colData <- col_data %>%
+    tibble::column_to_rownames(var = "sample_name") %>%
+    as.data.frame() %>%
+    DataFrame()
+
+v35rowData <- v35_row_data %>%
+    tibble::column_to_rownames(var = "TAXA") %>%
+    as.data.frame() %>%
+    DataFrame()
+
+v13rowData <- v13_row_data %>%
+    tibble::column_to_rownames(var = "TAXA") %>%
+    as.data.frame() %>%
+    DataFrame()
+
+
+TreeSummarizedExperiment(
+    assays = SimpleList(counts = v35_count_matrix),
+    colData = colData,
+    rowData = v35rowData,
+    rowTree = v35_row_tree
+)
+
+TreeSummarizedExperiment(
+    assays = SimpleList(counts = v13_count_matrix),
+    colData = colData,
+    rowData  = v13rowData,
+    rowTree = v13_row_tree
+)
+
 
 # Export files ------------------------------------------------------------
 
@@ -155,3 +196,4 @@ readr::write_tsv(
     x = v13_row_data,
     file = "HMP_2012_16S_gingival_V13_taxonomy_table.tsv"
 )
+
