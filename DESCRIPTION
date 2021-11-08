@@ -18,13 +18,13 @@ License: Artistic-2.0
 LazyData: true
 Depends: 
     R (>= 4.1),
-    SummarizedExperiment
+    SummarizedExperiment,
+    TreeSummarizedExperiment
 Imports:
     dplyr,
     BiocFileCache,
     magrittr,
     tools,
-    TreeSummarizedExperiment,
     S4Vectors,
     purrr,
     ape,

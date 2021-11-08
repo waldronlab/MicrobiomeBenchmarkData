@@ -84,6 +84,59 @@ removeCache <- function() {
     BiocFileCache::removebfc(cache, ask = interactive())
 }
 
+#' Convert TreeSummarizedExperiment to Phyloseq
+#'
+#' \code{toPhyloseq} converts a TreeSummarizedExperiment imported through the
+#' MicrobiomeBenchmarkData to a Phloseq object. The conversion preserves
+#' columns that don't provide taxa information in the rowData/tax_table slots.
+#'
+#' @param x A TreeSummarizedExperiment
+#'
+#' @return A phyloseq object.
+#'
+#' @export
+#'
+#' @examples
+#'
+#' dat_names <- getDataset(dat_names)
+#' tse <- getDataset(dat_names[4], dryrun = FALSE)[[1]]
+#' ps <- toPhyloseq(tse)
+#' head(phyloseq::tax_table(ps))
+#'
+toPhyloseq <- function(x) {
+
+    if (!class(x) %in% c("SummarizedExperiment", "TreeSummarizedExperiment"))
+        stop(
+            "Only (Tree)SummarizedExperiments can be converted to Phyloseq.",
+            call. = FALSE
+        )
+
+    otu_table <- x %>%
+        SummarizedExperiment::assay() %>%
+        phyloseq::otu_table(taxa_are_rows = TRUE)
+    sample_data <- x %>%
+        SummarizedExperiment::colData() %>%
+        as.data.frame() %>%
+        phyloseq::sample_data()
+    tax_table <- x %>%
+        SummarizedExperiment::rowData() %>%
+        as.data.frame() %>%
+        as.matrix() %>%
+        phyloseq::tax_table()
+
+    phy_tree <- x %>% TreeSummarizedExperiment::rowTree()
+
+    if (is.null(phy_tree)) {
+        ps <- phyloseq::phyloseq(otu_table, sample_data, tax_table)
+        return(ps)
+    } else {
+        phy_tree <- phyloseq::phy_tree(phy_tree)
+        ps <- phyloseq::phyloseq(otu_table, sample_data, tax_table, phy_tree)
+        return(ps)
+    }
+
+}
+
 #' Assemble TreeSummarizedExperiment
 #'
 #' \code{.assembleTreeSummarizedExperiment} assembles a TreeSummarizedDataset

@@ -2,6 +2,7 @@
 
 export(getDataset)
 export(removeCache)
+export(toPhyloseq)
 import(SummarizedExperiment)
 importFrom(BiocFileCache,BiocFileCache)
 importFrom(BiocFileCache,bfcadd)
