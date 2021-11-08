@@ -129,10 +129,11 @@
 <div id="accessing-datasets" class="section level1">
 <h1 class="hasAnchor">
 <a href="#accessing-datasets" class="anchor"></a>Accessing datasets</h1>
-<p>Datasets are accessed through the <code>getDataset</code> function.</p>
+<p>Currently, there are 6 datasets available through the MicrobiomeBenchmarkData. These datasets are accessed through the <code>getDataset</code> function.</p>
 <div id="print-avaialable-datasets" class="section level2">
 <h2 class="hasAnchor">
 <a href="#print-avaialable-datasets" class="anchor"></a>Print avaialable datasets</h2>
+<p>If no arguments are provided, the list of available datasets is printed on screen and returned invisiby as a character vector:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dats</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getDataset.html">getDataset</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; 1 Beghini_2019_16S_smoking</span>
@@ -154,6 +155,7 @@
 <div id="access-a-single-dataset" class="section level2">
 <h2 class="hasAnchor">
 <a href="#access-a-single-dataset" class="anchor"></a>Access a single dataset</h2>
+<p>In order to import a dataset, the <code>getDataset</code> function must be used with the name of the dataset as the first argument (<code>x</code>) and the <code>dryrun</code> argument set to <code>FALSE</code>. The output is a list vector with the dataset imported as a TreeSummarizedExperiment object.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">smoking</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getDataset.html">getDataset</a></span><span class="op">(</span><span class="va">dats</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
 <span class="co">#&gt; Warning: 1 row(s) couldn't be matched to the tree and are/is removed.</span>
@@ -179,6 +181,7 @@
 <div id="access-a-few-datasets" class="section level2">
 <h2 class="hasAnchor">
 <a href="#access-a-few-datasets" class="anchor"></a>Access a few datasets</h2>
+<p>Several datasets can be imported simultaneously by giving the names of the different datasets in a character vector:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gingival</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getDataset.html">getDataset</a></span><span class="op">(</span><span class="va">dats</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; Finished HMP_2012_16S_gingival_V13.</span>
@@ -195,6 +198,7 @@
 <div id="access-all-of-the-datasets" class="section level2">
 <h2 class="hasAnchor">
 <a href="#access-all-of-the-datasets" class="anchor"></a>Access all of the datasets</h2>
+<p>If all of the datasets must to be imported, this can be done by providing the <code>dryrun = FALSE</code> argument alone.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mbd</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getDataset.html">getDataset</a></span><span class="op">(</span>dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; Warning: 1 row(s) couldn't be matched to the tree and are/is removed.</span>
@@ -218,9 +222,11 @@
 <div id="annotations-for-each-taxa-are-included-in-rowdata" class="section level1">
 <h1 class="hasAnchor">
 <a href="#annotations-for-each-taxa-are-included-in-rowdata" class="anchor"></a>Annotations for each taxa are included in rowData</h1>
-<p>Currently, only in “HMP_2012_16S_gingival_V35_subset”.</p>
+<p>The biological annotations of each taxa are provided as a column in the <code>rowData</code> slot of the TreeSummarizedExperiment.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">rowData</a></span><span class="op">(</span><span class="va">mbd</span><span class="op">$</span><span class="va">HMP_2012_16S_gingival_V35_subset</span><span class="op">)</span>
+<code class="sourceCode R"><span class="co">## In the case, the column is named as BIOSIS</span>
+<span class="va">tse</span> <span class="op">&lt;-</span> <span class="va">mbd</span><span class="op">$</span><span class="va">HMP_2012_16S_gingival_V35_subset</span>
+<span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">rowData</a></span><span class="op">(</span><span class="va">tse</span><span class="op">)</span>
 <span class="co">#&gt; DataFrame with 892 rows and 7 columns</span>
 <span class="co">#&gt;              SUPERKINGDOM      PHYLUM       CLASS           ORDER</span>
 <span class="co">#&gt;               &lt;character&gt; &lt;character&gt; &lt;character&gt;     &lt;character&gt;</span>
@@ -252,24 +258,38 @@
 <div id="caching" class="section level1">
 <h1 class="hasAnchor">
 <a href="#caching" class="anchor"></a>Caching</h1>
-<p>The datasets are cached so they’re only downloaded once. The cache and all of it’s files can be removed with the <code>removeCache</code> function.</p>
+<p>The datasets are cached so they’re only downloaded once. The cache and all of the files contained in it can be removed with the <code>removeCache</code> function.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># removeCache()</span></code></pre></div>
 </div>
 <div id="convert-to-phyloseq" class="section level1">
 <h1 class="hasAnchor">
 <a href="#convert-to-phyloseq" class="anchor"></a>Convert to phyloseq</h1>
-<p>The mia package can be used to convert a TreeSummarizedExperiment to a phyloseq object, and use the dataset with other pipelines.</p>
+<p>MicrobiomeBenchmarkData includes function for converting a TreeSummarizedExperiment to a Phyloseq object. This function preservers all of the columns from the rowData, including those columns not related to taxonomy ranks.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ps</span> <span class="op">&lt;-</span> <span class="fu">mia</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mia/man/makePhyloseqFromTreeSummarizedExperiment.html">makePhyloseqFromTreeSummarizedExperiment</a></span><span class="op">(</span>
-    <span class="va">mbd</span><span class="op">$</span><span class="va">HMP_2012_16S_gingival_V35_subset</span>
-    <span class="op">)</span>
+<code class="sourceCode R"><span class="va">ps</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/toPhyloseq.html">toPhyloseq</a></span><span class="op">(</span><span class="va">tse</span><span class="op">)</span>
 <span class="va">ps</span>
 <span class="co">#&gt; phyloseq-class experiment-level object</span>
 <span class="co">#&gt; otu_table()   OTU Table:         [ 892 taxa and 76 samples ]</span>
 <span class="co">#&gt; sample_data() Sample Data:       [ 76 samples by 8 sample variables ]</span>
-<span class="co">#&gt; tax_table()   Taxonomy Table:    [ 892 taxa by 5 taxonomic ranks ]</span>
-<span class="co">#&gt; phy_tree()    Phylogenetic Tree: [ 892 tips and 887 internal nodes ]</span></code></pre></div>
+<span class="co">#&gt; tax_table()   Taxonomy Table:    [ 892 taxa by 7 taxonomic ranks ]</span>
+<span class="co">#&gt; phy_tree()    Phylogenetic Tree: [ 892 tips and 887 internal nodes ]</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/tax_table-methods.html">tax_table</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; Taxonomy Table:     [6 taxa by 7 taxonomic ranks]:</span>
+<span class="co">#&gt;              SUPERKINGDOM PHYLUM       CLASS     ORDER            </span>
+<span class="co">#&gt; OTU_97.31247 "Bacteria"   "Firmicutes" "Bacilli" "Lactobacillales"</span>
+<span class="co">#&gt; OTU_97.44487 "Bacteria"   "Firmicutes" "Bacilli" "Lactobacillales"</span>
+<span class="co">#&gt; OTU_97.34979 "Bacteria"   "Firmicutes" "Bacilli" "Lactobacillales"</span>
+<span class="co">#&gt; OTU_97.34572 "Bacteria"   "Firmicutes" "Bacilli" "Lactobacillales"</span>
+<span class="co">#&gt; OTU_97.42259 "Bacteria"   "Firmicutes" "Bacilli" "Lactobacillales"</span>
+<span class="co">#&gt; OTU_97.34698 "Bacteria"   "Firmicutes" "Bacilli" "Lactobacillales"</span>
+<span class="co">#&gt;              FAMILY             GENUS           BIOSIS       </span>
+<span class="co">#&gt; OTU_97.31247 "Streptococcaceae" "Streptococcus" "F Anaerobic"</span>
+<span class="co">#&gt; OTU_97.44487 "Streptococcaceae" "Streptococcus" "F Anaerobic"</span>
+<span class="co">#&gt; OTU_97.34979 "Streptococcaceae" "Streptococcus" "F Anaerobic"</span>
+<span class="co">#&gt; OTU_97.34572 "Streptococcaceae" "Streptococcus" "F Anaerobic"</span>
+<span class="co">#&gt; OTU_97.42259 "Streptococcaceae" "Streptococcus" "F Anaerobic"</span>
+<span class="co">#&gt; OTU_97.34698 "Streptococcaceae" "Streptococcus" "F Anaerobic"</span></code></pre></div>
 </div>
 <div id="session-information" class="section level1">
 <h1 class="hasAnchor">
@@ -297,77 +317,50 @@
 <span class="co">#&gt; [8] base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt;  [1] MicrobiomeBenchmarkData_0.99.0 SummarizedExperiment_1.25.2   </span>
-<span class="co">#&gt;  [3] Biobase_2.55.0                 GenomicRanges_1.47.3          </span>
-<span class="co">#&gt;  [5] GenomeInfoDb_1.31.1            IRanges_2.29.0                </span>
-<span class="co">#&gt;  [7] S4Vectors_0.33.1               BiocGenerics_0.41.1           </span>
-<span class="co">#&gt;  [9] MatrixGenerics_1.7.0           matrixStats_0.61.0            </span>
-<span class="co">#&gt; [11] BiocStyle_2.23.0              </span>
+<span class="co">#&gt;  [1] MicrobiomeBenchmarkData_0.99.0 TreeSummarizedExperiment_2.3.0</span>
+<span class="co">#&gt;  [3] Biostrings_2.63.0              XVector_0.35.0                </span>
+<span class="co">#&gt;  [5] SingleCellExperiment_1.17.1    SummarizedExperiment_1.25.2   </span>
+<span class="co">#&gt;  [7] Biobase_2.55.0                 GenomicRanges_1.47.3          </span>
+<span class="co">#&gt;  [9] GenomeInfoDb_1.31.1            IRanges_2.29.0                </span>
+<span class="co">#&gt; [11] S4Vectors_0.33.1               BiocGenerics_0.41.1           </span>
+<span class="co">#&gt; [13] MatrixGenerics_1.7.0           matrixStats_0.61.0            </span>
+<span class="co">#&gt; [15] BiocStyle_2.23.0              </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;   [1] ggbeeswarm_0.6.0               colorspace_2.0-2              </span>
-<span class="co">#&gt;   [3] ellipsis_0.3.2                 rprojroot_2.0.2               </span>
-<span class="co">#&gt;   [5] scuttle_1.5.0                  XVector_0.35.0                </span>
-<span class="co">#&gt;   [7] BiocNeighbors_1.13.0           fs_1.5.0                      </span>
-<span class="co">#&gt;   [9] TreeSummarizedExperiment_2.3.0 MultiAssayExperiment_1.21.2   </span>
-<span class="co">#&gt;  [11] ggrepel_0.9.1                  bit64_4.0.5                   </span>
-<span class="co">#&gt;  [13] fansi_0.5.0                    decontam_1.15.0               </span>
-<span class="co">#&gt;  [15] codetools_0.2-18               splines_4.2.0                 </span>
-<span class="co">#&gt;  [17] sparseMatrixStats_1.7.0        cachem_1.0.6                  </span>
-<span class="co">#&gt;  [19] knitr_1.36                     scater_1.23.1                 </span>
-<span class="co">#&gt;  [21] ade4_1.7-18                    phyloseq_1.39.0               </span>
-<span class="co">#&gt;  [23] jsonlite_1.7.2                 cluster_2.1.2                 </span>
-<span class="co">#&gt;  [25] dbplyr_2.1.1                   BiocManager_1.30.16           </span>
-<span class="co">#&gt;  [27] compiler_4.2.0                 httr_1.4.2                    </span>
-<span class="co">#&gt;  [29] assertthat_0.2.1               Matrix_1.3-4                  </span>
-<span class="co">#&gt;  [31] fastmap_1.1.0                  lazyeval_0.2.2                </span>
-<span class="co">#&gt;  [33] BiocSingular_1.11.0            htmltools_0.5.2               </span>
-<span class="co">#&gt;  [35] tools_4.2.0                    igraph_1.2.7                  </span>
-<span class="co">#&gt;  [37] rsvd_1.0.5                     gtable_0.3.0                  </span>
-<span class="co">#&gt;  [39] glue_1.5.0                     GenomeInfoDbData_1.2.7        </span>
-<span class="co">#&gt;  [41] reshape2_1.4.4                 dplyr_1.0.7                   </span>
-<span class="co">#&gt;  [43] rappdirs_0.3.3                 Rcpp_1.0.7                    </span>
-<span class="co">#&gt;  [45] jquerylib_0.1.4                pkgdown_1.6.1                 </span>
-<span class="co">#&gt;  [47] rhdf5filters_1.7.0             vctrs_0.3.8                   </span>
-<span class="co">#&gt;  [49] Biostrings_2.63.0              multtest_2.51.0               </span>
-<span class="co">#&gt;  [51] ape_5.5                        nlme_3.1-153                  </span>
-<span class="co">#&gt;  [53] DECIPHER_2.23.0                iterators_1.0.13              </span>
-<span class="co">#&gt;  [55] DelayedMatrixStats_1.17.0      xfun_0.28                     </span>
-<span class="co">#&gt;  [57] stringr_1.4.0                  beachmat_2.11.0               </span>
-<span class="co">#&gt;  [59] lifecycle_1.0.1                irlba_2.3.3                   </span>
-<span class="co">#&gt;  [61] zlibbioc_1.41.0                MASS_7.3-54                   </span>
-<span class="co">#&gt;  [63] scales_1.1.1                   ragg_1.2.0                    </span>
-<span class="co">#&gt;  [65] biomformat_1.23.0              parallel_4.2.0                </span>
-<span class="co">#&gt;  [67] rhdf5_2.39.0                   SingleCellExperiment_1.17.1   </span>
-<span class="co">#&gt;  [69] yaml_2.2.1                     curl_4.3.2                    </span>
-<span class="co">#&gt;  [71] memoise_2.0.0                  gridExtra_2.3                 </span>
-<span class="co">#&gt;  [73] ggplot2_3.3.5                  sass_0.4.0                    </span>
-<span class="co">#&gt;  [75] stringi_1.7.5                  RSQLite_2.2.8                 </span>
-<span class="co">#&gt;  [77] desc_1.4.0                     foreach_1.5.1                 </span>
-<span class="co">#&gt;  [79] ScaledMatrix_1.3.0             permute_0.9-5                 </span>
-<span class="co">#&gt;  [81] tidytree_0.3.5                 filelock_1.0.2                </span>
-<span class="co">#&gt;  [83] BiocParallel_1.29.0            rlang_0.4.12                  </span>
-<span class="co">#&gt;  [85] pkgconfig_2.0.3                systemfonts_1.0.3             </span>
-<span class="co">#&gt;  [87] bitops_1.0-7                   evaluate_0.14                 </span>
-<span class="co">#&gt;  [89] lattice_0.20-45                Rhdf5lib_1.17.0               </span>
-<span class="co">#&gt;  [91] purrr_0.3.4                    treeio_1.19.0                 </span>
-<span class="co">#&gt;  [93] bit_4.0.4                      tidyselect_1.1.1              </span>
-<span class="co">#&gt;  [95] plyr_1.8.6                     magrittr_2.0.1                </span>
-<span class="co">#&gt;  [97] bookdown_0.24                  R6_2.5.1                      </span>
-<span class="co">#&gt;  [99] generics_0.1.1                 DelayedArray_0.21.1           </span>
-<span class="co">#&gt; [101] DBI_1.1.1                      mgcv_1.8-38                   </span>
-<span class="co">#&gt; [103] pillar_1.6.4                   withr_2.4.2                   </span>
-<span class="co">#&gt; [105] survival_3.2-13                RCurl_1.98-1.5                </span>
-<span class="co">#&gt; [107] tibble_3.1.5                   crayon_1.4.2                  </span>
-<span class="co">#&gt; [109] utf8_1.2.2                     mia_1.3.1                     </span>
-<span class="co">#&gt; [111] BiocFileCache_2.3.0            rmarkdown_2.11                </span>
-<span class="co">#&gt; [113] viridis_0.6.2                  grid_4.2.0                    </span>
-<span class="co">#&gt; [115] data.table_1.14.2              vegan_2.5-7                   </span>
-<span class="co">#&gt; [117] blob_1.2.2                     digest_0.6.28                 </span>
-<span class="co">#&gt; [119] tidyr_1.1.4                    textshaping_0.3.6             </span>
-<span class="co">#&gt; [121] munsell_0.5.0                  DirichletMultinomial_1.37.0   </span>
-<span class="co">#&gt; [123] beeswarm_0.4.0                 viridisLite_0.4.0             </span>
-<span class="co">#&gt; [125] vipor_0.4.5                    bslib_0.3.1</span></code></pre></div>
+<span class="co">#&gt;   [1] colorspace_2.0-2       ellipsis_0.3.2         rprojroot_2.0.2       </span>
+<span class="co">#&gt;   [4] fs_1.5.0               bit64_4.0.5            fansi_0.5.0           </span>
+<span class="co">#&gt;   [7] codetools_0.2-18       splines_4.2.0          cachem_1.0.6          </span>
+<span class="co">#&gt;  [10] knitr_1.36             ade4_1.7-18            jsonlite_1.7.2        </span>
+<span class="co">#&gt;  [13] phyloseq_1.39.0        cluster_2.1.2          dbplyr_2.1.1          </span>
+<span class="co">#&gt;  [16] BiocManager_1.30.16    compiler_4.2.0         httr_1.4.2            </span>
+<span class="co">#&gt;  [19] assertthat_0.2.1       Matrix_1.3-4           fastmap_1.1.0         </span>
+<span class="co">#&gt;  [22] lazyeval_0.2.2         htmltools_0.5.2        tools_4.2.0           </span>
+<span class="co">#&gt;  [25] igraph_1.2.8           gtable_0.3.0           glue_1.5.0            </span>
+<span class="co">#&gt;  [28] GenomeInfoDbData_1.2.7 reshape2_1.4.4         dplyr_1.0.7           </span>
+<span class="co">#&gt;  [31] rappdirs_0.3.3         Rcpp_1.0.7             jquerylib_0.1.4       </span>
+<span class="co">#&gt;  [34] pkgdown_1.6.1          vctrs_0.3.8            rhdf5filters_1.7.0    </span>
+<span class="co">#&gt;  [37] multtest_2.51.0        ape_5.5                nlme_3.1-153          </span>
+<span class="co">#&gt;  [40] iterators_1.0.13       xfun_0.28              stringr_1.4.0         </span>
+<span class="co">#&gt;  [43] lifecycle_1.0.1        zlibbioc_1.41.0        MASS_7.3-54           </span>
+<span class="co">#&gt;  [46] scales_1.1.1           ragg_1.2.0             parallel_4.2.0        </span>
+<span class="co">#&gt;  [49] biomformat_1.23.0      rhdf5_2.39.0           yaml_2.2.1            </span>
+<span class="co">#&gt;  [52] curl_4.3.2             memoise_2.0.0          ggplot2_3.3.5         </span>
+<span class="co">#&gt;  [55] sass_0.4.0             stringi_1.7.5          RSQLite_2.2.8         </span>
+<span class="co">#&gt;  [58] desc_1.4.0             foreach_1.5.1          tidytree_0.3.5        </span>
+<span class="co">#&gt;  [61] permute_0.9-5          filelock_1.0.2         BiocParallel_1.29.0   </span>
+<span class="co">#&gt;  [64] rlang_0.4.12           pkgconfig_2.0.3        systemfonts_1.0.3     </span>
+<span class="co">#&gt;  [67] bitops_1.0-7           evaluate_0.14          lattice_0.20-45       </span>
+<span class="co">#&gt;  [70] purrr_0.3.4            Rhdf5lib_1.17.0        treeio_1.19.0         </span>
+<span class="co">#&gt;  [73] bit_4.0.4              tidyselect_1.1.1       plyr_1.8.6            </span>
+<span class="co">#&gt;  [76] magrittr_2.0.1         bookdown_0.24          R6_2.5.1              </span>
+<span class="co">#&gt;  [79] generics_0.1.1         DelayedArray_0.21.1    DBI_1.1.1             </span>
+<span class="co">#&gt;  [82] mgcv_1.8-38            pillar_1.6.4           withr_2.4.2           </span>
+<span class="co">#&gt;  [85] survival_3.2-13        RCurl_1.98-1.5         tibble_3.1.6          </span>
+<span class="co">#&gt;  [88] crayon_1.4.2           utf8_1.2.2             BiocFileCache_2.3.0   </span>
+<span class="co">#&gt;  [91] rmarkdown_2.11         grid_4.2.0             data.table_1.14.2     </span>
+<span class="co">#&gt;  [94] blob_1.2.2             vegan_2.5-7            digest_0.6.28         </span>
+<span class="co">#&gt;  [97] tidyr_1.1.4            textshaping_0.3.6      munsell_0.5.0         </span>
+<span class="co">#&gt; [100] bslib_0.3.1</span></code></pre></div>
 </div>
   </div>
 
