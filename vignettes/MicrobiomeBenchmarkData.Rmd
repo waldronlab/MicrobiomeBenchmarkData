@@ -25,35 +25,101 @@ knitr::opts_chunk$set(
 
 # Introduction
 
+The `MicrobiomeBenchamrkData` package provides a collection of datasets suitable
+for benchmarking of differential abundance methods in R.
+
+The datasets are also available through
+[Zenodo (sandbox)](https://sandbox.zenodo.org/record/946131) so they can be
+downloaded and used out of the R environment if preferred/needed.
+
+The main characteristic of this collection of datasets is that they contain
+some biological truth that has been proved experimentally in the literature.
+
 # Installation
+
+MicrobiomeBenchmarkData should be available through the BioConductor project.
 
 ```{r installation, eval=FALSE}
 # if (!"BiocManager" %in% installed.packages()[,"Package"])
-  install.packages("BiocManager")
+# install.packages("BiocManager")
 
 ## Release version
 # BiocManager::install("MicrobiomeBenchmarkData")
 
-## Latest development version
+## Development version
 # BiocManager::install("waldronlab/MicrobiomeBenchmarkData")
 ```
 
-
-```{r, load packages}
+```{r, message=FALSE}
 library(MicrobiomeBenchmarkData)
 ```
 
 # Accessing datasets
 
-Datasets can be accessed with the `getDatasets` function, which returns a list
-of TreeSummarizedExperiments:
+Datasets are accessed through the `getDataset` function.
+
+## Print avaialable datasets
+
 
 ```{r}
-getDataset()
+dats <- getDataset()
+```
+```{r}
+dats
 ```
 
-Or can be directly accessed trough the specific dataset function, which
-returns a TreeSummarizedExperiment
+## Access a single dataset
+
+```{r}
+smoking <- getDataset(dats[1], dryrun = FALSE)[[1]]
+smoking
+```
+
+## Access a few datasets
+
+```{r}
+gingival <- getDataset(dats[2:5], dryrun = FALSE)
+str(gingival, max.level = 1)
+```
+
+## Access all of the datasets
+
+```{r}
+mbd <- getDataset(dryrun = FALSE)
+str(mbd, max.level = 1)
+```
+
+# Annotations for each taxa are included in rowData
+
+Currently, only in "HMP_2012_16S_gingival_V35_subset".
+
+```{r}
+rowData(mbd$HMP_2012_16S_gingival_V35_subset)
+```
+
+# Caching
+
+The datasets are cached so they're only downloaded once. The cache and all of
+it's files can be removed with the `removeCache` function.
+
+```{r, eval=FALSE}
+# removeCache()
+```
+
+
+# Convert to phyloseq
+
+The mia package can be used to convert a TreeSummarizedExperiment to a phyloseq
+object, and use the dataset with other pipelines.
+
+```{r}
+ps <- mia::makePhyloseqFromTreeSummarizedExperiment(
+    mbd$HMP_2012_16S_gingival_V35_subset
+    )
+ps
+```
+
+
 
 
 # Session information

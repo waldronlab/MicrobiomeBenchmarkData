@@ -34,7 +34,8 @@ Suggests:
     rmarkdown,
     knitr,
     BiocStyle,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    mia
 biocViews:
     ExperimentData,
     MicrobiomeData,
