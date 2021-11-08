@@ -14,12 +14,13 @@ A phyloseq object.
 }
 \description{
 \code{toPhyloseq} converts a TreeSummarizedExperiment imported through the
-MicrobiomeBenchmarkData to a Phloseq object. The conversion preserves
-columns that don't provide taxa information in the rowData/tax_table slots.
+MicrobiomeBenchmarkData to a phyloseq object. The conversion preserves
+columns that don't provide taxa information in the rowData/tax_table slots,
+includind the columns containing biological annotations.
 }
 \examples{
 
-dat_names <- getDataset(dat_names)
+dat_names <- getDataset()
 tse <- getDataset(dat_names[4], dryrun = FALSE)[[1]]
 ps <- toPhyloseq(tse)
 head(phyloseq::tax_table(ps))

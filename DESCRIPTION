@@ -29,7 +29,8 @@ Imports:
     purrr,
     ape,
     tibble,
-    rlang
+    rlang,
+    phyloseq
 Suggests: 
     rmarkdown,
     knitr,

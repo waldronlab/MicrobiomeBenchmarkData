@@ -87,18 +87,29 @@ removeCache <- function() {
 #' Convert TreeSummarizedExperiment to Phyloseq
 #'
 #' \code{toPhyloseq} converts a TreeSummarizedExperiment imported through the
-#' MicrobiomeBenchmarkData to a Phloseq object. The conversion preserves
-#' columns that don't provide taxa information in the rowData/tax_table slots.
+#' MicrobiomeBenchmarkData to a phyloseq object. The conversion preserves
+#' columns that don't provide taxa information in the rowData/tax_table slots,
+#' includind the columns containing biological annotations.
 #'
 #' @param x A TreeSummarizedExperiment
 #'
 #' @return A phyloseq object.
 #'
+#' @importFrom SummarizedExperiment assay
+#' @importFrom SummarizedExperiment colData
+#' @importFrom SummarizedExperiment rowData
+#' @importFrom TreeSummarizedExperiment rowTree
+#' @importFrom phyloseq otu_table
+#' @importFrom phyloseq sample_data
+#' @importFrom phyloseq tax_table
+#' @importFrom phyloseq phy_tree
+#' @importFrom phyloseq phyloseq
+#'
 #' @export
 #'
 #' @examples
 #'
-#' dat_names <- getDataset(dat_names)
+#' dat_names <- getDataset()
 #' tse <- getDataset(dat_names[4], dryrun = FALSE)[[1]]
 #' ps <- toPhyloseq(tse)
 #' head(phyloseq::tax_table(ps))
