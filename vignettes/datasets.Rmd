@@ -18,14 +18,6 @@ knitr::opts_chunk$set(
 Access to table of datasets: https://docs.google.com/document/d/1RMmghbatxbM9GnEEWZZEJ6bi_HE2vhFyeCP_W_da1Ks/edit
 
 
-
-
-
-
-
-
-
-
 ```{r}
 sessionInfo()
 ```

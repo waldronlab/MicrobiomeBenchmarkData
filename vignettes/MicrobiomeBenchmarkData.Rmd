@@ -56,10 +56,14 @@ library(MicrobiomeBenchmarkData)
 
 # Accessing datasets
 
-Datasets are accessed through the `getDataset` function.
+Currently, there are `r length(MicrobiomeBenchmarkData::getDataset())`
+datasets available through the MicrobiomeBenchmarkData. These datasets are
+accessed through the `getDataset` function.
 
 ## Print avaialable datasets
 
+If no arguments are provided, the list of available datasets is printed on
+screen and returned invisiby as a character vector:
 
 ```{r}
 dats <- getDataset()
@@ -70,12 +74,20 @@ dats
 
 ## Access a single dataset
 
+In order to import a dataset, the `getDataset` function must be used with the
+name of the dataset as the first argument (`x`) and the `dryrun` argument set
+to `FALSE`. The output is a list vector with the dataset imported as a
+TreeSummarizedExperiment object.
+
 ```{r}
 smoking <- getDataset(dats[1], dryrun = FALSE)[[1]]
 smoking
 ```
 
 ## Access a few datasets
+
+Several datasets can be imported simultaneously by giving the names of the 
+different datasets in a character vector:
 
 ```{r}
 gingival <- getDataset(dats[2:5], dryrun = FALSE)
@@ -84,6 +96,9 @@ str(gingival, max.level = 1)
 
 ## Access all of the datasets
 
+If all of the datasets must to be imported, this can be done by providing
+the `dryrun = FALSE` argument alone.
+
 ```{r}
 mbd <- getDataset(dryrun = FALSE)
 str(mbd, max.level = 1)
@@ -91,16 +106,19 @@ str(mbd, max.level = 1)
 
 # Annotations for each taxa are included in rowData
 
-Currently, only in "HMP_2012_16S_gingival_V35_subset".
+The biological annotations of each taxa are provided as a column in the
+`rowData` slot of the TreeSummarizedExperiment.
 
 ```{r}
-rowData(mbd$HMP_2012_16S_gingival_V35_subset)
+## In the case, the column is named as BIOSIS
+tse <- mbd$HMP_2012_16S_gingival_V35_subset
+rowData(tse)
 ```
 
 # Caching
 
 The datasets are cached so they're only downloaded once. The cache and all of
-it's files can be removed with the `removeCache` function.
+the files contained in it can be removed with the `removeCache` function.
 
 ```{r, eval=FALSE}
 # removeCache()
@@ -109,18 +127,16 @@ it's files can be removed with the `removeCache` function.
 
 # Convert to phyloseq
 
-The mia package can be used to convert a TreeSummarizedExperiment to a phyloseq
-object, and use the dataset with other pipelines.
+MicrobiomeBenchmarkData includes function for converting a
+TreeSummarizedExperiment to a Phyloseq object. This function preservers all of
+the columns from the rowData, including those columns not related to taxonomy
+ranks.
 
 ```{r}
-ps <- mia::makePhyloseqFromTreeSummarizedExperiment(
-    mbd$HMP_2012_16S_gingival_V35_subset
-    )
+ps <- toPhyloseq(tse)
 ps
+head(phyloseq::tax_table(ps))
 ```
-
-
-
 
 # Session information
 
