@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get MicrobiomeBenchmarkData's Cache — .getCache • MicrobiomeBenchmarkData</title>
+<title>Get cache — .getCache • MicrobiomeBenchmarkData</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Get MicrobiomeBenchmarkData's Cache — .getCache" />
-<meta property="og:description" content=".getCache creates or loads a cache to store files downloaded through the
-MicrobiomeBenchmarkData package." />
+<meta property="og:title" content="Get cache — .getCache" />
+<meta property="og:description" content=".getCache creates or loads a cache to store files downloaded through
+the MicrobiomeBenchmarkData package." />
 
 
 
@@ -73,7 +73,7 @@ MicrobiomeBenchmarkData package." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MicrobiomeBenchmarkData</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.0</span>
       </span>
     </div>
 
@@ -86,6 +86,9 @@ MicrobiomeBenchmarkData package." />
   </a>
 </li>
 <li>
+  <a href="../articles/MicrobiomeBenchmarkData.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -96,13 +99,21 @@ MicrobiomeBenchmarkData package." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Datasets.html">Datasets in MicrobiomeBenchmarkData</a>
+      <a href="../articles/datasets.html">Datasets in MicrobiomeBenchmarkData</a>
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/waldronlab/MicrobiomeBenchmarkData/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -116,19 +127,22 @@ MicrobiomeBenchmarkData package." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get MicrobiomeBenchmarkData's Cache</h1>
-    
+    <h1>Get cache</h1>
+    <small class="dont-index">Source: <a href='https://github.com/waldronlab/MicrobiomeBenchmarkData/blob/master/R/MicrobiomeBenchmarkData.R'><code>R/MicrobiomeBenchmarkData.R</code></a></small>
     <div class="hidden name"><code>dot-getCache.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>.getCache</code> creates or loads a cache to store files downloaded through the
-<code>MicrobiomeBenchmarkData</code> package.</p>
+    <p><code>.getCache</code> creates or loads a cache to store files downloaded through
+the <code>MicrobiomeBenchmarkData</code> package.</p>
     </div>
 
     <pre class="usage"><span class='fu'>.getCache</span><span class='op'>(</span><span class='op'>)</span></pre>
 
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A BiocFileCache object.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

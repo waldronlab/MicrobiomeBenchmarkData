@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • MicrobiomeBenchmarkData</title>
+<title>Get dataset — getDataset • MicrobiomeBenchmarkData</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Get dataset — getDataset" />
+<meta property="og:description" content="getDataset imports datasets as TreeSummarizedExperiment objects." />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -123,60 +124,59 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Get dataset</h1>
+    <small class="dont-index">Source: <a href='https://github.com/waldronlab/MicrobiomeBenchmarkData/blob/master/R/MicrobiomeBenchmarkData.R'><code>R/MicrobiomeBenchmarkData.R</code></a></small>
+    <div class="hidden name"><code>getDataset.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p><code>getDataset</code> imports datasets as TreeSummarizedExperiment objects.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>getDataset</span><span class='op'>(</span><span class='va'>x</span>, dryrun <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="MicrobiomeBenchmarkData.html">MicrobiomeBenchmarkData</a></code> </p>
-        </td>
-        <td><p>MicrobiomeBenchmarkData</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getDataset.html">getDataset()</a></code> </p>
-        </td>
-        <td><p>Get dataset</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="removeCache.html">removeCache()</a></code> </p>
-        </td>
-        <td><p>Remove cache</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sampleMetadata.html">sampleMetadata</a></code> </p>
-        </td>
-        <td><p>sampleMetadata</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>A character vector with the name(s) of the dataset(s). If empty
+and dryrun = TRUE, it returns a message with the names of the available
+datasets. If empty and dryrun = FALSE, it returns a list of
+TreeSummarizedExperiments with all of the datasets.</p></td>
+    </tr>
+    <tr>
+      <th>dryrun</th>
+      <td><p>If TRUE, only returns a message and invisibly returns the
+names of the datasets as a character vector. If FALSE, it returns the
+TreeSummarizedExperiment datasets indicated in the argument 'x'.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A list of TreeSummarizedExperiments.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='va'>datasets_names</span> <span class='op'>&lt;-</span> <span class='fu'>getDataset</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 1 Beghini_2019_16S_smoking</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2 HMP_2012_16S_gingival_V13</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 3 HMP_2012_16S_gingival_V35</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 4 HMP_2012_16S_gingival_V35_subset</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 5 HMP_2012_WMS_gingival</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 6 Stammler_2016_16S_spikein</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Use vignette('datasets', package = 'MicrobiomeBenchmarkData') for a detailed description of the datasets.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Use getDataset(dryrun = FALSE) to import all of the datasets.</span>
+<span class='r-in'><span class='va'>datasets</span> <span class='op'>&lt;-</span> <span class='fu'>getDataset</span><span class='op'>(</span><span class='st'>"HMP_2012_16S_gingival_V35_subset"</span>, dryrun <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Finished HMP_2012_16S_gingival_V35_subset.</span>
+<span class='r-in'></span>
+</pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

@@ -4,42 +4,30 @@
     <loc>https://waldronlab.io/MicrobiomeBenchmarkData//index.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-beghini2019Nychanesmicrobiome.html</loc>
+    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/MicrobiomeBenchmarkData.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-calgaro2020Datasets.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-datasets.html</loc>
+    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-assembleTreeSummarizedExperiment.html</loc>
   </url>
   <url>
     <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-getCache.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-getResourceFromCache.html</loc>
+    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-getResourcePath.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-hmp16SDataCalgaro2020.html</loc>
+    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/getDataset.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-hmp16SDataIntersects.html</loc>
+    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/removeCache.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-hmp16SDataSubset.html</loc>
+    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/sampleMetadata.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-intersectSubjects.html</loc>
+    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//articles/MicrobiomeBenchmarkData.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-sampleSEBySex.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/getDatasets.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/showDatasets.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//articles/Datasets.html</loc>
+    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//articles/datasets.html</loc>
   </url>
 </urlset>
