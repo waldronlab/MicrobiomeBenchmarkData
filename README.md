@@ -3,13 +3,12 @@
 
 # Installation
 
-Release
-
 ```
 if (!"BiocManager" %in% installed.packages()[,"Package"])
     install.packages("BiocManager")
 
-BiocManager::install("waldronlab/MicrobiomeBenchmarkData")
+## Development version
+BiocManager::install("waldronlab/MicrobiomeBenchmarkData", build_vignettes = TRUE)
 
 ```
 
