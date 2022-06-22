@@ -41,7 +41,8 @@ biocViews:
     MicrobiomeData,
     ReproducibleResearch
 BugReports: https://github.com/waldronlab/MicrobiomeBenchmarkData/issues
-URL: https://github.com/waldronlab/MicrobiomeBenchmarkData
+URL: https://github.com/waldronlab/MicrobiomeBenchmarkData,
+    http://waldronlab.io/MicrobiomeBenchmarkData/
 BiocType: ExperimentData
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

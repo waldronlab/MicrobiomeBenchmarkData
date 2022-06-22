@@ -1,1 +1,4 @@
-url: https://waldronlab.io/MicrobiomeBenchmarkData/
+url: http://waldronlab.io/MicrobiomeBenchmarkData/
+template:
+  bootstrap: 5
+
