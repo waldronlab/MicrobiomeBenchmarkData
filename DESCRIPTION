@@ -30,7 +30,6 @@ Imports:
     ape,
     tibble,
     rlang,
-    phyloseq
 Suggests: 
     rmarkdown,
     knitr,

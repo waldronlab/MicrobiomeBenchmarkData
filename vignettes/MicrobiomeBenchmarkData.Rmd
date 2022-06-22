@@ -115,7 +115,7 @@ tse <- mbd$HMP_2012_16S_gingival_V35_subset
 rowData(tse)
 ```
 
-# Caching
+# Cache 
 
 The datasets are cached so they're only downloaded once. The cache and all of
 the files contained in it can be removed with the `removeCache` function.
@@ -124,19 +124,6 @@ the files contained in it can be removed with the `removeCache` function.
 # removeCache()
 ```
 
-
-# Convert to phyloseq
-
-MicrobiomeBenchmarkData includes function for converting a
-TreeSummarizedExperiment to a Phyloseq object. This function preservers all of
-the columns from the rowData, including those columns not related to taxonomy
-ranks.
-
-```{r}
-ps <- toPhyloseq(tse)
-ps
-head(phyloseq::tax_table(ps))
-```
 
 # Session information
 
