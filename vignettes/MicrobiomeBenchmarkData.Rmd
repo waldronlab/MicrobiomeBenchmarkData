@@ -80,8 +80,8 @@ to `FALSE`. The output is a list vector with the dataset imported as a
 TreeSummarizedExperiment object.
 
 ```{r}
-smoking <- getDataset(dats[1], dryrun = FALSE)[[1]]
-smoking
+tse <- getDataset('HMP_2012_16S_gingival_V35_subset', dryrun = FALSE)[[1]]
+tse
 ```
 
 ## Access a few datasets
@@ -90,8 +90,8 @@ Several datasets can be imported simultaneously by giving the names of the
 different datasets in a character vector:
 
 ```{r}
-gingival <- getDataset(dats[2:5], dryrun = FALSE)
-str(gingival, max.level = 1)
+list_tse <- getDataset(dats[2:4], dryrun = FALSE)
+str(list_tse, max.level = 1)
 ```
 
 ## Access all of the datasets
