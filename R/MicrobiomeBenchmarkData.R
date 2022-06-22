@@ -186,19 +186,19 @@ toPhyloseq <- function(x) {
             .data[["dataset"]] == .env[["dat_name"]]
         ) %>%
         purrr::keep(~all(!is.na(.x))) %>%
-        tibble::column_to_rownames(var = "sample_name") %>%
+        tibble::column_to_rownames(var = "sample_id") %>%
         as.data.frame() %>%
         S4Vectors::DataFrame()
 
     count_matrix <- .getResourcePath(x, "_count_matrix") %>%
         utils::read.table(
-            header = TRUE, row.names = 1, sep = "\t", check.names = FALSE
+            header = TRUE, row.names = 1, sep = "\t", check.names = FALSE, quote = ""
         ) %>%
     as.matrix()
 
     row_data <- .getResourcePath(x, "_taxonomy_table") %>%
         utils::read.table(
-            header = TRUE, row.names = 1, sep = "\t", check.names = FALSE
+            header = TRUE, row.names = 1, sep = "\t", check.names = FALSE, quote = ""
         ) %>%
     S4Vectors::DataFrame()
 
