@@ -1,36 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//index.html</loc>
+    <loc>http://waldronlab.io/MicrobiomeBenchmarkData/404.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/MicrobiomeBenchmarkData.html</loc>
+    <loc>http://waldronlab.io/MicrobiomeBenchmarkData/articles/MicrobiomeBenchmarkData.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-assembleTreeSummarizedExperiment.html</loc>
+    <loc>http://waldronlab.io/MicrobiomeBenchmarkData/articles/datasets.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-getCache.html</loc>
+    <loc>http://waldronlab.io/MicrobiomeBenchmarkData/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/dot-getResourcePath.html</loc>
+    <loc>http://waldronlab.io/MicrobiomeBenchmarkData/authors.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/getDataset.html</loc>
+    <loc>http://waldronlab.io/MicrobiomeBenchmarkData/index.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/removeCache.html</loc>
+    <loc>http://waldronlab.io/MicrobiomeBenchmarkData/news/index.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/sampleMetadata.html</loc>
+    <loc>http://waldronlab.io/MicrobiomeBenchmarkData/reference/MicrobiomeBenchmarkData.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//reference/toPhyloseq.html</loc>
+    <loc>http://waldronlab.io/MicrobiomeBenchmarkData/reference/dot-assembleTreeSummarizedExperiment.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//articles/MicrobiomeBenchmarkData.html</loc>
+    <loc>http://waldronlab.io/MicrobiomeBenchmarkData/reference/dot-getCache.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/MicrobiomeBenchmarkData//articles/datasets.html</loc>
+    <loc>http://waldronlab.io/MicrobiomeBenchmarkData/reference/dot-getResourcePath.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/MicrobiomeBenchmarkData/reference/getDataset.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/MicrobiomeBenchmarkData/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/MicrobiomeBenchmarkData/reference/removeCache.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/MicrobiomeBenchmarkData/reference/sampleMetadata.html</loc>
   </url>
 </urlset>
