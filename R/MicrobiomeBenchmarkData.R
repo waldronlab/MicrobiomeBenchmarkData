@@ -112,11 +112,13 @@ removeCache <- function() {
 #'
 .assembleTreeSummarizedExperiment <- function(x) {
 
-    if (x %in% c("HMP_2012_16S_gingival_V13", "HMP_2012_16S_gingival_V35")) {
-        dat_name <- "HMP_2012_16S_gingival"
-    } else {
-        dat_name <- x
-    }
+    # if (x %in% c("HMP_2012_16S_gingival_V13", "HMP_2012_16S_gingival_V35")) {
+    #     dat_name <- "HMP_2012_16S_gingival"
+    # } else {
+    #     dat_name <- x
+    # }
+
+    dat_name <- x
 
     col_data <- MicrobiomeBenchmarkData::sampleMetadata %>%
         dplyr::filter(
