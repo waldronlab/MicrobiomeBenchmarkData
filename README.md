@@ -1,4 +1,4 @@
-# MicrobiomeBenchmarkData
+#MicrobiomeBenchmarkData
 
 A resource of datasets with biological ground truth for benchmarking
 differential abundance methods.
@@ -17,4 +17,11 @@ BiocManager::install("waldronlab/MicrobiomeBenchmarkData", build_vignettes = TRU
 
 ```
 
+# Links
 
++ Data on Zenodo: <<<Insert DOI here when created>>>
++ R package on Bioconductor: <<<Insert link here when created>>>
++ R package source code: https://github.com/waldronlab/MicrobiomeBenchmarkData
++ R package issues: https://github.com/waldronlab/MicrobiomeBenchmarkData/issues
++ Scripts for preparing the datasets: https://github.com/waldronlab/MicrobiomeBenchmarkDataPrep
++ Code for reproducibility of the analyses: https://waldronlab.io/MicrobiomeBenchmarkDataAnalyses
