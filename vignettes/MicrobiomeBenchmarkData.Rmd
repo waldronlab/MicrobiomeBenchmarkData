@@ -52,6 +52,21 @@ MicrobiomeBenchmarkData should be available through the BioConductor project.
 
 ```{r, message=FALSE}
 library(MicrobiomeBenchmarkData)
+library(purrr)
+```
+
+# Sample metadata
+
+All sample metadata is merged into a single data frame and provided as data
+object:
+
+```{r}
+data('sampleMetadata')
+## Get columns present in all samples
+sample_metadata <- sampleMetadata %>% 
+    discard(~any(is.na(.x))) %>% 
+    head()
+knitr::kable(sample_metadata)
 ```
 
 # Accessing datasets
