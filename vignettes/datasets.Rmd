@@ -1,6 +1,8 @@
 ---
 title: "Datasets in MicrobiomeBenchmarkData"
-output: rmarkdown::html_vignette
+output: 
+  BiocStyle::html_document:
+    toc: true
 vignette: >
   %\VignetteIndexEntry{Datasets in MicrobiomeBenchmarkData}
   %\VignetteEngine{knitr::rmarkdown}
@@ -15,8 +17,17 @@ knitr::opts_chunk$set(
 ```
 
 ```{r, echo=FALSE}
-fname <- system.file('extdata/datasets.tsv', package = 'MicrobiomeBenchmarkData')
-datasets <- read.table(fname, header = TRUE, sep = '\t', check.names = FALSE)
-knitr::kable(datasets, )
+fname <- system.file(
+    'extdata/datasets.tsv', package = 'MicrobiomeBenchmarkData'
+)
+datasets <- read.table(
+    fname, header = TRUE, sep = '\t', check.names = FALSE
+)
+PMID <- dplyr::distinct(
+    MicrobiomeBenchmarkData::sampleMetadata[, c('dataset', 'pmid')]
+)
+datasets <- dplyr::left_join(datasets, PMID, by = c('Dataset' = 'dataset'))
+datasets <- dplyr::rename(datasets, PMID = pmid)
+knitr::kable(datasets)
 ```
 
