@@ -91,46 +91,71 @@
 
     
     
-<div class="section level2">
-<h2 id="todo">TODO<a class="anchor" aria-label="anchor" href="#todo"></a>
-</h2>
-<p>Access to table of datasets: <a href="https://docs.google.com/document/d/1RMmghbatxbM9GnEEWZZEJ6bi_HE2vhFyeCP_W_da1Ks/edit" class="external-link uri">https://docs.google.com/document/d/1RMmghbatxbM9GnEEWZZEJ6bi_HE2vhFyeCP_W_da1Ks/edit</a></p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; R version 4.2.0 (2022-04-22)</span>
-<span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span>
-<span class="co">#&gt; Running under: Ubuntu 20.04.4 LTS</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Matrix products: default</span>
-<span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0</span>
-<span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; locale:</span>
-<span class="co">#&gt;  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       </span>
-<span class="co">#&gt;  [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   </span>
-<span class="co">#&gt;  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          </span>
-<span class="co">#&gt; [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; attached base packages:</span>
-<span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;  [1] rprojroot_2.0.3   digest_0.6.29     R6_2.5.1          jsonlite_1.8.0   </span>
-<span class="co">#&gt;  [5] magrittr_2.0.3    evaluate_0.15     stringi_1.7.6     rlang_1.0.2      </span>
-<span class="co">#&gt;  [9] cachem_1.0.6      cli_3.3.0         fs_1.5.2          jquerylib_0.1.4  </span>
-<span class="co">#&gt; [13] bslib_0.3.1       ragg_1.2.2        rmarkdown_2.14    pkgdown_2.0.5    </span>
-<span class="co">#&gt; [17] textshaping_0.3.6 desc_1.4.1        tools_4.2.0       stringr_1.4.0    </span>
-<span class="co">#&gt; [21] purrr_0.3.4       yaml_2.3.5        xfun_0.31         fastmap_1.1.0    </span>
-<span class="co">#&gt; [25] compiler_4.2.0    systemfonts_1.0.4 memoise_2.0.1     htmltools_0.5.2  </span>
-<span class="co">#&gt; [29] knitr_1.39        sass_0.4.1</span></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="9%">
+<col width="3%">
+<col width="2%">
+<col width="22%">
+<col width="61%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Dataset</th>
+<th align="left">Dimensions</th>
+<th align="left">Body site</th>
+<th align="left">Contrasts</th>
+<th align="left">Biological ground truth</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">HMP_2012_16S_gingival_V13</td>
+<td align="left">33127 x 311</td>
+<td align="left">Gingiva</td>
+<td align="left">Subgingival vs Supragingival plaque.</td>
+<td align="left">Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</td>
+</tr>
+<tr class="even">
+<td align="left">HMP_2012_16S_gingival_V35</td>
+<td align="left">17949 x 311</td>
+<td align="left">Gingiva</td>
+<td align="left">Subgingival vs Supragingival plaque.</td>
+<td align="left">Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</td>
+</tr>
+<tr class="odd">
+<td align="left">HMP_2012_16S_gingival_V35_subset</td>
+<td align="left">892 x 76</td>
+<td align="left">Gingiva</td>
+<td align="left">Subgingival vs Supragingival plaque.</td>
+<td align="left">Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</td>
+</tr>
+<tr class="even">
+<td align="left">HMP_2012_WMS_gingival</td>
+<td align="left">235 x 16</td>
+<td align="left">Gingiva</td>
+<td align="left">Subgingival vs Supragingival plaque.</td>
+<td align="left">Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</td>
+</tr>
+<tr class="odd">
+<td align="left">Stammler_2016_16S_spikein</td>
+<td align="left">247 x 394</td>
+<td align="left">Stool</td>
+<td align="left">Pre-ASCT (allogeneic stem cell transplantation) vs 14 days after treatment.</td>
+<td align="left">1) Unchanged abundances of Salinibacter ruber (extreme halophilic), Rhizobium radiobacter (found in soils and plants), and Alicyclobacillus acidiphilu (thermo-acidophilic) 2) Increase of Enterococcus after ASCT.</td>
+</tr>
+<tr class="even">
+<td align="left">Ravel_2011_16S_BV</td>
+<td align="left">4036 x 17</td>
+<td align="left">Vagina</td>
+<td align="left">Healthy vs bacterial vaginosis</td>
+<td align="left">Decrease of Lactobacillus in samples with high Nugent scores (bacterial vaginosis) and increase of bacteria isolated during bacterial vaginosis.</td>
+</tr>
+</tbody>
+</table>
 </div>
-  </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
