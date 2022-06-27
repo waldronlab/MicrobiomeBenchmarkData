@@ -33,10 +33,7 @@ datasets <- dplyr::rename(datasets, PMID = pmid)
 knitr::kable(datasets)
 ```
 
-
-Session Information
-
-```{r}
+```{r, echo=FALSE, include=FALSE}
 sessionInfo()
 ```
 
