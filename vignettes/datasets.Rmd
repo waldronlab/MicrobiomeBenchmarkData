@@ -14,12 +14,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-
-# TODO
-
-Access to table of datasets: https://docs.google.com/document/d/1RMmghbatxbM9GnEEWZZEJ6bi_HE2vhFyeCP_W_da1Ks/edit
-
-
-```{r}
-sessionInfo()
+```{r, echo=FALSE}
+fname <- system.file('extdata/datasets.tsv', package = 'MicrobiomeBenchmarkData')
+datasets <- read.table(fname, header = TRUE, sep = '\t', check.names = FALSE)
+knitr::kable(datasets, )
 ```
+
