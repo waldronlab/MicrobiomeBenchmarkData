@@ -16,8 +16,6 @@ confirmation before removing the cache.
 \examples{
 
 ## Remove cache
-\dontrun{
 removeCache()
-}
 
 }

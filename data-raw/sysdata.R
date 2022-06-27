@@ -10,4 +10,3 @@ usethis::use_data(
     metadata, titles,
     internal = TRUE, overwrite = TRUE
 )
-

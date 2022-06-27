@@ -18,15 +18,17 @@
 #'
 #' @examples
 #'
+#' ## Example 1
 #' datasets_names <- getDataset()
-#' datasets <- getDataset("HMP_2012_16S_gingival_V35_subset", dryrun = FALSE)
+#' datasets_names
+#'
+#' ## Example 2
+#' dataset <- getDataset("HMP_2012_16S_gingival_V35_subset", dryrun = FALSE)
+#' dataset[[1]]
 #'
 getDataset <- function(x, dryrun = TRUE) {
-
     if (missing(x)) {
-
         if (isTRUE(dryrun)) {
-
             n_titles <- seq_along(titles)
             message(
                 paste0(n_titles, " ", titles, collapse = "\n"),
@@ -44,23 +46,20 @@ getDataset <- function(x, dryrun = TRUE) {
 
     dataset_names <- x[x %in% titles]
 
-    if (!length(dataset_names))
+    if (!length(dataset_names)) {
         stop("No datasets were found for your search.", call. = FALSE)
+    }
 
     dataset_names <- sort(dataset_names)
 
     if (isTRUE(dryrun)) {
-
         message(paste0(dataset_names, collapse = "\n"))
         return(invisible(dataset_names))
-
     } else if (isFALSE(dryrun)) {
-
         output <- lapply(dataset_names, .assembleTreeSummarizedExperiment)
         names(output) <- dataset_names
         return(output)
     }
-
 }
 
 #' Remove cache
@@ -75,9 +74,7 @@ getDataset <- function(x, dryrun = TRUE) {
 #' @examples
 #'
 #' ## Remove cache
-#' \dontrun{
 #' removeCache()
-#' }
 #'
 removeCache <- function() {
     cache <- .getCache()
@@ -111,35 +108,30 @@ removeCache <- function() {
 #' @keywords internal
 #'
 .assembleTreeSummarizedExperiment <- function(x) {
-
-    # if (x %in% c("HMP_2012_16S_gingival_V13", "HMP_2012_16S_gingival_V35")) {
-    #     dat_name <- "HMP_2012_16S_gingival"
-    # } else {
-    #     dat_name <- x
-    # }
-
     dat_name <- x
 
     col_data <- MicrobiomeBenchmarkData::sampleMetadata %>%
         dplyr::filter(
             .data[["dataset"]] == .env[["dat_name"]]
         ) %>%
-        purrr::keep(~all(!is.na(.x))) %>%
+        purrr::keep(~ all(!is.na(.x))) %>%
         tibble::column_to_rownames(var = "sample_id") %>%
         as.data.frame() %>%
         S4Vectors::DataFrame()
 
     count_matrix <- .getResourcePath(x, "_count_matrix") %>%
         utils::read.table(
-            header = TRUE, row.names = 1, sep = "\t", check.names = FALSE, quote = ""
+            header = TRUE, row.names = 1, sep = "\t", check.names = FALSE,
+            quote = ""
         ) %>%
-    as.matrix()
+        as.matrix()
 
     row_data <- .getResourcePath(x, "_taxonomy_table") %>%
         utils::read.table(
-            header = TRUE, row.names = 1, sep = "\t", check.names = FALSE, quote = ""
+            header = TRUE, row.names = 1, sep = "\t", check.names = FALSE,
+            quote = ""
         ) %>%
-    S4Vectors::DataFrame()
+        S4Vectors::DataFrame()
 
     row_tree_path <- .getResourcePath(x, "_taxonomy_tree")
 
@@ -159,7 +151,6 @@ removeCache <- function() {
     message("Finished ", x, ".")
 
     tse
-
 }
 
 #' Get cache
@@ -201,7 +192,6 @@ removeCache <- function() {
 #' @keywords internal
 #'
 .getResourcePath <- function(resource, suffix) {
-
     resource_name <- paste0(resource, suffix)
 
     resource_url <- metadata %>%
@@ -223,7 +213,6 @@ removeCache <- function() {
     )
 
     if (nrow(resources) > 1) {
-
         rids <- dplyr::pull(resources, "rid")
         BiocFileCache::bfcremove(x = cache, rids = rids)
         resource_path <- BiocFileCache::bfcadd(
@@ -231,17 +220,13 @@ removeCache <- function() {
             download = TRUE
         )
         return(resource_path)
-
     } else if (nrow(resources) == 0) {
-
         resource_path <- BiocFileCache::bfcadd(
             x = cache, rname = resource_name, fpath = resource_url,
             download = TRUE
         )
         return(resource_path)
-
     } else if (nrow(resources) == 1) {
-
         resource_path <- BiocFileCache::bfcpath(
             x = cache, rids = resources[["rid"]]
         )

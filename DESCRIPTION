@@ -17,9 +17,9 @@ Authors@R:
             comment = c(ORCID = "0000-0002-6863-7943"))
     )
 License: Artistic-2.0
-LazyData: true
+LazyData: false
 Depends: 
-    R (>= 4.1),
+    R (>= 4.2),
     SummarizedExperiment,
     TreeSummarizedExperiment
 Imports:
@@ -31,7 +31,8 @@ Imports:
     purrr,
     ape,
     tibble,
-    rlang
+    rlang,
+    utils
 Suggests: 
     rmarkdown,
     knitr,
