@@ -47,7 +47,7 @@ MicrobiomeBenchmarkData should be available through the BioConductor project.
 # BiocManager::install("MicrobiomeBenchmarkData")
 
 ## Development version
-# BiocManager::install("waldronlab/MicrobiomeBenchmarkData")
+# BiocManager::install("waldronlab/MicrobiomeBenchmarkData", build_vignettes = TRUE)
 ```
 
 ```{r, message=FALSE}
@@ -110,7 +110,7 @@ The biological annotations of each taxa are provided as a column in the
 `rowData` slot of the TreeSummarizedExperiment.
 
 ```{r}
-## In the case, the column is named as BIOSIS
+## In the case, the column is named as taxon_annotation 
 tse <- mbd$HMP_2012_16S_gingival_V35_subset
 rowData(tse)
 ```
