@@ -34,3 +34,4 @@ unsrturl.bst
 data-raw/*.tsv
 data-raw/*.newick
 docs
+^*.Rproj
