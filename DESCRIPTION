@@ -17,7 +17,7 @@ Authors@R:
             comment = c(ORCID = "0000-0002-6863-7943"))
     )
 License: Artistic-2.0
-LazyData: false
+LazyData: true 
 Depends: 
     R (>= 4.2),
     SummarizedExperiment,

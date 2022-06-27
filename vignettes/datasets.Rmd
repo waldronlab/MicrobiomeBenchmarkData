@@ -16,15 +16,17 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE}
+library(MicrobiomeBenchmarkData)
 fname <- system.file(
     'extdata/datasets.tsv', package = 'MicrobiomeBenchmarkData'
 )
 datasets <- read.table(
     fname, header = TRUE, sep = '\t', check.names = FALSE
 )
+data('sampleMetadata')
 PMID <- dplyr::distinct(
-    MicrobiomeBenchmarkData::sampleMetadata[, c('dataset', 'pmid')]
+    sampleMetadata[, c('dataset', 'pmid')]
 )
 datasets <- dplyr::left_join(datasets, PMID, by = c('Dataset' = 'dataset'))
 datasets <- dplyr::rename(datasets, PMID = pmid)

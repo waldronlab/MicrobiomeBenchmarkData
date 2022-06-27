@@ -110,7 +110,7 @@ removeCache <- function() {
 .assembleTreeSummarizedExperiment <- function(x) {
     dat_name <- x
 
-    col_data <- sampleMetadata %>%
+    col_data <- MicrobiomeBenchmarkData::sampleMetadata %>%
         dplyr::filter(
             .data[["dataset"]] == .env[["dat_name"]]
         ) %>%
