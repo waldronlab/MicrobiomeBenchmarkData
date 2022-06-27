@@ -111,29 +111,29 @@
 </h2>
 <p>MicrobiomeBenchmarkData should be available through the BioConductor project.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># if (!"BiocManager" %in% installed.packages()[,"Package"])</span>
-<span class="co"># install.packages("BiocManager")</span>
-
-<span class="co">## Release version</span>
-<span class="co"># BiocManager::install("MicrobiomeBenchmarkData")</span>
-
-<span class="co">## Development version</span>
-<span class="co"># BiocManager::install("waldronlab/MicrobiomeBenchmarkData", build_vignettes = TRUE)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># if (!"BiocManager" %in% installed.packages()[,"Package"])</span></span>
+<span><span class="co"># install.packages("BiocManager")</span></span>
+<span></span>
+<span><span class="co">## Release version</span></span>
+<span><span class="co"># BiocManager::install("MicrobiomeBenchmarkData")</span></span>
+<span></span>
+<span><span class="co">## Development version</span></span>
+<span><span class="co"># BiocManager::install("waldronlab/MicrobiomeBenchmarkData", build_vignettes = TRUE)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/MicrobiomeBenchmarkData" class="external-link">MicrobiomeBenchmarkData</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/MicrobiomeBenchmarkData" class="external-link">MicrobiomeBenchmarkData</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="sample-metadata">Sample metadata<a class="anchor" aria-label="anchor" href="#sample-metadata"></a>
 </h2>
 <p>All sample metadata is merged into a single data frame and provided as data object:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">'sampleMetadata'</span><span class="op">)</span>
-<span class="co">## Get columns present in all samples</span>
-<span class="va">sample_metadata</span> <span class="op">&lt;-</span> <span class="va">sampleMetadata</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-    <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">discard</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-    <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
-<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">sample_metadata</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">'sampleMetadata'</span><span class="op">)</span></span>
+<span><span class="co">## Get columns present in all samples</span></span>
+<span><span class="va">sample_metadata</span> <span class="op">&lt;-</span> <span class="va">sampleMetadata</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">discard</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">sample_metadata</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
 <col width="25%">
@@ -220,85 +220,85 @@
 </h3>
 <p>If no arguments are provided, the list of available datasets is printed on screen and returned invisiby as a character vector:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dats</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getDataset.html">getDataset</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; 1 HMP_2012_16S_gingival_V13</span>
-<span class="co">#&gt; 2 HMP_2012_16S_gingival_V35</span>
-<span class="co">#&gt; 3 HMP_2012_16S_gingival_V35_subset</span>
-<span class="co">#&gt; 4 HMP_2012_WMS_gingival</span>
-<span class="co">#&gt; 5 Stammler_2016_16S_spikein</span>
-<span class="co">#&gt; 6 Ravel_2011_16S_BV</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Use vignette('datasets', package = 'MicrobiomeBenchmarkData') for a detailed description of the datasets.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Use getDataset(dryrun = FALSE) to import all of the datasets.</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dats</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getDataset.html">getDataset</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 1 HMP_2012_16S_gingival_V13</span></span>
+<span><span class="co">#&gt; 2 HMP_2012_16S_gingival_V35</span></span>
+<span><span class="co">#&gt; 3 HMP_2012_16S_gingival_V35_subset</span></span>
+<span><span class="co">#&gt; 4 HMP_2012_WMS_gingival</span></span>
+<span><span class="co">#&gt; 5 Stammler_2016_16S_spikein</span></span>
+<span><span class="co">#&gt; 6 Ravel_2011_16S_BV</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Use vignette('datasets', package = 'MicrobiomeBenchmarkData') for a detailed description of the datasets.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Use getDataset(dryrun = FALSE) to import all of the datasets.</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dats</span>
-<span class="co">#&gt; [1] "HMP_2012_16S_gingival_V13"        "HMP_2012_16S_gingival_V35"       </span>
-<span class="co">#&gt; [3] "HMP_2012_16S_gingival_V35_subset" "HMP_2012_WMS_gingival"           </span>
-<span class="co">#&gt; [5] "Stammler_2016_16S_spikein"        "Ravel_2011_16S_BV"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dats</span></span>
+<span><span class="co">#&gt; [1] "HMP_2012_16S_gingival_V13"        "HMP_2012_16S_gingival_V35"       </span></span>
+<span><span class="co">#&gt; [3] "HMP_2012_16S_gingival_V35_subset" "HMP_2012_WMS_gingival"           </span></span>
+<span><span class="co">#&gt; [5] "Stammler_2016_16S_spikein"        "Ravel_2011_16S_BV"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="access-a-single-dataset">Access a single dataset<a class="anchor" aria-label="anchor" href="#access-a-single-dataset"></a>
 </h3>
 <p>In order to import a dataset, the <code>getDataset</code> function must be used with the name of the dataset as the first argument (<code>x</code>) and the <code>dryrun</code> argument set to <code>FALSE</code>. The output is a list vector with the dataset imported as a TreeSummarizedExperiment object.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tse</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getDataset.html">getDataset</a></span><span class="op">(</span><span class="st">'HMP_2012_16S_gingival_V35_subset'</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; Finished HMP_2012_16S_gingival_V35_subset.</span>
-<span class="va">tse</span>
-<span class="co">#&gt; class: TreeSummarizedExperiment </span>
-<span class="co">#&gt; dim: 892 76 </span>
-<span class="co">#&gt; metadata(0):</span>
-<span class="co">#&gt; assays(1): counts</span>
-<span class="co">#&gt; rownames(892): OTU_97.31247 OTU_97.44487 ... OTU_97.45365 OTU_97.45307</span>
-<span class="co">#&gt; rowData names(7): kingdom phylum ... genus taxon_annotation</span>
-<span class="co">#&gt; colnames(76): 700023057 700023179 ... 700114009 700114338</span>
-<span class="co">#&gt; colData names(13): dataset subject_id ... sequencing_method</span>
-<span class="co">#&gt;   variable_region_16s</span>
-<span class="co">#&gt; reducedDimNames(0):</span>
-<span class="co">#&gt; mainExpName: NULL</span>
-<span class="co">#&gt; altExpNames(0):</span>
-<span class="co">#&gt; rowLinks: a LinkDataFrame (892 rows)</span>
-<span class="co">#&gt; rowTree: 1 phylo tree(s) (892 leaves)</span>
-<span class="co">#&gt; colLinks: NULL</span>
-<span class="co">#&gt; colTree: NULL</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">tse</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getDataset.html">getDataset</a></span><span class="op">(</span><span class="st">'HMP_2012_16S_gingival_V35_subset'</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; Finished HMP_2012_16S_gingival_V35_subset.</span></span>
+<span><span class="va">tse</span></span>
+<span><span class="co">#&gt; class: TreeSummarizedExperiment </span></span>
+<span><span class="co">#&gt; dim: 892 76 </span></span>
+<span><span class="co">#&gt; metadata(0):</span></span>
+<span><span class="co">#&gt; assays(1): counts</span></span>
+<span><span class="co">#&gt; rownames(892): OTU_97.31247 OTU_97.44487 ... OTU_97.45365 OTU_97.45307</span></span>
+<span><span class="co">#&gt; rowData names(7): kingdom phylum ... genus taxon_annotation</span></span>
+<span><span class="co">#&gt; colnames(76): 700023057 700023179 ... 700114009 700114338</span></span>
+<span><span class="co">#&gt; colData names(13): dataset subject_id ... sequencing_method</span></span>
+<span><span class="co">#&gt;   variable_region_16s</span></span>
+<span><span class="co">#&gt; reducedDimNames(0):</span></span>
+<span><span class="co">#&gt; mainExpName: NULL</span></span>
+<span><span class="co">#&gt; altExpNames(0):</span></span>
+<span><span class="co">#&gt; rowLinks: a LinkDataFrame (892 rows)</span></span>
+<span><span class="co">#&gt; rowTree: 1 phylo tree(s) (892 leaves)</span></span>
+<span><span class="co">#&gt; colLinks: NULL</span></span>
+<span><span class="co">#&gt; colTree: NULL</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="access-a-few-datasets">Access a few datasets<a class="anchor" aria-label="anchor" href="#access-a-few-datasets"></a>
 </h3>
 <p>Several datasets can be imported simultaneously by giving the names of the different datasets in a character vector:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">list_tse</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getDataset.html">getDataset</a></span><span class="op">(</span><span class="va">dats</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt; Finished HMP_2012_16S_gingival_V35.</span>
-<span class="co">#&gt; Finished HMP_2012_16S_gingival_V35_subset.</span>
-<span class="co">#&gt; Finished HMP_2012_WMS_gingival.</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">list_tse</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt; List of 3</span>
-<span class="co">#&gt;  $ HMP_2012_16S_gingival_V35       :Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span>
-<span class="co">#&gt;  $ HMP_2012_16S_gingival_V35_subset:Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span>
-<span class="co">#&gt;  $ HMP_2012_WMS_gingival           :Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">list_tse</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getDataset.html">getDataset</a></span><span class="op">(</span><span class="va">dats</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Finished HMP_2012_16S_gingival_V35.</span></span>
+<span><span class="co">#&gt; Finished HMP_2012_16S_gingival_V35_subset.</span></span>
+<span><span class="co">#&gt; Finished HMP_2012_WMS_gingival.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">list_tse</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; List of 3</span></span>
+<span><span class="co">#&gt;  $ HMP_2012_16S_gingival_V35       :Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span></span>
+<span><span class="co">#&gt;  $ HMP_2012_16S_gingival_V35_subset:Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span></span>
+<span><span class="co">#&gt;  $ HMP_2012_WMS_gingival           :Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="access-all-of-the-datasets">Access all of the datasets<a class="anchor" aria-label="anchor" href="#access-all-of-the-datasets"></a>
 </h3>
 <p>If all of the datasets must to be imported, this can be done by providing the <code>dryrun = FALSE</code> argument alone.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mbd</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getDataset.html">getDataset</a></span><span class="op">(</span>dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt; Finished HMP_2012_16S_gingival_V13.</span>
-<span class="co">#&gt; Finished HMP_2012_16S_gingival_V35.</span>
-<span class="co">#&gt; Finished HMP_2012_16S_gingival_V35_subset.</span>
-<span class="co">#&gt; Finished HMP_2012_WMS_gingival.</span>
-<span class="co">#&gt; Warning: No taxonomy_tree available for Ravel_2011_16S_BV.</span>
-<span class="co">#&gt; Finished Ravel_2011_16S_BV.</span>
-<span class="co">#&gt; Warning: No taxonomy_tree available for Stammler_2016_16S_spikein.</span>
-<span class="co">#&gt; Finished Stammler_2016_16S_spikein.</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">mbd</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt; List of 6</span>
-<span class="co">#&gt;  $ HMP_2012_16S_gingival_V13       :Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span>
-<span class="co">#&gt;  $ HMP_2012_16S_gingival_V35       :Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span>
-<span class="co">#&gt;  $ HMP_2012_16S_gingival_V35_subset:Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span>
-<span class="co">#&gt;  $ HMP_2012_WMS_gingival           :Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span>
-<span class="co">#&gt;  $ Ravel_2011_16S_BV               :Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span>
-<span class="co">#&gt;  $ Stammler_2016_16S_spikein       :Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mbd</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getDataset.html">getDataset</a></span><span class="op">(</span>dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Finished HMP_2012_16S_gingival_V13.</span></span>
+<span><span class="co">#&gt; Finished HMP_2012_16S_gingival_V35.</span></span>
+<span><span class="co">#&gt; Finished HMP_2012_16S_gingival_V35_subset.</span></span>
+<span><span class="co">#&gt; Finished HMP_2012_WMS_gingival.</span></span>
+<span><span class="co">#&gt; Warning: No taxonomy_tree available for Ravel_2011_16S_BV.</span></span>
+<span><span class="co">#&gt; Finished Ravel_2011_16S_BV.</span></span>
+<span><span class="co">#&gt; Warning: No taxonomy_tree available for Stammler_2016_16S_spikein.</span></span>
+<span><span class="co">#&gt; Finished Stammler_2016_16S_spikein.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">mbd</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; List of 6</span></span>
+<span><span class="co">#&gt;  $ HMP_2012_16S_gingival_V13       :Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span></span>
+<span><span class="co">#&gt;  $ HMP_2012_16S_gingival_V35       :Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span></span>
+<span><span class="co">#&gt;  $ HMP_2012_16S_gingival_V35_subset:Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span></span>
+<span><span class="co">#&gt;  $ HMP_2012_WMS_gingival           :Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span></span>
+<span><span class="co">#&gt;  $ Ravel_2011_16S_BV               :Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span></span>
+<span><span class="co">#&gt;  $ Stammler_2016_16S_spikein       :Formal class 'TreeSummarizedExperiment' [package "TreeSummarizedExperiment"] with 14 slots</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -306,104 +306,104 @@
 </h2>
 <p>The biological annotations of each taxa are provided as a column in the <code>rowData</code> slot of the TreeSummarizedExperiment.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## In the case, the column is named as taxon_annotation </span>
-<span class="va">tse</span> <span class="op">&lt;-</span> <span class="va">mbd</span><span class="op">$</span><span class="va">HMP_2012_16S_gingival_V35_subset</span>
-<span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">rowData</a></span><span class="op">(</span><span class="va">tse</span><span class="op">)</span>
-<span class="co">#&gt; DataFrame with 892 rows and 7 columns</span>
-<span class="co">#&gt;                  kingdom      phylum       class           order</span>
-<span class="co">#&gt;              &lt;character&gt; &lt;character&gt; &lt;character&gt;     &lt;character&gt;</span>
-<span class="co">#&gt; OTU_97.31247    Bacteria  Firmicutes     Bacilli Lactobacillales</span>
-<span class="co">#&gt; OTU_97.44487    Bacteria  Firmicutes     Bacilli Lactobacillales</span>
-<span class="co">#&gt; OTU_97.34979    Bacteria  Firmicutes     Bacilli Lactobacillales</span>
-<span class="co">#&gt; OTU_97.34572    Bacteria  Firmicutes     Bacilli Lactobacillales</span>
-<span class="co">#&gt; OTU_97.42259    Bacteria  Firmicutes     Bacilli Lactobacillales</span>
-<span class="co">#&gt; ...                  ...         ...         ...             ...</span>
-<span class="co">#&gt; OTU_97.44294    Bacteria  Firmicutes     Bacilli Lactobacillales</span>
-<span class="co">#&gt; OTU_97.45429    Bacteria  Firmicutes     Bacilli Lactobacillales</span>
-<span class="co">#&gt; OTU_97.44375    Bacteria  Firmicutes     Bacilli Lactobacillales</span>
-<span class="co">#&gt; OTU_97.45365    Bacteria  Firmicutes     Bacilli Lactobacillales</span>
-<span class="co">#&gt; OTU_97.45307    Bacteria  Firmicutes     Bacilli Lactobacillales</span>
-<span class="co">#&gt;                        family         genus      taxon_annotation</span>
-<span class="co">#&gt;                   &lt;character&gt;   &lt;character&gt;           &lt;character&gt;</span>
-<span class="co">#&gt; OTU_97.31247 Streptococcaceae Streptococcus facultative_anaerobic</span>
-<span class="co">#&gt; OTU_97.44487 Streptococcaceae Streptococcus facultative_anaerobic</span>
-<span class="co">#&gt; OTU_97.34979 Streptococcaceae Streptococcus facultative_anaerobic</span>
-<span class="co">#&gt; OTU_97.34572 Streptococcaceae Streptococcus facultative_anaerobic</span>
-<span class="co">#&gt; OTU_97.42259 Streptococcaceae Streptococcus facultative_anaerobic</span>
-<span class="co">#&gt; ...                       ...           ...                   ...</span>
-<span class="co">#&gt; OTU_97.44294 Streptococcaceae Streptococcus facultative_anaerobic</span>
-<span class="co">#&gt; OTU_97.45429 Streptococcaceae Streptococcus facultative_anaerobic</span>
-<span class="co">#&gt; OTU_97.44375 Streptococcaceae Streptococcus facultative_anaerobic</span>
-<span class="co">#&gt; OTU_97.45365 Streptococcaceae Streptococcus facultative_anaerobic</span>
-<span class="co">#&gt; OTU_97.45307 Streptococcaceae Streptococcus facultative_anaerobic</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## In the case, the column is named as taxon_annotation </span></span>
+<span><span class="va">tse</span> <span class="op">&lt;-</span> <span class="va">mbd</span><span class="op">$</span><span class="va">HMP_2012_16S_gingival_V35_subset</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">rowData</a></span><span class="op">(</span><span class="va">tse</span><span class="op">)</span></span>
+<span><span class="co">#&gt; DataFrame with 892 rows and 7 columns</span></span>
+<span><span class="co">#&gt;                  kingdom      phylum       class           order</span></span>
+<span><span class="co">#&gt;              &lt;character&gt; &lt;character&gt; &lt;character&gt;     &lt;character&gt;</span></span>
+<span><span class="co">#&gt; OTU_97.31247    Bacteria  Firmicutes     Bacilli Lactobacillales</span></span>
+<span><span class="co">#&gt; OTU_97.44487    Bacteria  Firmicutes     Bacilli Lactobacillales</span></span>
+<span><span class="co">#&gt; OTU_97.34979    Bacteria  Firmicutes     Bacilli Lactobacillales</span></span>
+<span><span class="co">#&gt; OTU_97.34572    Bacteria  Firmicutes     Bacilli Lactobacillales</span></span>
+<span><span class="co">#&gt; OTU_97.42259    Bacteria  Firmicutes     Bacilli Lactobacillales</span></span>
+<span><span class="co">#&gt; ...                  ...         ...         ...             ...</span></span>
+<span><span class="co">#&gt; OTU_97.44294    Bacteria  Firmicutes     Bacilli Lactobacillales</span></span>
+<span><span class="co">#&gt; OTU_97.45429    Bacteria  Firmicutes     Bacilli Lactobacillales</span></span>
+<span><span class="co">#&gt; OTU_97.44375    Bacteria  Firmicutes     Bacilli Lactobacillales</span></span>
+<span><span class="co">#&gt; OTU_97.45365    Bacteria  Firmicutes     Bacilli Lactobacillales</span></span>
+<span><span class="co">#&gt; OTU_97.45307    Bacteria  Firmicutes     Bacilli Lactobacillales</span></span>
+<span><span class="co">#&gt;                        family         genus      taxon_annotation</span></span>
+<span><span class="co">#&gt;                   &lt;character&gt;   &lt;character&gt;           &lt;character&gt;</span></span>
+<span><span class="co">#&gt; OTU_97.31247 Streptococcaceae Streptococcus facultative_anaerobic</span></span>
+<span><span class="co">#&gt; OTU_97.44487 Streptococcaceae Streptococcus facultative_anaerobic</span></span>
+<span><span class="co">#&gt; OTU_97.34979 Streptococcaceae Streptococcus facultative_anaerobic</span></span>
+<span><span class="co">#&gt; OTU_97.34572 Streptococcaceae Streptococcus facultative_anaerobic</span></span>
+<span><span class="co">#&gt; OTU_97.42259 Streptococcaceae Streptococcus facultative_anaerobic</span></span>
+<span><span class="co">#&gt; ...                       ...           ...                   ...</span></span>
+<span><span class="co">#&gt; OTU_97.44294 Streptococcaceae Streptococcus facultative_anaerobic</span></span>
+<span><span class="co">#&gt; OTU_97.45429 Streptococcaceae Streptococcus facultative_anaerobic</span></span>
+<span><span class="co">#&gt; OTU_97.44375 Streptococcaceae Streptococcus facultative_anaerobic</span></span>
+<span><span class="co">#&gt; OTU_97.45365 Streptococcaceae Streptococcus facultative_anaerobic</span></span>
+<span><span class="co">#&gt; OTU_97.45307 Streptococcaceae Streptococcus facultative_anaerobic</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="cache">Cache<a class="anchor" aria-label="anchor" href="#cache"></a>
 </h2>
 <p>The datasets are cached so they’re only downloaded once. The cache and all of the files contained in it can be removed with the <code>removeCache</code> function.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># removeCache()</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># removeCache()</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="session-information">Session information<a class="anchor" aria-label="anchor" href="#session-information"></a>
 </h2>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; R version 4.2.0 (2022-04-22)</span>
-<span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span>
-<span class="co">#&gt; Running under: Ubuntu 20.04.4 LTS</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Matrix products: default</span>
-<span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0</span>
-<span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; locale:</span>
-<span class="co">#&gt;  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       </span>
-<span class="co">#&gt;  [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   </span>
-<span class="co">#&gt;  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          </span>
-<span class="co">#&gt; [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; attached base packages:</span>
-<span class="co">#&gt; [1] stats4    stats     graphics  grDevices utils     datasets  methods  </span>
-<span class="co">#&gt; [8] base     </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt;  [1] purrr_0.3.4                    MicrobiomeBenchmarkData_0.99.0</span>
-<span class="co">#&gt;  [3] TreeSummarizedExperiment_2.4.0 Biostrings_2.64.0             </span>
-<span class="co">#&gt;  [5] XVector_0.36.0                 SingleCellExperiment_1.18.0   </span>
-<span class="co">#&gt;  [7] SummarizedExperiment_1.26.1    Biobase_2.56.0                </span>
-<span class="co">#&gt;  [9] GenomicRanges_1.48.0           GenomeInfoDb_1.32.2           </span>
-<span class="co">#&gt; [11] IRanges_2.30.0                 S4Vectors_0.34.0              </span>
-<span class="co">#&gt; [13] BiocGenerics_0.42.0            MatrixGenerics_1.8.0          </span>
-<span class="co">#&gt; [15] matrixStats_0.62.0             BiocStyle_2.24.0              </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;  [1] nlme_3.1-157           bitops_1.0-7           fs_1.5.2              </span>
-<span class="co">#&gt;  [4] bit64_4.0.5            filelock_1.0.2         httr_1.4.3            </span>
-<span class="co">#&gt;  [7] rprojroot_2.0.3        tools_4.2.0            bslib_0.3.1           </span>
-<span class="co">#&gt; [10] utf8_1.2.2             R6_2.5.1               DBI_1.1.3             </span>
-<span class="co">#&gt; [13] lazyeval_0.2.2         tidyselect_1.1.2       bit_4.0.4             </span>
-<span class="co">#&gt; [16] curl_4.3.2             compiler_4.2.0         textshaping_0.3.6     </span>
-<span class="co">#&gt; [19] cli_3.3.0              desc_1.4.1             DelayedArray_0.22.0   </span>
-<span class="co">#&gt; [22] bookdown_0.27          sass_0.4.1             rappdirs_0.3.3        </span>
-<span class="co">#&gt; [25] pkgdown_2.0.5          systemfonts_1.0.4      stringr_1.4.0         </span>
-<span class="co">#&gt; [28] digest_0.6.29          yulab.utils_0.0.4      rmarkdown_2.14        </span>
-<span class="co">#&gt; [31] pkgconfig_2.0.3        htmltools_0.5.2        highr_0.9             </span>
-<span class="co">#&gt; [34] dbplyr_2.2.0           fastmap_1.1.0          rlang_1.0.2           </span>
-<span class="co">#&gt; [37] RSQLite_2.2.14         jquerylib_0.1.4        generics_0.1.2        </span>
-<span class="co">#&gt; [40] jsonlite_1.8.0         BiocParallel_1.30.3    dplyr_1.0.9           </span>
-<span class="co">#&gt; [43] RCurl_1.98-1.7         magrittr_2.0.3         GenomeInfoDbData_1.2.8</span>
-<span class="co">#&gt; [46] Matrix_1.4-1           Rcpp_1.0.8.3           fansi_1.0.3           </span>
-<span class="co">#&gt; [49] ape_5.6-2              lifecycle_1.0.1        stringi_1.7.6         </span>
-<span class="co">#&gt; [52] yaml_2.3.5             zlibbioc_1.42.0        BiocFileCache_2.4.0   </span>
-<span class="co">#&gt; [55] grid_4.2.0             blob_1.2.3             parallel_4.2.0        </span>
-<span class="co">#&gt; [58] crayon_1.5.1           lattice_0.20-45        knitr_1.39            </span>
-<span class="co">#&gt; [61] pillar_1.7.0           codetools_0.2-18       glue_1.6.2            </span>
-<span class="co">#&gt; [64] evaluate_0.15          BiocManager_1.30.18    vctrs_0.4.1           </span>
-<span class="co">#&gt; [67] treeio_1.20.0          tidyr_1.2.0            assertthat_0.2.1      </span>
-<span class="co">#&gt; [70] cachem_1.0.6           xfun_0.31              tidytree_0.3.9        </span>
-<span class="co">#&gt; [73] ragg_1.2.2             tibble_3.1.7           memoise_2.0.1         </span>
-<span class="co">#&gt; [76] ellipsis_0.3.2</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; R version 4.2.0 (2022-04-22)</span></span>
+<span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
+<span><span class="co">#&gt; Running under: Ubuntu 20.04.4 LTS</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Matrix products: default</span></span>
+<span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0</span></span>
+<span><span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; locale:</span></span>
+<span><span class="co">#&gt;  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       </span></span>
+<span><span class="co">#&gt;  [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   </span></span>
+<span><span class="co">#&gt;  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          </span></span>
+<span><span class="co">#&gt; [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; attached base packages:</span></span>
+<span><span class="co">#&gt; [1] stats4    stats     graphics  grDevices utils     datasets  methods  </span></span>
+<span><span class="co">#&gt; [8] base     </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; other attached packages:</span></span>
+<span><span class="co">#&gt;  [1] purrr_0.3.4                    MicrobiomeBenchmarkData_0.99.0</span></span>
+<span><span class="co">#&gt;  [3] TreeSummarizedExperiment_2.4.0 Biostrings_2.64.0             </span></span>
+<span><span class="co">#&gt;  [5] XVector_0.36.0                 SingleCellExperiment_1.18.0   </span></span>
+<span><span class="co">#&gt;  [7] SummarizedExperiment_1.26.1    Biobase_2.56.0                </span></span>
+<span><span class="co">#&gt;  [9] GenomicRanges_1.48.0           GenomeInfoDb_1.32.2           </span></span>
+<span><span class="co">#&gt; [11] IRanges_2.30.0                 S4Vectors_0.34.0              </span></span>
+<span><span class="co">#&gt; [13] BiocGenerics_0.42.0            MatrixGenerics_1.8.0          </span></span>
+<span><span class="co">#&gt; [15] matrixStats_0.62.0             BiocStyle_2.24.0              </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span><span class="co">#&gt;  [1] nlme_3.1-157           bitops_1.0-7           fs_1.5.2              </span></span>
+<span><span class="co">#&gt;  [4] bit64_4.0.5            filelock_1.0.2         httr_1.4.3            </span></span>
+<span><span class="co">#&gt;  [7] rprojroot_2.0.3        tools_4.2.0            bslib_0.3.1           </span></span>
+<span><span class="co">#&gt; [10] utf8_1.2.2             R6_2.5.1               DBI_1.1.3             </span></span>
+<span><span class="co">#&gt; [13] lazyeval_0.2.2         tidyselect_1.1.2       bit_4.0.4             </span></span>
+<span><span class="co">#&gt; [16] curl_4.3.2             compiler_4.2.0         textshaping_0.3.6     </span></span>
+<span><span class="co">#&gt; [19] cli_3.3.0              desc_1.4.1             DelayedArray_0.22.0   </span></span>
+<span><span class="co">#&gt; [22] bookdown_0.27          sass_0.4.1             rappdirs_0.3.3        </span></span>
+<span><span class="co">#&gt; [25] pkgdown_2.0.5          systemfonts_1.0.4      stringr_1.4.0         </span></span>
+<span><span class="co">#&gt; [28] digest_0.6.29          yulab.utils_0.0.4      rmarkdown_2.14        </span></span>
+<span><span class="co">#&gt; [31] pkgconfig_2.0.3        htmltools_0.5.2        highr_0.9             </span></span>
+<span><span class="co">#&gt; [34] dbplyr_2.2.0           fastmap_1.1.0          rlang_1.0.2           </span></span>
+<span><span class="co">#&gt; [37] RSQLite_2.2.14         jquerylib_0.1.4        generics_0.1.2        </span></span>
+<span><span class="co">#&gt; [40] jsonlite_1.8.0         BiocParallel_1.30.3    dplyr_1.0.9           </span></span>
+<span><span class="co">#&gt; [43] RCurl_1.98-1.7         magrittr_2.0.3         GenomeInfoDbData_1.2.8</span></span>
+<span><span class="co">#&gt; [46] Matrix_1.4-1           Rcpp_1.0.8.3           fansi_1.0.3           </span></span>
+<span><span class="co">#&gt; [49] ape_5.6-2              lifecycle_1.0.1        stringi_1.7.6         </span></span>
+<span><span class="co">#&gt; [52] yaml_2.3.5             zlibbioc_1.42.0        BiocFileCache_2.4.0   </span></span>
+<span><span class="co">#&gt; [55] grid_4.2.0             blob_1.2.3             parallel_4.2.0        </span></span>
+<span><span class="co">#&gt; [58] crayon_1.5.1           lattice_0.20-45        knitr_1.39            </span></span>
+<span><span class="co">#&gt; [61] pillar_1.7.0           codetools_0.2-18       glue_1.6.2            </span></span>
+<span><span class="co">#&gt; [64] evaluate_0.15          BiocManager_1.30.18    vctrs_0.4.1           </span></span>
+<span><span class="co">#&gt; [67] treeio_1.20.0          tidyr_1.2.0            assertthat_0.2.1      </span></span>
+<span><span class="co">#&gt; [70] cachem_1.0.6           xfun_0.31              tidytree_0.3.9        </span></span>
+<span><span class="co">#&gt; [73] ragg_1.2.2             tibble_3.1.7           memoise_2.0.1         </span></span>
+<span><span class="co">#&gt; [76] ellipsis_0.3.2</span></span></code></pre></div>
 </div>
   </div>
 

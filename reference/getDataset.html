@@ -66,7 +66,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">getDataset</span><span class="op">(</span><span class="va">x</span>, dryrun <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getDataset</span><span class="op">(</span><span class="va">x</span>, dryrun <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -93,8 +93,9 @@ TreeSummarizedExperiment datasets indicated in the argument 'x'.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="va">datasets_names</span> <span class="op">&lt;-</span> <span class="fu">getDataset</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Example 1</span></span></span>
+<span class="r-in"><span><span class="va">datasets_names</span> <span class="op">&lt;-</span> <span class="fu">getDataset</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 1 HMP_2012_16S_gingival_V13</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 2 HMP_2012_16S_gingival_V35</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 3 HMP_2012_16S_gingival_V35_subset</span>
@@ -105,9 +106,32 @@ TreeSummarizedExperiment datasets indicated in the argument 'x'.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Use vignette('datasets', package = 'MicrobiomeBenchmarkData') for a detailed description of the datasets.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Use getDataset(dryrun = FALSE) to import all of the datasets.</span>
-<span class="r-in"><span class="va">datasets</span> <span class="op">&lt;-</span> <span class="fu">getDataset</span><span class="op">(</span><span class="st">"HMP_2012_16S_gingival_V35_subset"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">datasets_names</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "HMP_2012_16S_gingival_V13"        "HMP_2012_16S_gingival_V35"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "HMP_2012_16S_gingival_V35_subset" "HMP_2012_WMS_gingival"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "Stammler_2016_16S_spikein"        "Ravel_2011_16S_BV"               </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Example 2</span></span></span>
+<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="fu">getDataset</span><span class="op">(</span><span class="st">"HMP_2012_16S_gingival_V35_subset"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished HMP_2012_16S_gingival_V35_subset.</span>
-<span class="r-in"></span>
+<span class="r-in"><span><span class="va">dataset</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> class: TreeSummarizedExperiment </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dim: 892 76 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> metadata(0):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> assays(1): counts</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> rownames(892): OTU_97.31247 OTU_97.44487 ... OTU_97.45365 OTU_97.45307</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> rowData names(7): kingdom phylum ... genus taxon_annotation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> colnames(76): 700023057 700023179 ... 700114009 700114338</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> colData names(13): dataset subject_id ... sequencing_method</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   variable_region_16s</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> reducedDimNames(0):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mainExpName: NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> altExpNames(0):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> rowLinks: a LinkDataFrame (892 rows)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> rowTree: 1 phylo tree(s) (892 leaves)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> colLinks: NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> colTree: NULL</span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
