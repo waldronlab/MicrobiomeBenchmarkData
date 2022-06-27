@@ -1,0 +1,7 @@
+Dataset	Dimensions	Body site	Contrasts	Biological ground truth
+HMP_2012_16S_gingival_V13	33127 x 311	Gingiva	Subgingival vs Supragingival plaque.	Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.
+HMP_2012_16S_gingival_V35	17949 x 311	Gingiva	Subgingival vs Supragingival plaque.	Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.
+HMP_2012_16S_gingival_V35_subset	892 x 76	Gingiva	Subgingival vs Supragingival plaque.	Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.
+HMP_2012_WMS_gingival	235 x 16	Gingiva	Subgingival vs Supragingival plaque.	Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.
+Stammler_2016_16S_spikein	247 x 394	Stool	Pre-ASCT (allogeneic stem cell transplantation) vs 14 days after treatment.	 1) Unchanged abundances of Salinibacter ruber (extreme halophilic), Rhizobium radiobacter (found in soils and plants), and Alicyclobacillus acidiphilu (thermo-acidophilic) 2) Increase of Enterococcus after ASCT.
+Ravel_2011_16S_BV	4036 x 17	Vagina	Healthy vs bacterial vaginosis	Decrease of Lactobacillus in samples with high Nugent scores (bacterial vaginosis) and increase of bacteria isolated during bacterial vaginosis.
