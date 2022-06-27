@@ -9,11 +9,13 @@ Description: The MicrobiomeBenchmarkData package provides functionality to
     only datasets suitable for benchmarking of differential abundance
     methods are alvailable.
 Authors@R: 
-    person(given = "Samuel David",
-           family = "Gamboa Tuz",
-           role = c("aut", "cre"),
-           email = "Samuel.Gamboa.Tuz@gmail.com",
-           comment = c(ORCID = "0000-0002-6863-7943"))
+    c(
+        person(
+            given = "Samuel David", family = "Gamboa Tuz", 
+            role = c("aut", "cre"),
+            email = "Samuel.Gamboa.Tuz@gmail.com",
+            comment = c(ORCID = "0000-0002-6863-7943"))
+    )
 License: Artistic-2.0
 LazyData: true
 Depends: 
