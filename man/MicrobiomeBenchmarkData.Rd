@@ -6,5 +6,5 @@
 \title{MicrobiomeBenchmarkData}
 \description{
 The \code{MicrobiomeBenchmarkData} provide functions for accessing
-various datasets.
+various microbiome datasets with biological ground truth.
 }

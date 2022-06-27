@@ -12,6 +12,6 @@ sampleMetadata
 }
 \description{
 A data frame with the combined metadata of all of the samples in the
-datasets provided through the MicrobiomeBenchmarkData.
+datasets provided through the MicrobiomeBenchmarkData package.
 }
 \keyword{datasets}
