@@ -1,0 +1,110 @@
+---
+title: "Recalibration of the count matrix of the Stammler_2016_16S_spikein dataset"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{recalibrare_spikein_data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+One of the main characteristics of the Stammler_2016_16S_spikein
+dataset is the presence of spike-in bacteria with a known fixed amount of 
+bacterial cells. These known loads of bacteria can be used to recalibrate the
+raw counts of the matrix and obtain recalibrated absolute counts. In this 
+vignette, we provide an example of how to recalibrate the counts of the count
+matrix based on the read counts of *Salinibacter ruber*. This procedure is
+referred to as  Spike-in-based calibration to total microbial load (SCML) in 
+[Sammler et al., 2016](https://doi.org/10.1186/s40168-016-0175-0).
+
+```{r setup, message=FALSE}
+library(MicrobiomeBenchmarkData)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+```
+
+## Import data
+
+```{r}
+tse <- getDataset('Stammler_2016_16S_spikein', dryrun = FALSE)[[1]]
+counts <- assay(tse)
+```
+
+## Ids of the spike-in bacteria
+
+Identifiers of the spiked-in bacteria have the suffix 'XXXX'.
+
+| Bacteria | ID | Load |
+| -------- | -- | ---- |
+| *Salinibacter ruber* | AF323500XXXX | 3.0 x 10<sup>8</sup> |
+| *Rhizobium radiobacter* | AB247615XXXX | 5.0 x 10<sup>8</sup> |
+| *Alicyclobacillus acidiphilus* | AB076660XXXX | 1.0 x 10<sup>8</sup> |
+
+
+## Recalibrate based on *Salinibacter ruber* abundance.
+
+This recalibration is based on the original article. The only difference is that
+the numbers have been rounded up to obtain counts.
+
+```{r}
+## AF323500XXXX is the unique OTU corresponding to S. ruber
+s_ruber <- counts['AF323500XXXX', ]
+size_factor <- s_ruber/mean(s_ruber)
+
+SCML_data <- counts 
+for(i in seq(ncol(SCML_data))){
+    SCML_data[,i] <- round(SCML_data[,i] / size_factor[i])
+}
+```
+
+
+Brief comparison of counts
+
+```{r, fig.width=7}
+
+no_cal <- counts %>% 
+    colSums() %>% 
+    as.data.frame() %>% 
+    tibble::rownames_to_column(var = 'sample_id') %>% 
+    magrittr::set_colnames(c('sample_id', 'colSum')) %>% 
+    mutate(calibrated = 'no') %>% 
+    as_tibble()
+
+cal <-  SCML_data %>% 
+    colSums() %>% 
+    as.data.frame() %>% 
+    tibble::rownames_to_column(var = 'sample_id') %>% 
+    magrittr::set_colnames(c('sample_id', 'colSum')) %>% 
+    mutate(calibrated = 'yes') %>% 
+    as_tibble()
+
+data <- bind_rows(no_cal, cal)
+
+data %>% 
+    ggplot(aes(sample_id, colSum)) + 
+    geom_col(aes(fill = calibrated), position = 'dodge') +
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+```
+
+The counts matrix can be replaced in the original tse in order to preserve the
+same metadata.
+
+```{r}
+assay(tse) <- SCML_data
+tse
+```
+
+
+
+
+
+
