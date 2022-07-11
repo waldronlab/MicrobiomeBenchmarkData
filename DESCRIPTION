@@ -6,8 +6,8 @@ Description: The MicrobiomeBenchmarkData package provides functionality to
     have some biological truth, which allows to have expected results for
     comparison. The datasets come from various published sources and
     are provided as TreeSummarizedExperiment objects. Currently, 
-    only datasets suitable for benchmarking of differential abundance
-    methods are alvailable.
+    only datasets suitable for benchmarking differential abundance
+    methods are available.
 Authors@R: 
     c(
         person(
