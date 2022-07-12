@@ -101,7 +101,6 @@ removeCache <- function() {
 #' @importFrom utils read.table
 #' @importFrom ape read.tree
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
-#' @importFrom magrittr %>%
 #' @importFrom rlang .data
 #' @importFrom rlang .env
 #'
@@ -110,27 +109,25 @@ removeCache <- function() {
 .assembleTreeSummarizedExperiment <- function(x) {
     dat_name <- x
 
-    col_data <- MicrobiomeBenchmarkData::sampleMetadata %>%
-        dplyr::filter(
-            .data[["dataset"]] == .env[["dat_name"]]
-        ) %>%
-        purrr::keep(~ all(!is.na(.x))) %>%
-        tibble::column_to_rownames(var = "sample_id") %>%
-        as.data.frame() %>%
+    col_data <- MicrobiomeBenchmarkData::sampleMetadata |>
+        dplyr::filter(.data[["dataset"]] == .env[["dat_name"]]) |>
+        purrr::keep(~ all(!is.na(.x))) |>
+        tibble::column_to_rownames(var = "sample_id") |>
+        as.data.frame() |>
         S4Vectors::DataFrame()
 
-    count_matrix <- .getResourcePath(x, "_count_matrix") %>%
+    count_matrix <- .getResourcePath(x, "_count_matrix") |>
         utils::read.table(
             header = TRUE, row.names = 1, sep = "\t", check.names = FALSE,
             quote = ""
-        ) %>%
+        ) |>
         as.matrix()
 
-    row_data <- .getResourcePath(x, "_taxonomy_table") %>%
+    row_data <- .getResourcePath(x, "_taxonomy_table") |>
         utils::read.table(
             header = TRUE, row.names = 1, sep = "\t", check.names = FALSE,
             quote = ""
-        ) %>%
+        ) |>
         S4Vectors::DataFrame()
 
     row_tree_path <- .getResourcePath(x, "_taxonomy_tree")
@@ -186,7 +183,6 @@ removeCache <- function() {
 #' @importFrom BiocFileCache bfcadd
 #' @importFrom dplyr pull
 #' @importFrom dplyr filter
-#' @importFrom magrittr %>%
 #' @importFrom rlang .data
 #'
 #' @keywords internal
@@ -194,8 +190,8 @@ removeCache <- function() {
 .getResourcePath <- function(resource, suffix) {
     resource_name <- paste0(resource, suffix)
 
-    resource_url <- metadata %>%
-        dplyr::filter(.data[["Title"]] == .env[["resource_name"]]) %>%
+    resource_url <- metadata |>
+        dplyr::filter(.data[["Title"]] == .env[["resource_name"]]) |>
         dplyr::pull(.data[["SourceUrl"]])
 
     if (!length(resource_url)) {

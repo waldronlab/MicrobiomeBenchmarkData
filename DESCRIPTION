@@ -25,7 +25,6 @@ Depends:
 Imports:
     dplyr,
     BiocFileCache,
-    magrittr,
     tools,
     S4Vectors,
     purrr,
