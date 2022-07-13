@@ -17,6 +17,6 @@ A TreeSummarizedExperiment
 \description{
 \code{.assembleTreeSummarizedExperiment} assembles a TreeSummarizedDataset
 taking as input the name of the dataset and the URL. This is a helper
-function for the \code{\link{getDataset}} function.
+function for the \code{\link{getBenchmarkData}} function.
 }
 \keyword{internal}

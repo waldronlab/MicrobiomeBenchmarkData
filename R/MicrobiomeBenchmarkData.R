@@ -1,7 +1,7 @@
 
 #' Get dataset
 #'
-#' \code{getDataset} imports datasets as TreeSummarizedExperiment objects.
+#' \code{getBenchmarkData} imports datasets as TreeSummarizedExperiment objects.
 #'
 #' @param x A character vector with the name(s) of the dataset(s). If empty
 #' and dryrun = TRUE, it returns a message with the names of the available
@@ -19,14 +19,14 @@
 #' @examples
 #'
 #' ## Example 1
-#' datasets_names <- getDataset()
+#' datasets_names <- getBenchmarkData()
 #' datasets_names
 #'
 #' ## Example 2
-#' dataset <- getDataset("HMP_2012_16S_gingival_V35_subset", dryrun = FALSE)
+#' dataset <- getBenchmarkData("HMP_2012_16S_gingival_V35_subset", dryrun = FALSE)
 #' dataset[[1]]
 #'
-getDataset <- function(x, dryrun = TRUE) {
+getBenchmarkData <- function(x, dryrun = TRUE) {
     if (missing(x)) {
         if (isTRUE(dryrun)) {
             n_titles <- seq_along(titles)
@@ -35,7 +35,7 @@ getDataset <- function(x, dryrun = TRUE) {
                 "\n\nUse",
                 " vignette('datasets', package = 'MicrobiomeBenchmarkData')",
                 " for a detailed description of the datasets.",
-                "\n\nUse getDataset(dryrun = FALSE)",
+                "\n\nUse getBenchmarkData(dryrun = FALSE)",
                 " to import all of the datasets."
             )
             return(invisible(titles))
@@ -86,7 +86,7 @@ removeCache <- function() {
 #'
 #' \code{.assembleTreeSummarizedExperiment} assembles a TreeSummarizedDataset
 #' taking as input the name of the dataset and the URL. This is a helper
-#' function for the \code{\link{getDataset}} function.
+#' function for the \code{\link{getBenchmarkData}} function.
 #'
 #' @param dat_name A character string with the name of the dataset.
 #' @param dat_url A character string with the URL from Zenodo.
