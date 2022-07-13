@@ -1,8 +1,14 @@
 ---
 title: "Datasets in MicrobiomeBenchmarkData"
+author:
+  - name: "Samuel D. Gamboa-Tuz"
+    email: "Samuel.Gamboa.Tuz@gmail.com"
+package: MicrobiomeBenchmarkData
 output: 
   BiocStyle::html_document:
     toc: true
+abstract: >
+  Document summary
 vignette: >
   %\VignetteIndexEntry{Datasets in MicrobiomeBenchmarkData}
   %\VignetteEngine{knitr::rmarkdown}
