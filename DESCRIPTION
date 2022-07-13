@@ -37,7 +37,10 @@ Suggests:
     knitr,
     BiocStyle,
     testthat (>= 3.0.0),
-    mia
+    mia,
+    magrittr,
+    ggplot2,
+    tidyr
 biocViews:
     ExperimentData,
     MicrobiomeData,
