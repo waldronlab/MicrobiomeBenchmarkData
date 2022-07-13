@@ -85,7 +85,10 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Recalibration of the count matrix of the Stammler_2016_16S_spikein dataset</h1>
-            
+                        <h4 data-toc-skip class="author">Samuel D. Gamboa-Tuz</h4>
+                  <a class="author_email" href="mailto:#"></a><a href="mailto:Samuel.Gamboa.Tuz@gmail.com" class="email">Samuel.Gamboa.Tuz@gmail.com</a>
+      
+                  
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/MicrobiomeBenchmarkData/blob/HEAD/vignettes/recalibrare_spikein_data.Rmd" class="external-link"><code>vignettes/recalibrare_spikein_data.Rmd</code></a></small>
       <div class="hidden name"><code>recalibrare_spikein_data.Rmd</code></div>
@@ -93,6 +96,10 @@
     </div>
 
     
+        <div class="abstract">
+      <p class="abstract">Abstract</p>
+      <p>Document summary</p>
+    </div>
     
 <p>One of the main characteristics of the Stammler_2016_16S_spikein dataset is the presence of spike-in bacteria with a known fixed amount of bacterial cells. These known loads of bacteria can be used to recalibrate the raw counts of the matrix and obtain recalibrated absolute counts. In this vignette, we provide an example of how to recalibrate the counts of the count matrix based on the read counts of <em>Salinibacter ruber</em>. This procedure is referred to as Spike-in-based calibration to total microbial load (SCML) in <a href="https://doi.org/10.1186/s40168-016-0175-0" class="external-link">Sammler et al., 2016</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
