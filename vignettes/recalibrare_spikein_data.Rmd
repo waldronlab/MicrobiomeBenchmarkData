@@ -33,7 +33,7 @@ library(tidyr)
 ## Import data
 
 ```{r}
-tse <- getDataset('Stammler_2016_16S_spikein', dryrun = FALSE)[[1]]
+tse <- getBenchmarkData('Stammler_2016_16S_spikein', dryrun = FALSE)[[1]]
 counts <- assay(tse)
 ```
 
@@ -69,25 +69,25 @@ Brief comparison of counts
 
 ```{r, fig.width=7}
 
-no_cal <- counts %>% 
-    colSums() %>% 
-    as.data.frame() %>% 
-    tibble::rownames_to_column(var = 'sample_id') %>% 
-    magrittr::set_colnames(c('sample_id', 'colSum')) %>% 
-    mutate(calibrated = 'no') %>% 
+no_cal <- counts |> 
+    colSums() |> 
+    as.data.frame() |> 
+    tibble::rownames_to_column(var = 'sample_id') |> 
+    magrittr::set_colnames(c('sample_id', 'colSum')) |> 
+    mutate(calibrated = 'no') |> 
     as_tibble()
 
-cal <-  SCML_data %>% 
-    colSums() %>% 
-    as.data.frame() %>% 
-    tibble::rownames_to_column(var = 'sample_id') %>% 
-    magrittr::set_colnames(c('sample_id', 'colSum')) %>% 
-    mutate(calibrated = 'yes') %>% 
+cal <-  SCML_data |> 
+    colSums() |> 
+    as.data.frame() |> 
+    tibble::rownames_to_column(var = 'sample_id') |> 
+    magrittr::set_colnames(c('sample_id', 'colSum')) |> 
+    mutate(calibrated = 'yes') |> 
     as_tibble()
 
 data <- bind_rows(no_cal, cal)
 
-data %>% 
+data |> 
     ggplot(aes(sample_id, colSum)) + 
     geom_col(aes(fill = calibrated), position = 'dodge') +
     theme_bw() +

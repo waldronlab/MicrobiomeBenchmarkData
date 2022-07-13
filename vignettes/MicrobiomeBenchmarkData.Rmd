@@ -63,17 +63,17 @@ object:
 ```{r}
 data('sampleMetadata')
 ## Get columns present in all samples
-sample_metadata <- sampleMetadata %>% 
-    discard(~any(is.na(.x))) %>% 
+sample_metadata <- sampleMetadata |> 
+    discard(~any(is.na(.x))) |> 
     head()
 knitr::kable(sample_metadata)
 ```
 
 # Accessing datasets
 
-Currently, there are `r length(MicrobiomeBenchmarkData::getDataset())`
+Currently, there are `r length(MicrobiomeBenchmarkData::getBenchmarkData())`
 datasets available through the MicrobiomeBenchmarkData. These datasets are
-accessed through the `getDataset` function.
+accessed through the `getBenchmarkData` function.
 
 ## Print avaialable datasets
 
@@ -81,7 +81,7 @@ If no arguments are provided, the list of available datasets is printed on
 screen and returned invisiby as a character vector:
 
 ```{r}
-dats <- getDataset()
+dats <- getBenchmarkData()
 ```
 ```{r}
 dats
@@ -89,13 +89,13 @@ dats
 
 ## Access a single dataset
 
-In order to import a dataset, the `getDataset` function must be used with the
+In order to import a dataset, the `getBenchmarkData` function must be used with the
 name of the dataset as the first argument (`x`) and the `dryrun` argument set
 to `FALSE`. The output is a list vector with the dataset imported as a
 TreeSummarizedExperiment object.
 
 ```{r}
-tse <- getDataset('HMP_2012_16S_gingival_V35_subset', dryrun = FALSE)[[1]]
+tse <- getBenchmarkData('HMP_2012_16S_gingival_V35_subset', dryrun = FALSE)[[1]]
 tse
 ```
 
@@ -105,7 +105,7 @@ Several datasets can be imported simultaneously by giving the names of the
 different datasets in a character vector:
 
 ```{r}
-list_tse <- getDataset(dats[2:4], dryrun = FALSE)
+list_tse <- getBenchmarkData(dats[2:4], dryrun = FALSE)
 str(list_tse, max.level = 1)
 ```
 
@@ -115,7 +115,7 @@ If all of the datasets must to be imported, this can be done by providing
 the `dryrun = FALSE` argument alone.
 
 ```{r}
-mbd <- getDataset(dryrun = FALSE)
+mbd <- getBenchmarkData(dryrun = FALSE)
 str(mbd, max.level = 1)
 ```
 
