@@ -1,15 +1,12 @@
 ---
 title: "MicrobiomeBenchmarkData"
 author:
-  - name: "Samuel D. Gamboa-Tuz"
+  - name: "Samuel Gamboa"
     email: "Samuel.Gamboa.Tuz@gmail.com"
   - name: "Levi Waldron"
-package: MicrobiomeBenchmarkData
 output: 
   BiocStyle::html_document:
     toc: true
-abstract: >
-  Document summary
 vignette: >
   %\VignetteIndexEntry{MicrobiomeBenchmarkData}
   %\VignetteEngine{knitr::rmarkdown}

@@ -11,7 +11,7 @@ Description: The MicrobiomeBenchmarkData package provides functionality to
 Authors@R: 
     c(
         person(
-            given = "Samuel David", family = "Gamboa Tuz", 
+            given = "Samuel", family = "Gamboa", 
             role = c("aut", "cre"),
             email = "Samuel.Gamboa.Tuz@gmail.com",
             comment = c(ORCID = "0000-0002-6863-7943"))
@@ -31,7 +31,7 @@ Imports:
     ape,
     tibble,
     rlang,
-    utils
+    utils,
 Suggests: 
     rmarkdown,
     knitr,

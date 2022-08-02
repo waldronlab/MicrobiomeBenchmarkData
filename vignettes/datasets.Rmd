@@ -1,14 +1,11 @@
 ---
 title: "Datasets in MicrobiomeBenchmarkData"
 author:
-  - name: "Samuel D. Gamboa-Tuz"
+  - name: "Samuel Gamboa"
     email: "Samuel.Gamboa.Tuz@gmail.com"
-package: MicrobiomeBenchmarkData
 output: 
   BiocStyle::html_document:
     toc: true
-abstract: >
-  Document summary
 vignette: >
   %\VignetteIndexEntry{Datasets in MicrobiomeBenchmarkData}
   %\VignetteEngine{knitr::rmarkdown}
@@ -36,7 +33,13 @@ PMID <- dplyr::distinct(
 )
 datasets <- dplyr::left_join(datasets, PMID, by = c('Dataset' = 'dataset'))
 datasets <- dplyr::rename(datasets, PMID = pmid)
-knitr::kable(datasets)
+```
+
+In the table below, you can find the collection of datasets currently available
+through the MicrobiomeBenchmarkData package.
+
+```{r, echo=FALSE}
+knitr::kable(datasets, filter = 'top')
 ```
 
 ```{r, echo=FALSE, include=FALSE}
