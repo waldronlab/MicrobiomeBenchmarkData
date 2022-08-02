@@ -9,12 +9,15 @@ These datasets are also available through Zenodo at https://sandbox.zenodo.org/d
 # Installation
 
 ```
-if (!"BiocManager" %in% installed.packages()[,"Package"])
+## Install BioConductor if not installed
+if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
+
+## Release version (not yet in Bioc)
+BiocManager::install("MicrobiomeBenchmarkData")
 
 ## Development version
 BiocManager::install("waldronlab/MicrobiomeBenchmarkData", build_vignettes = TRUE)
-
 ```
 
 # Links

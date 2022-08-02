@@ -40,14 +40,15 @@ some biological truth that has been proved experimentally in the literature.
 MicrobiomeBenchmarkData should be available through the BioConductor project.
 
 ```{r installation, eval=FALSE}
-# if (!"BiocManager" %in% installed.packages()[,"Package"])
-# install.packages("BiocManager")
+## Install BioConductor if not installed
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
 
-## Release version
-# BiocManager::install("MicrobiomeBenchmarkData")
+## Release version (not yet in Bioc)
+BiocManager::install("MicrobiomeBenchmarkData")
 
 ## Development version
-# BiocManager::install("waldronlab/MicrobiomeBenchmarkData", build_vignettes = TRUE)
+BiocManager::install("waldronlab/MicrobiomeBenchmarkData", build_vignettes = TRUE)
 ```
 
 ```{r, message=FALSE}
