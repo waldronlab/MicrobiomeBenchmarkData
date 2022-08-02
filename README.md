@@ -22,7 +22,7 @@ BiocManager::install("waldronlab/MicrobiomeBenchmarkData", build_vignettes = TRU
 
 # Links
 
-+ Data on Zenodo: <<<Insert DOI here when created>>>
++ Data on Zenodo: https://zenodo.org/record/6911027
 + R package on Bioconductor: <<<Insert link here when created>>>
 + R package source code: https://github.com/waldronlab/MicrobiomeBenchmarkData
 + R package issues: https://github.com/waldronlab/MicrobiomeBenchmarkData/issues
