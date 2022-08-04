@@ -243,6 +243,9 @@
 <p>In order to import a dataset, the <code>getBenchmarkData</code> function must be used with the name of the dataset as the first argument (<code>x</code>) and the <code>dryrun</code> argument set to <code>FALSE</code>. The output is a list vector with the dataset imported as a TreeSummarizedExperiment object.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tse</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getBenchmarkData.html">getBenchmarkData</a></span><span class="op">(</span><span class="st">'HMP_2012_16S_gingival_V35_subset'</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; Downloading count_matrix for HMP_2012_16S_gingival_V35_subset.</span></span>
+<span><span class="co">#&gt; Downloading taxonomy_table for HMP_2012_16S_gingival_V35_subset.</span></span>
+<span><span class="co">#&gt; Downloading taxonomy_tree for HMP_2012_16S_gingival_V35_subset.</span></span>
 <span><span class="co">#&gt; Finished HMP_2012_16S_gingival_V35_subset.</span></span>
 <span><span class="va">tse</span></span>
 <span><span class="co">#&gt; class: TreeSummarizedExperiment </span></span>
@@ -268,8 +271,14 @@
 <p>Several datasets can be imported simultaneously by giving the names of the different datasets in a character vector:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">list_tse</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getBenchmarkData.html">getBenchmarkData</a></span><span class="op">(</span><span class="va">dats</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Downloading count_matrix for HMP_2012_16S_gingival_V35.</span></span>
+<span><span class="co">#&gt; Downloading taxonomy_table for HMP_2012_16S_gingival_V35.</span></span>
+<span><span class="co">#&gt; Downloading taxonomy_tree for HMP_2012_16S_gingival_V35.</span></span>
 <span><span class="co">#&gt; Finished HMP_2012_16S_gingival_V35.</span></span>
 <span><span class="co">#&gt; Finished HMP_2012_16S_gingival_V35_subset.</span></span>
+<span><span class="co">#&gt; Downloading count_matrix for HMP_2012_WMS_gingival.</span></span>
+<span><span class="co">#&gt; Downloading taxonomy_table for HMP_2012_WMS_gingival.</span></span>
+<span><span class="co">#&gt; Downloading taxonomy_tree for HMP_2012_WMS_gingival.</span></span>
 <span><span class="co">#&gt; Finished HMP_2012_WMS_gingival.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">list_tse</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of 3</span></span>
@@ -283,12 +292,19 @@
 <p>If all of the datasets must to be imported, this can be done by providing the <code>dryrun = FALSE</code> argument alone.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mbd</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getBenchmarkData.html">getBenchmarkData</a></span><span class="op">(</span>dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Downloading count_matrix for HMP_2012_16S_gingival_V13.</span></span>
+<span><span class="co">#&gt; Downloading taxonomy_table for HMP_2012_16S_gingival_V13.</span></span>
+<span><span class="co">#&gt; Downloading taxonomy_tree for HMP_2012_16S_gingival_V13.</span></span>
 <span><span class="co">#&gt; Finished HMP_2012_16S_gingival_V13.</span></span>
 <span><span class="co">#&gt; Finished HMP_2012_16S_gingival_V35.</span></span>
 <span><span class="co">#&gt; Finished HMP_2012_16S_gingival_V35_subset.</span></span>
 <span><span class="co">#&gt; Finished HMP_2012_WMS_gingival.</span></span>
+<span><span class="co">#&gt; Downloading count_matrix for Ravel_2011_16S_BV.</span></span>
+<span><span class="co">#&gt; Downloading taxonomy_table for Ravel_2011_16S_BV.</span></span>
 <span><span class="co">#&gt; Warning: No taxonomy_tree available for Ravel_2011_16S_BV.</span></span>
 <span><span class="co">#&gt; Finished Ravel_2011_16S_BV.</span></span>
+<span><span class="co">#&gt; Downloading count_matrix for Stammler_2016_16S_spikein.</span></span>
+<span><span class="co">#&gt; Downloading taxonomy_table for Stammler_2016_16S_spikein.</span></span>
 <span><span class="co">#&gt; Warning: No taxonomy_tree available for Stammler_2016_16S_spikein.</span></span>
 <span><span class="co">#&gt; Finished Stammler_2016_16S_spikein.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">mbd</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
