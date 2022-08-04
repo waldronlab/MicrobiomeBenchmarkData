@@ -4,14 +4,14 @@
 \alias{removeCache}
 \title{Remove cache}
 \usage{
-removeCache()
+removeCache(ask = interactive())
 }
 \value{
 NULL The cache and all of its contents are removed.
 }
 \description{
 \code{removeCache} removes all files saved in the cache. It will ask for
-confirmation before removing the cache.
+confirmation before removing the cache (if in an interactive session).
 }
 \examples{
 

@@ -65,7 +65,7 @@ getBenchmarkData <- function(x, dryrun = TRUE) {
 #' Remove cache
 #'
 #' \code{removeCache} removes all files saved in the cache. It will ask for
-#' confirmation before removing the cache.
+#' confirmation before removing the cache (if in an interactive session).
 #'
 #' @export
 #'
@@ -76,9 +76,33 @@ getBenchmarkData <- function(x, dryrun = TRUE) {
 #' ## Remove cache
 #' removeCache()
 #'
-removeCache <- function() {
+removeCache <- function(ask = interactive()) {
+
     cache <- .getCache()
-    BiocFileCache::removebfc(cache, ask = interactive())
+    cache_info <- BiocFileCache::bfcinfo(cache)
+
+    prompt_msg <- paste0(
+        "Remove cache and ", nrow(cache_info), " resources?",
+        " (yes/no): "
+    )
+
+    if (ask) {
+        answer <- readline(prompt = prompt_msg)
+        if (answer == 'yes') {
+            message('Removing cache.')
+            BiocFileCache::removebfc(cache, ask = FALSE)
+            return(invisible(NULL))
+        } else if (answer == 'no') {
+            message('Cache was not removed.')
+            return(invisible(NULL))
+        } else {
+            message('Not a valid option. Please enter yes or no.')
+            return(invisible(NULL))
+        }
+    } else {
+        BiocFileCache::removebfc(cache, ask = FALSE)
+        return(invisible(NULL))
+    }
 }
 
 
