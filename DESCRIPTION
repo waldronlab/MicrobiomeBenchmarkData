@@ -23,14 +23,12 @@ Depends:
     SummarizedExperiment,
     TreeSummarizedExperiment
 Imports:
-    dplyr,
     BiocFileCache,
     tools,
     S4Vectors,
     purrr,
     ape,
     tibble,
-    rlang,
     utils,
 Suggests: 
     rmarkdown,
@@ -38,9 +36,9 @@ Suggests:
     BiocStyle,
     testthat (>= 3.0.0),
     mia,
-    magrittr,
     ggplot2,
-    tidyr
+    tidyr,
+    dplyr
 biocViews:
     ExperimentData,
     MicrobiomeData,

@@ -117,7 +117,6 @@ removeCache <- function(ask = interactive()) {
 #'
 #' @return A TreeSummarizedExperiment
 #'
-#' @importFrom dplyr filter
 #' @importFrom purrr keep
 #' @importFrom tibble column_to_rownames
 #' @importFrom S4Vectors DataFrame
@@ -125,16 +124,15 @@ removeCache <- function(ask = interactive()) {
 #' @importFrom utils read.table
 #' @importFrom ape read.tree
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
-#' @importFrom rlang .data
-#' @importFrom rlang .env
 #'
 #' @keywords internal
 #'
 .assembleTreeSummarizedExperiment <- function(x) {
+
     dat_name <- x
 
     col_data <- MicrobiomeBenchmarkData::sampleMetadata |>
-        dplyr::filter(.data[["dataset"]] == .env[["dat_name"]]) |>
+        {\(y)  y[y$dataset == dat_name, ] }() |>
         purrr::keep(~ all(!is.na(.x))) |>
         tibble::column_to_rownames(var = "sample_id") |>
         as.data.frame() |>
@@ -205,18 +203,13 @@ removeCache <- function(ask = interactive()) {
 #' @importFrom BiocFileCache bfcquery
 #' @importFrom BiocFileCache bfcremove
 #' @importFrom BiocFileCache bfcadd
-#' @importFrom dplyr pull
-#' @importFrom dplyr filter
-#' @importFrom rlang .data
 #'
 #' @keywords internal
 #'
 .getResourcePath <- function(resource, suffix) {
-    resource_name <- paste0(resource, suffix)
 
-    resource_url <- metadata |>
-        dplyr::filter(.data[["Title"]] == .env[["resource_name"]]) |>
-        dplyr::pull(.data[["SourceUrl"]])
+    resource_name <- paste0(resource, suffix)
+    resource_url <- metadata[metadata$Title == resource_name,]$SourceUrl
 
     if (!length(resource_url)) {
         warning(
@@ -228,29 +221,22 @@ removeCache <- function(ask = interactive()) {
 
     cache <- .getCache()
 
-    resources <- BiocFileCache::bfcquery(
+    resources <-
+        BiocFileCache::bfcquery(
         x = cache, query = resource_name, field = "rname", exact = TRUE
     )
+    rid <- resources$rid
 
-    if (nrow(resources) > 1) {
-        rids <- dplyr::pull(resources, "rid")
-        BiocFileCache::bfcremove(x = cache, rids = rids)
+    if (!length(rid)) {
+        message('Downloading ', sub("^_", "", suffix), " for ", resource, ".")
         resource_path <- BiocFileCache::bfcadd(
             x = cache, rname = resource_name, fpath = resource_url,
             download = TRUE
         )
-        return(resource_path)
-    } else if (nrow(resources) == 0) {
-        resource_path <- BiocFileCache::bfcadd(
-            x = cache, rname = resource_name, fpath = resource_url,
-            download = TRUE
-        )
-        return(resource_path)
-    } else if (nrow(resources) == 1) {
-        resource_path <- BiocFileCache::bfcpath(
-            x = cache, rids = resources[["rid"]]
-        )
-        return(resource_path)
+    } else {
+        resource_path <- BiocFileCache::bfcpath(x = cache, rids = rid)
     }
+
+    resource_path
 }
 
