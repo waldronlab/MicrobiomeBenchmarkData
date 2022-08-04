@@ -6,12 +6,15 @@
 \usage{
 removeCache(ask = interactive())
 }
+\arguments{
+\item{ask}{If TRUE, a prompt will appear asking the user to confirm removal
+of cache. Default value is given by the \code{interactive} function.}
+}
 \value{
 NULL The cache and all of its contents are removed.
 }
 \description{
-\code{removeCache} removes all files saved in the cache. It will ask for
-confirmation before removing the cache (if in an interactive session).
+\code{removeCache} removes all files saved in the cache.
 }
 \examples{
 

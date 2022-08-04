@@ -64,8 +64,10 @@ getBenchmarkData <- function(x, dryrun = TRUE) {
 
 #' Remove cache
 #'
-#' \code{removeCache} removes all files saved in the cache. It will ask for
-#' confirmation before removing the cache (if in an interactive session).
+#' \code{removeCache} removes all files saved in the cache.
+#'
+#' @param ask If TRUE, a prompt will appear asking the user to confirm removal
+#' of cache. Default value is given by the \code{interactive} function.
 #'
 #' @export
 #'

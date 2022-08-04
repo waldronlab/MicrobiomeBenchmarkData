@@ -38,7 +38,8 @@ Suggests:
     mia,
     ggplot2,
     tidyr,
-    dplyr
+    dplyr,
+    magrittr
 biocViews:
     ExperimentData,
     MicrobiomeData,
