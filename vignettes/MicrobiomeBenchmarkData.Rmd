@@ -22,26 +22,19 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-The `MicrobiomeBenchamrkData` package provides a collection of datasets suitable
-for benchmarking of differential abundance methods in R.
-
-The datasets are also available through
-[Zenodo (sandbox)](https://sandbox.zenodo.org/record/946131) so they can be
-downloaded and used out of the R environment if preferred/needed.
-
-The main characteristic of this collection of datasets is that they contain
-some biological truth that has been proved experimentally in the literature.
+The `MicrobiomeBenchamrkData` package provides access to a collection of 
+datasets with biological ground truth for benchmarking differential 
+abundance methods. The datasets are deposited on Zenodo:
+https://zenodo.org/record/6911027
 
 # Installation
-
-MicrobiomeBenchmarkData should be available through the BioConductor project.
 
 ```{r installation, eval=FALSE}
 ## Install BioConductor if not installed
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
-## Release version (not yet in Bioc)
+## Release version (not yet in Bioc, so it doesn't work yet)
 BiocManager::install("MicrobiomeBenchmarkData")
 
 ## Development version

@@ -1,10 +1,8 @@
 # MicrobiomeBenchmarkData
 
-A resource of datasets with biological ground truth for benchmarking
-differential abundance methods.
-
-These datasets are also available through Zenodo at https://sandbox.zenodo.org/deposit/952241
-(provisional link at sandbox zenodo).
+Access to a resource of datasets with biological ground truth for benchmarking
+differential abundance methods. The datasets are available from Zenodo:
+https://zenodo.org/record/6911027
 
 # Installation
 
