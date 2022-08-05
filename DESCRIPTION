@@ -26,10 +26,8 @@ Imports:
     BiocFileCache,
     tools,
     S4Vectors,
-    purrr,
     ape,
-    tibble,
-    utils,
+    utils
 Suggests: 
     rmarkdown,
     knitr,
@@ -39,7 +37,9 @@ Suggests:
     ggplot2,
     tidyr,
     dplyr,
-    magrittr
+    magrittr,
+    tibble,
+    purrr
 biocViews:
     ExperimentData,
     MicrobiomeData,

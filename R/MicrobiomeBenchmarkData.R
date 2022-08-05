@@ -119,8 +119,6 @@ removeCache <- function(ask = interactive()) {
 #'
 #' @return A TreeSummarizedExperiment
 #'
-#' @importFrom purrr keep
-#' @importFrom tibble column_to_rownames
 #' @importFrom S4Vectors DataFrame
 #' @importFrom S4Vectors SimpleList
 #' @importFrom utils read.table
@@ -134,11 +132,11 @@ removeCache <- function(ask = interactive()) {
     dat_name <- x
 
     col_data <- MicrobiomeBenchmarkData::sampleMetadata |>
-        {\(y)  y[y$dataset == dat_name, ] }() |>
-        purrr::keep(~ all(!is.na(.x))) |>
-        tibble::column_to_rownames(var = "sample_id") |>
-        as.data.frame() |>
+        {\(y)  y[y$dataset == dat_name, ]}() |>
+        {\(y) y[,vapply(y, \(x) !all(is.na(x)), logical(1)), drop = FALSE]}() |>
         S4Vectors::DataFrame()
+    rownames(col_data) <- col_data$sample_id
+    col_data <- col_data[, colnames(col_data) != "sample_id"]
 
     count_matrix <- .getResourcePath(x, "_count_matrix") |>
         utils::read.table(
