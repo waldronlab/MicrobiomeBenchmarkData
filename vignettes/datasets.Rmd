@@ -39,7 +39,7 @@ datasets <- dplyr::rename(datasets, PMID = pmid)
 
 In the table below, you can find the collection of datasets currently available
 through the MicrobiomeBenchmarkData package. These datasets are also avialable
-on Zenodo: https://zenodo.org/record/6911027
+on Zenodo: https://doi.org/10.5281/zenodo.6911026
 
 ```{r, echo=FALSE}
 ## Show table
