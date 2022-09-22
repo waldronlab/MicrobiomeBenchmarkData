@@ -207,10 +207,9 @@ removeCache <- function(ask = interactive()) {
 #' @keywords internal
 #'
 .getResourcePath <- function(resource, suffix) {
-
+    ## Inspiration for this code: https://github.com/Bioconductor/AnnotationForge/blob/3e01d4f3620396578eee7783849589fe8d4b23aa/vignettes/MakingNewAnnotationPackages.Rnw#L196-L201
     resource_name <- paste0(resource, suffix)
     resource_url <- metadata[metadata$Title == resource_name,]$SourceUrl
-
     if (!length(resource_url)) {
         warning(
             "No ", sub("^_", "", suffix), " available for ", resource, ".",
@@ -218,25 +217,9 @@ removeCache <- function(ask = interactive()) {
         )
         return(NULL)
     }
-
     cache <- .getCache()
-
-    resources <-
-        BiocFileCache::bfcquery(
-        x = cache, query = resource_name, field = "rname", exact = TRUE
+    BiocFileCache::bfcrpath(
+        x = cache, rname = resource_url, exact = TRUE,
+        download = TRUE, rtype = "web"
     )
-    rid <- resources$rid
-
-    if (!length(rid)) {
-        message('Downloading ', sub("^_", "", suffix), " for ", resource, ".")
-        resource_path <- BiocFileCache::bfcadd(
-            x = cache, rname = resource_name, fpath = resource_url,
-            download = TRUE
-        )
-    } else {
-        resource_path <- BiocFileCache::bfcpath(x = cache, rids = rid)
-    }
-
-    resource_path
 }
-
