@@ -88,25 +88,24 @@ removeCache <- function(ask = interactive()) {
         " (yes/no): "
     )
 
+    ## Addditional lines were added because
+    ## `BiocFileCache::removebfc(cache)` returns an error when the answer
+    ## is 'no' in an interactive session
+
     if (ask) {
         answer <- readline(prompt = prompt_msg)
         if (answer == 'yes') {
             message('Removing cache.')
             BiocFileCache::removebfc(cache, ask = FALSE)
-            return(invisible(NULL))
         } else if (answer == 'no') {
             message('Cache was not removed.')
-            return(invisible(NULL))
         } else {
             message('Not a valid option. Please enter yes or no.')
-            return(invisible(NULL))
         }
     } else {
         BiocFileCache::removebfc(cache, ask = FALSE)
-        return(invisible(NULL))
     }
 }
-
 
 #' Assemble TreeSummarizedExperiment
 #'
