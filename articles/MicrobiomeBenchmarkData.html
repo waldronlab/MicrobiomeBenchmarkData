@@ -211,7 +211,7 @@
 <div class="section level2">
 <h2 id="accessing-datasets">Accessing datasets<a class="anchor" aria-label="anchor" href="#accessing-datasets"></a>
 </h2>
-<p>Currently, there are 6 datasets available through the MicrobiomeBenchmarkData. These datasets are accessed through the <code>getBenchmarkData</code> function.</p>
+<p>Currently, there are 5 datasets available through the MicrobiomeBenchmarkData. These datasets are accessed through the <code>getBenchmarkData</code> function.</p>
 <div class="section level3">
 <h3 id="print-avaialable-datasets">Print avaialable datasets<a class="anchor" aria-label="anchor" href="#print-avaialable-datasets"></a>
 </h3>
@@ -230,9 +230,27 @@
 <span><span class="co">#&gt; Use getBenchmarkData(dryrun = FALSE) to import all of the datasets.</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dats</span></span>
-<span><span class="co">#&gt; [1] "HMP_2012_16S_gingival_V13"        "HMP_2012_16S_gingival_V35"       </span></span>
-<span><span class="co">#&gt; [3] "HMP_2012_16S_gingival_V35_subset" "HMP_2012_WMS_gingival"           </span></span>
-<span><span class="co">#&gt; [5] "Stammler_2016_16S_spikein"        "Ravel_2011_16S_BV"</span></span></code></pre></div>
+<span><span class="co">#&gt;                            Dataset  Dimensions Body.site</span></span>
+<span><span class="co">#&gt; 1        HMP_2012_16S_gingival_V13 33127 x 311   Gingiva</span></span>
+<span><span class="co">#&gt; 2        HMP_2012_16S_gingival_V35 17949 x 311   Gingiva</span></span>
+<span><span class="co">#&gt; 3 HMP_2012_16S_gingival_V35_subset    892 x 76   Gingiva</span></span>
+<span><span class="co">#&gt; 4            HMP_2012_WMS_gingival    235 x 16   Gingiva</span></span>
+<span><span class="co">#&gt; 5        Stammler_2016_16S_spikein   247 x 394     Stool</span></span>
+<span><span class="co">#&gt; 6                Ravel_2011_16S_BV   4036 x 17    Vagina</span></span>
+<span><span class="co">#&gt;                                                                     Contrasts</span></span>
+<span><span class="co">#&gt; 1                                        Subgingival vs Supragingival plaque.</span></span>
+<span><span class="co">#&gt; 2                                        Subgingival vs Supragingival plaque.</span></span>
+<span><span class="co">#&gt; 3                                        Subgingival vs Supragingival plaque.</span></span>
+<span><span class="co">#&gt; 4                                        Subgingival vs Supragingival plaque.</span></span>
+<span><span class="co">#&gt; 5 Pre-ASCT (allogeneic stem cell transplantation) vs 14 days after treatment.</span></span>
+<span><span class="co">#&gt; 6                                              Healthy vs bacterial vaginosis</span></span>
+<span><span class="co">#&gt;                                                                                                                                                                                                Biological.ground.truth</span></span>
+<span><span class="co">#&gt; 1                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span></span>
+<span><span class="co">#&gt; 2                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span></span>
+<span><span class="co">#&gt; 3                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span></span>
+<span><span class="co">#&gt; 4                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span></span>
+<span><span class="co">#&gt; 5  1) Unchanged abundances of Salinibacter ruber (extreme halophilic), Rhizobium radiobacter (found in soils and plants), and Alicyclobacillus acidiphilu (thermo-acidophilic) 2) Increase of Enterococcus after ASCT.</span></span>
+<span><span class="co">#&gt; 6                                                                     Decrease of Lactobacillus in samples with high Nugent scores (bacterial vaginosis) and increase of bacteria isolated during bacterial vaginosis.</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="access-a-single-dataset">Access a single dataset<a class="anchor" aria-label="anchor" href="#access-a-single-dataset"></a>
@@ -267,7 +285,7 @@
 </h3>
 <p>Several datasets can be imported simultaneously by giving the names of the different datasets in a character vector:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">list_tse</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getBenchmarkData.html">getBenchmarkData</a></span><span class="op">(</span><span class="va">dats</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">list_tse</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getBenchmarkData.html">getBenchmarkData</a></span><span class="op">(</span><span class="va">dats</span><span class="op">$</span><span class="va">Dataset</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; adding rname 'https://zenodo.org/record/6911027/files/HMP_2012_16S_gingival_V35_count_matrix.tsv'</span></span>
 <span><span class="co">#&gt; adding rname 'https://zenodo.org/record/6911027/files/HMP_2012_16S_gingival_V35_taxonomy_table.tsv'</span></span>
 <span><span class="co">#&gt; adding rname 'https://zenodo.org/record/6911027/files/HMP_2012_16S_gingival_V35_taxonomy_tree.newick'</span></span>

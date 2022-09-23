@@ -91,7 +91,8 @@ TreeSummarizedExperiment datasets indicated in the argument 'x'.</p></dd>
     <h2>Value</h2>
     
 
-<p>A list of TreeSummarizedExperiments.</p>
+<p>A list of TreeSummarizedExperiments when dryrun = FALSE. A data
+frame with the datasets characteristics when dryrun = TRUE.</p>
     </div>
 
     <div id="ref-examples">
@@ -110,9 +111,27 @@ TreeSummarizedExperiment datasets indicated in the argument 'x'.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Use getBenchmarkData(dryrun = FALSE) to import all of the datasets.</span>
 <span class="r-in"><span><span class="va">datasets_names</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "HMP_2012_16S_gingival_V13"        "HMP_2012_16S_gingival_V35"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "HMP_2012_16S_gingival_V35_subset" "HMP_2012_WMS_gingival"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "Stammler_2016_16S_spikein"        "Ravel_2011_16S_BV"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                            Dataset  Dimensions Body.site</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        HMP_2012_16S_gingival_V13 33127 x 311   Gingiva</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        HMP_2012_16S_gingival_V35 17949 x 311   Gingiva</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 HMP_2012_16S_gingival_V35_subset    892 x 76   Gingiva</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4            HMP_2012_WMS_gingival    235 x 16   Gingiva</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        Stammler_2016_16S_spikein   247 x 394     Stool</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                Ravel_2011_16S_BV   4036 x 17    Vagina</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                     Contrasts</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                        Subgingival vs Supragingival plaque.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                        Subgingival vs Supragingival plaque.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                        Subgingival vs Supragingival plaque.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                        Subgingival vs Supragingival plaque.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 Pre-ASCT (allogeneic stem cell transplantation) vs 14 days after treatment.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                              Healthy vs bacterial vaginosis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                Biological.ground.truth</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  1) Unchanged abundances of Salinibacter ruber (extreme halophilic), Rhizobium radiobacter (found in soils and plants), and Alicyclobacillus acidiphilu (thermo-acidophilic) 2) Increase of Enterococcus after ASCT.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                                     Decrease of Lactobacillus in samples with high Nugent scores (bacterial vaginosis) and increase of bacteria isolated during bacterial vaginosis.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Example 2</span></span></span>
 <span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="fu">getBenchmarkData</span><span class="op">(</span><span class="st">"HMP_2012_16S_gingival_V35_subset"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
