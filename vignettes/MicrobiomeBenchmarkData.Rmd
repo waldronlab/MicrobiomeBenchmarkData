@@ -96,7 +96,7 @@ Several datasets can be imported simultaneously by giving the names of the
 different datasets in a character vector:
 
 ```{r}
-list_tse <- getBenchmarkData(dats[2:4], dryrun = FALSE)
+list_tse <- getBenchmarkData(dats$Dataset[2:4], dryrun = FALSE)
 str(list_tse, max.level = 1)
 ```
 
