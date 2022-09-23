@@ -14,7 +14,16 @@ Authors@R:
             given = "Samuel", family = "Gamboa", 
             role = c("aut", "cre"),
             email = "Samuel.Gamboa.Tuz@gmail.com",
-            comment = c(ORCID = "0000-0002-6863-7943"))
+            comment = c(ORCID = "0000-0002-6863-7943")
+        ),
+        person(
+            given = "Levi", family = "Waldron",
+            role = c("aut")
+        ),
+        person(
+            given = "Marcel", family = "Ramos",
+            role = c("aut")
+        )
     )
 License: Artistic-2.0
 LazyData: true 
