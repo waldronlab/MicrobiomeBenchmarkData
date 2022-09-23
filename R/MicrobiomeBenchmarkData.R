@@ -12,7 +12,8 @@
 #' names of the datasets as a character vector. If FALSE, it returns the
 #' TreeSummarizedExperiment datasets indicated in the argument 'x'.
 #'
-#' @return A list of TreeSummarizedExperiments.
+#' @return A list of TreeSummarizedExperiments when dryrun = FALSE. A data
+#' frame with the datasets characteristics when dryrun = TRUE.
 #'
 #' @export
 #'
@@ -38,7 +39,12 @@ getBenchmarkData <- function(x, dryrun = TRUE) {
                 "\n\nUse getBenchmarkData(dryrun = FALSE)",
                 " to import all of the datasets."
             )
-            return(invisible(titles))
+
+            fname <- system.file(
+                'extdata/datasets.tsv', package = 'MicrobiomeBenchmarkData'
+            )
+            return(read.table(fname, header = TRUE, sep = '\t'))
+            # return(invisible(titles))
         } else if (isFALSE(dryrun)) {
             x <- titles
         }

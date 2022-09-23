@@ -17,7 +17,8 @@ names of the datasets as a character vector. If FALSE, it returns the
 TreeSummarizedExperiment datasets indicated in the argument 'x'.}
 }
 \value{
-A list of TreeSummarizedExperiments.
+A list of TreeSummarizedExperiments when dryrun = FALSE. A data
+frame with the datasets characteristics when dryrun = TRUE.
 }
 \description{
 \code{getBenchmarkData} imports datasets as TreeSummarizedExperiment objects.
