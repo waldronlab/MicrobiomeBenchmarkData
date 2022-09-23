@@ -20,10 +20,7 @@ Authors@R:
             given = "Levi", family = "Waldron",
             role = c("aut")
         ),
-        person(
-            given = "Marcel", family = "Ramos",
-            role = c("aut")
-        )
+        person("Marcel", "Ramos", role = "ctb")
     )
 License: Artistic-2.0
 LazyData: true 
