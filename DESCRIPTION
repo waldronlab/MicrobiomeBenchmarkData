@@ -23,7 +23,7 @@ Authors@R:
         person("Marcel", "Ramos", role = "ctb")
     )
 License: Artistic-2.0
-LazyData: true 
+LazyData: false 
 Depends: 
     R (>= 4.2),
     SummarizedExperiment,
