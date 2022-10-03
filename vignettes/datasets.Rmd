@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r, echo=FALSE, message=FALSE}
-## This code is to imrpot the description of the datasets
+## This code is to import the description of the datasets
 ## Only the table should be displayed on the vignette
 library(MicrobiomeBenchmarkData)
 fname <- system.file(
@@ -29,7 +29,7 @@ fname <- system.file(
 datasets <- read.table(
     fname, header = TRUE, sep = '\t', check.names = FALSE
 )
-data('sampleMetadata')
+data('sampleMetadata', package = 'MicrobiomeBenchmarkData')
 PMID <- dplyr::distinct(
     sampleMetadata[, c('dataset', 'pmid')]
 )

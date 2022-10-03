@@ -52,7 +52,7 @@ All sample metadata is merged into a single data frame and provided as data
 object:
 
 ```{r}
-data('sampleMetadata')
+data('sampleMetadata', package = 'MicrobiomeBenchmarkData')
 ## Get columns present in all samples
 sample_metadata <- sampleMetadata |> 
     discard(~any(is.na(.x))) |> 
