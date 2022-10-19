@@ -1,4 +1,4 @@
-
+utils::globalVariables('sampleMetadata')
 #' Get dataset
 #'
 #' \code{getBenchmarkData} imports datasets as TreeSummarizedExperiment objects.
@@ -239,6 +239,6 @@ removeCache <- function(ask = interactive()) {
 #'
 #' @keywords internal
 .getSampleMetadata <- function() {
-    data('sampleMetadata', package = 'MicrobiomeBenchmarkData')
+    utils::data('sampleMetadata', package = 'MicrobiomeBenchmarkData')
     sampleMetadata
 }
