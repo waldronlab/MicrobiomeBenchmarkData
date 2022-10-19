@@ -136,7 +136,9 @@ removeCache <- function(ask = interactive()) {
 
     dat_name <- x
 
-    col_data <- MicrobiomeBenchmarkData::sampleMetadata |>
+    sm <- .getSampleMetadata()
+    # col_data <- MicrobiomeBenchmarkData::sampleMetadata |>
+    col_data <- sm |>
         {\(y)  y[y$dataset == dat_name, ]}() |>
         {\(y) y[,vapply(y, \(x) !all(is.na(x)), logical(1)), drop = FALSE]}() |>
         S4Vectors::DataFrame()
@@ -227,4 +229,16 @@ removeCache <- function(ask = interactive()) {
         x = cache, rname = resource_url, exact = TRUE,
         download = TRUE, rtype = "web"
     )
+}
+
+#' Get sample metadata
+#'
+#' \code{.getSampleMetadata} returns sampleMetadata.
+#'
+#' @return A data frame with sample metadata.
+#'
+#' @keywords internal
+.getSampleMetadata <- function() {
+    data('sampleMetadata', package = 'MicrobiomeBenchmarkData')
+    sampleMetadata
 }
