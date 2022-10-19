@@ -1,4 +1,7 @@
 
+## Script used to generate the 'metadata' and 'titles' objects
+## used internally by the MicrobiomeBenchmarkData package.
+
 metadata_csv <- system.file(
     "extdata/metadata.csv",
     package = "MicrobiomeBenchmarkData"

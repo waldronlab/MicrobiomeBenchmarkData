@@ -14,3 +14,10 @@ pacakge. Information about the datasets can be found at the Zenodo<br>
 repository for the MicrobiomeBenchmarkData package: 
 https://doi.org/10.5281/zenodo.6911027
 
+Scirpt files contained in this directory (scripts):
+
++ **sampleMetadata.R** contains the code to generate the sampleMetadata<br>
+object exported by the MicrobiomeBenchmarkData package.
+
++ **sysdata.R** contains the code to generate the 'metadata' and 'titles'<br>
+objects used internally by the MicrobiomeBenchmarkData package.
