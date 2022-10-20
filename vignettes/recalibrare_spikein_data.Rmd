@@ -1,5 +1,5 @@
 ---
-title: "Recalibration of the count matrix of the Stammler_2016_16S_spikein dataset"
+title: "Recalibration of the Stammler_2016_16S_spikein dataset"
 author:
   - name: "Samuel D. Gamboa-Tuz"
     email: "Samuel.Gamboa.Tuz@gmail.com"
@@ -7,15 +7,15 @@ output:
   BiocStyle::html_document:
     toc: true
 vignette: >
-  %\VignetteIndexEntry{Recalibration of the count matrix of the Stammler_2016_16S_spikein dataset}
+  %\VignetteIndexEntry{Recalibration of the Stammler_2016_16S_spikein dataset}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+    collapse = TRUE,
+    comment = "#>"
 )
 ```
 

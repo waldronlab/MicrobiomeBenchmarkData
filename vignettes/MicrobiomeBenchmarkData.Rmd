@@ -15,8 +15,8 @@ vignette: >
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+    collapse = TRUE,
+    comment = "#>"
 )
 ```
 
@@ -38,7 +38,7 @@ if (!require("BiocManager", quietly = TRUE))
 BiocManager::install("MicrobiomeBenchmarkData")
 
 ## Development version
-BiocManager::install("waldronlab/MicrobiomeBenchmarkData", build_vignettes = TRUE)
+BiocManager::install("waldronlab/MicrobiomeBenchmarkData") 
 ```
 
 ```{r, message=FALSE}
@@ -80,9 +80,9 @@ dats
 
 ## Access a single dataset
 
-In order to import a dataset, the `getBenchmarkData` function must be used with the
-name of the dataset as the first argument (`x`) and the `dryrun` argument set
-to `FALSE`. The output is a list vector with the dataset imported as a
+In order to import a dataset, the `getBenchmarkData` function must be used with
+the name of the dataset as the first argument (`x`) and the `dryrun` argument 
+set to `FALSE`. The output is a list vector with the dataset imported as a
 TreeSummarizedExperiment object.
 
 ```{r}

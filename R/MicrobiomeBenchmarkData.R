@@ -24,7 +24,9 @@ utils::globalVariables('sampleMetadata')
 #' datasets_names
 #'
 #' ## Example 2
-#' dataset <- getBenchmarkData("HMP_2012_16S_gingival_V35_subset", dryrun = FALSE)
+#' dataset <- getBenchmarkData(
+#'     "HMP_2012_16S_gingival_V35_subset", dryrun = FALSE
+#' )
 #' dataset[[1]]
 #'
 getBenchmarkData <- function(x, dryrun = TRUE) {
@@ -214,7 +216,6 @@ removeCache <- function(ask = interactive()) {
 #' @keywords internal
 #'
 .getResourcePath <- function(resource, suffix) {
-    ## Inspiration for this code: https://github.com/Bioconductor/AnnotationForge/blob/3e01d4f3620396578eee7783849589fe8d4b23aa/vignettes/MakingNewAnnotationPackages.Rnw#L196-L201
     resource_name <- paste0(resource, suffix)
     resource_url <- metadata[metadata$Title == resource_name,]$SourceUrl
     if (!length(resource_url)) {
