@@ -48,7 +48,7 @@ library(purrr)
 
 # Sample metadata
 
-All sample metadata is merged into a single data frame and provided as data
+All sample metadata is merged into a single data frame and provided as a data
 object:
 
 ```{r}
@@ -62,14 +62,14 @@ knitr::kable(sample_metadata)
 
 # Accessing datasets
 
-Currently, there are `r length(MicrobiomeBenchmarkData::getBenchmarkData())`
+Currently, there are `r nrow(MicrobiomeBenchmarkData::getBenchmarkData())`
 datasets available through the MicrobiomeBenchmarkData. These datasets are
 accessed through the `getBenchmarkData` function.
 
 ## Print avaialable datasets
 
 If no arguments are provided, the list of available datasets is printed on
-screen and returned invisiby as a character vector:
+screen and a data.frame is returned with the description of the datasets:
 
 ```{r}
 dats <- getBenchmarkData()
