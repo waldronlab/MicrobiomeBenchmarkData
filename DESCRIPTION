@@ -1,6 +1,6 @@
 Package: MicrobiomeBenchmarkData
 Title: Datasets for benchmarking in microbiome research
-Version: 0.99.1
+Version: 0.99.2
 Description: The MicrobiomeBenchmarkData package provides functionality to 
     access microbiome datasets suitable for benchmarking. These datasets
     have some biological truth, which allows to have expected results for

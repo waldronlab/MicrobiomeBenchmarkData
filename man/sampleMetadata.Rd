@@ -8,7 +8,7 @@
 A data.frame.
 }
 \usage{
-sampleMetadata
+data("sampleMetadata", package = "MicrobiomeBenchMarkData")
 }
 \description{
 A data frame with the combined metadata of all of the samples in the
