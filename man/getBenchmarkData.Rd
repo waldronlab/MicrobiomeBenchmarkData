@@ -30,7 +30,9 @@ datasets_names <- getBenchmarkData()
 datasets_names
 
 ## Example 2
-dataset <- getBenchmarkData("HMP_2012_16S_gingival_V35_subset", dryrun = FALSE)
+dataset <- getBenchmarkData(
+    "HMP_2012_16S_gingival_V35_subset", dryrun = FALSE
+)
 dataset[[1]]
 
 }

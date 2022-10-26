@@ -4,6 +4,8 @@ test_that("getBenchmarkData works.", {
     expect_true(is.data.frame(dataset_names))
     expect_message(getBenchmarkData(), "Use vignette")
 
-    tse <- getBenchmarkData("HMP_2012_16S_gingival_V35_subset", dryrun = FALSE)[[1]]
+    tse <- getBenchmarkData(
+        "HMP_2012_16S_gingival_V35_subset", dryrun = FALSE
+    )[[1]]
     expect_s4_class(tse, "TreeSummarizedExperiment")
 })

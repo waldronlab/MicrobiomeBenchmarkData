@@ -1,4 +1,7 @@
 
+## Script used to generate the sampleMetadata object exported by
+## MicrobiomeBenchmarkData package
+
 fname <- system.file(
     "extdata/metadata.csv",
     package = "MicrobiomeBenchmarkData"

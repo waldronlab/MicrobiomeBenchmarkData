@@ -1,6 +1,6 @@
 Package: MicrobiomeBenchmarkData
 Title: Datasets for benchmarking in microbiome research
-Version: 0.99.0
+Version: 0.99.3
 Description: The MicrobiomeBenchmarkData package provides functionality to 
     access microbiome datasets suitable for benchmarking. These datasets
     have some biological truth, which allows to have expected results for
@@ -18,12 +18,13 @@ Authors@R:
         ),
         person(
             given = "Levi", family = "Waldron",
-            role = c("aut")
+            role = c("aut"),
+            comment = c(ORCID = "0000-0003-2725-0694")
         ),
         person("Marcel", "Ramos", role = "ctb")
     )
 License: Artistic-2.0
-LazyData: true 
+LazyData: false 
 Depends: 
     R (>= 4.2),
     SummarizedExperiment,
@@ -49,7 +50,8 @@ Suggests:
 biocViews:
     ExperimentData,
     MicrobiomeData,
-    ReproducibleResearch
+    ReproducibleResearch,
+    SequencingData
 BugReports: https://github.com/waldronlab/MicrobiomeBenchmarkData/issues
 URL: https://github.com/waldronlab/MicrobiomeBenchmarkData,
     http://waldronlab.io/MicrobiomeBenchmarkData/

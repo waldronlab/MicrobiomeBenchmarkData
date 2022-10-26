@@ -4,4 +4,6 @@
 #' datasets provided through the MicrobiomeBenchmarkData package.
 #'
 #' @format A data.frame.
+#' @usage data("sampleMetadata", package = "MicrobiomeBenchMarkData")
+#'
 "sampleMetadata"

@@ -1,4 +1,3 @@
-
 #' Get dataset
 #'
 #' \code{getBenchmarkData} imports datasets as TreeSummarizedExperiment objects.
@@ -24,7 +23,9 @@
 #' datasets_names
 #'
 #' ## Example 2
-#' dataset <- getBenchmarkData("HMP_2012_16S_gingival_V35_subset", dryrun = FALSE)
+#' dataset <- getBenchmarkData(
+#'     "HMP_2012_16S_gingival_V35_subset", dryrun = FALSE
+#' )
 #' dataset[[1]]
 #'
 getBenchmarkData <- function(x, dryrun = TRUE) {
@@ -136,7 +137,9 @@ removeCache <- function(ask = interactive()) {
 
     dat_name <- x
 
-    col_data <- MicrobiomeBenchmarkData::sampleMetadata |>
+    sm <- .getSampleMetadata()
+    # col_data <- MicrobiomeBenchmarkData::sampleMetadata |>
+    col_data <- sm |>
         {\(y)  y[y$dataset == dat_name, ]}() |>
         {\(y) y[,vapply(y, \(x) !all(is.na(x)), logical(1)), drop = FALSE]}() |>
         S4Vectors::DataFrame()
@@ -212,7 +215,6 @@ removeCache <- function(ask = interactive()) {
 #' @keywords internal
 #'
 .getResourcePath <- function(resource, suffix) {
-    ## Inspiration for this code: https://github.com/Bioconductor/AnnotationForge/blob/3e01d4f3620396578eee7783849589fe8d4b23aa/vignettes/MakingNewAnnotationPackages.Rnw#L196-L201
     resource_name <- paste0(resource, suffix)
     resource_url <- metadata[metadata$Title == resource_name,]$SourceUrl
     if (!length(resource_url)) {
@@ -227,4 +229,19 @@ removeCache <- function(ask = interactive()) {
         x = cache, rname = resource_url, exact = TRUE,
         download = TRUE, rtype = "web"
     )
+}
+
+#' Get sample metadata
+#'
+#' \code{.getSampleMetadata} returns sampleMetadata.
+#'
+#' @return A data frame with sample metadata.
+#'
+#' @keywords internal
+.getSampleMetadata <- function() {
+    data_env <- new.env(parent = emptyenv())
+    utils::data(
+        "sampleMetadata", envir = data_env, package = "MicrobiomeBenchmarkData"
+    )
+    data_env[["sampleMetadata"]]
 }

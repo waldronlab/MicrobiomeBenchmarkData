@@ -15,8 +15,8 @@ vignette: >
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+    collapse = TRUE,
+    comment = "#>"
 )
 ```
 
@@ -38,7 +38,7 @@ if (!require("BiocManager", quietly = TRUE))
 BiocManager::install("MicrobiomeBenchmarkData")
 
 ## Development version
-BiocManager::install("waldronlab/MicrobiomeBenchmarkData", build_vignettes = TRUE)
+BiocManager::install("waldronlab/MicrobiomeBenchmarkData") 
 ```
 
 ```{r, message=FALSE}
@@ -48,7 +48,7 @@ library(purrr)
 
 # Sample metadata
 
-All sample metadata is merged into a single data frame and provided as data
+All sample metadata is merged into a single data frame and provided as a data
 object:
 
 ```{r}
@@ -62,14 +62,14 @@ knitr::kable(sample_metadata)
 
 # Accessing datasets
 
-Currently, there are `r length(MicrobiomeBenchmarkData::getBenchmarkData())`
+Currently, there are `r nrow(MicrobiomeBenchmarkData::getBenchmarkData())`
 datasets available through the MicrobiomeBenchmarkData. These datasets are
 accessed through the `getBenchmarkData` function.
 
 ## Print avaialable datasets
 
 If no arguments are provided, the list of available datasets is printed on
-screen and returned invisiby as a character vector:
+screen and a data.frame is returned with the description of the datasets:
 
 ```{r}
 dats <- getBenchmarkData()
@@ -80,9 +80,9 @@ dats
 
 ## Access a single dataset
 
-In order to import a dataset, the `getBenchmarkData` function must be used with the
-name of the dataset as the first argument (`x`) and the `dryrun` argument set
-to `FALSE`. The output is a list vector with the dataset imported as a
+In order to import a dataset, the `getBenchmarkData` function must be used with
+the name of the dataset as the first argument (`x`) and the `dryrun` argument 
+set to `FALSE`. The output is a list vector with the dataset imported as a
 TreeSummarizedExperiment object.
 
 ```{r}
