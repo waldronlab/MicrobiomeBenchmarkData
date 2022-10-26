@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MicrobiomeBenchmarkData</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.3</span>
       </span>
     </div>
 
@@ -38,7 +38,7 @@
       <a href="../articles/datasets.html">Datasets in MicrobiomeBenchmarkData</a>
     </li>
     <li>
-      <a href="../articles/recalibrare_spikein_data.html">Recalibration of the count matrix of the Stammler_2016_16S_spikein dataset</a>
+      <a href="../articles/recalibrare_spikein_data.html">Recalibration of the Stammler_2016_16S_spikein dataset</a>
     </li>
   </ul></li>
 <li>
@@ -125,16 +125,18 @@ frame with the datasets characteristics when dryrun = TRUE.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4                                        Subgingival vs Supragingival plaque.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5 Pre-ASCT (allogeneic stem cell transplantation) vs 14 days after treatment.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6                                              Healthy vs bacterial vaginosis</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                Biological.ground.truth</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  1) Unchanged abundances of Salinibacter ruber (extreme halophilic), Rhizobium radiobacter (found in soils and plants), and Alicyclobacillus acidiphilu (thermo-acidophilic) 2) Increase of Enterococcus after ASCT.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                                     Decrease of Lactobacillus in samples with high Nugent scores (bacterial vaginosis) and increase of bacteria isolated during bacterial vaginosis.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                               Biological.ground.truth</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                  Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                  Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                  Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                  Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 Same bacterial loads of the spike-in bacteria across all samples: Salinibacter ruber (extreme halophilic), Rhizobium radiobacter (found in soils and plants), and Alicyclobacillus acidiphilu (thermo-acidophilic).</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                                    Decrease of Lactobacillus and increase of bacteria isolated during bacterial vaginosis in samples with high Nugent scores (bacterial vaginosis).</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Example 2</span></span></span>
-<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="fu">getBenchmarkData</span><span class="op">(</span><span class="st">"HMP_2012_16S_gingival_V35_subset"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dataset</span> <span class="op">&lt;-</span> <span class="fu">getBenchmarkData</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="st">"HMP_2012_16S_gingival_V35_subset"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> adding rname 'https://zenodo.org/record/6911027/files/HMP_2012_16S_gingival_V35_subset_count_matrix.tsv'</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> adding rname 'https://zenodo.org/record/6911027/files/HMP_2012_16S_gingival_V35_subset_taxonomy_table.tsv'</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> adding rname 'https://zenodo.org/record/6911027/files/HMP_2012_16S_gingival_V35_subset_taxonomy_tree.newick'</span>

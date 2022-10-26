@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MicrobiomeBenchmarkData</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.3</span>
       </span>
     </div>
 
@@ -56,7 +56,7 @@
       <a href="../articles/datasets.html">Datasets in MicrobiomeBenchmarkData</a>
     </li>
     <li>
-      <a href="../articles/recalibrare_spikein_data.html">Recalibration of the count matrix of the Stammler_2016_16S_spikein dataset</a>
+      <a href="../articles/recalibrare_spikein_data.html">Recalibration of the Stammler_2016_16S_spikein dataset</a>
     </li>
   </ul>
 </li>
@@ -85,10 +85,12 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>MicrobiomeBenchmarkData</h1>
-                        <h4 data-toc-skip class="author">Samuel Gamboa</h4>
+                        <h4 data-toc-skip class="author">Samuel
+Gamboa</h4>
                   <a class="author_email" href="mailto:#"></a><a href="mailto:Samuel.Gamboa.Tuz@gmail.com" class="email">Samuel.Gamboa.Tuz@gmail.com</a>
       
-                              <h4 data-toc-skip class="author">Levi Waldron</h4>
+                              <h4 data-toc-skip class="author">Levi
+Waldron</h4>
                         
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/MicrobiomeBenchmarkData/blob/HEAD/vignettes/MicrobiomeBenchmarkData.Rmd" class="external-link"><code>vignettes/MicrobiomeBenchmarkData.Rmd</code></a></small>
@@ -101,7 +103,9 @@
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>The <code>MicrobiomeBenchamrkData</code> package provides access to a collection of datasets with biological ground truth for benchmarking differential abundance methods. The datasets are deposited on Zenodo: <a href="https://doi.org/10.5281/zenodo.6911026" class="external-link uri">https://doi.org/10.5281/zenodo.6911026</a></p>
+<p>The <code>MicrobiomeBenchamrkData</code> package provides access to a
+collection of datasets with biological ground truth for benchmarking
+differential abundance methods. The datasets are deposited on Zenodo: <a href="https://doi.org/10.5281/zenodo.6911026" class="external-link uri">https://doi.org/10.5281/zenodo.6911026</a></p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -115,15 +119,16 @@
 <span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"MicrobiomeBenchmarkData"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## Development version</span></span>
-<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"waldronlab/MicrobiomeBenchmarkData"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"waldronlab/MicrobiomeBenchmarkData"</span><span class="op">)</span> </span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/MicrobiomeBenchmarkData" class="external-link">MicrobiomeBenchmarkData</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="sample-metadata">Sample metadata<a class="anchor" aria-label="anchor" href="#sample-metadata"></a>
 </h2>
-<p>All sample metadata is merged into a single data frame and provided as data object:</p>
+<p>All sample metadata is merged into a single data frame and provided
+as a data object:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">'sampleMetadata'</span>, package <span class="op">=</span> <span class="st">'MicrobiomeBenchmarkData'</span><span class="op">)</span></span>
 <span><span class="co">## Get columns present in all samples</span></span>
@@ -211,11 +216,15 @@
 <div class="section level2">
 <h2 id="accessing-datasets">Accessing datasets<a class="anchor" aria-label="anchor" href="#accessing-datasets"></a>
 </h2>
-<p>Currently, there are 5 datasets available through the MicrobiomeBenchmarkData. These datasets are accessed through the <code>getBenchmarkData</code> function.</p>
+<p>Currently, there are 6 datasets available through the
+MicrobiomeBenchmarkData. These datasets are accessed through the
+<code>getBenchmarkData</code> function.</p>
 <div class="section level3">
 <h3 id="print-avaialable-datasets">Print avaialable datasets<a class="anchor" aria-label="anchor" href="#print-avaialable-datasets"></a>
 </h3>
-<p>If no arguments are provided, the list of available datasets is printed on screen and returned invisiby as a character vector:</p>
+<p>If no arguments are provided, the list of available datasets is
+printed on screen and a data.frame is returned with the description of
+the datasets:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dats</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getBenchmarkData.html">getBenchmarkData</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 1 HMP_2012_16S_gingival_V13</span></span>
@@ -244,18 +253,22 @@
 <span><span class="co">#&gt; 4                                        Subgingival vs Supragingival plaque.</span></span>
 <span><span class="co">#&gt; 5 Pre-ASCT (allogeneic stem cell transplantation) vs 14 days after treatment.</span></span>
 <span><span class="co">#&gt; 6                                              Healthy vs bacterial vaginosis</span></span>
-<span><span class="co">#&gt;                                                                                                                                                                                                Biological.ground.truth</span></span>
-<span><span class="co">#&gt; 1                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span></span>
-<span><span class="co">#&gt; 2                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span></span>
-<span><span class="co">#&gt; 3                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span></span>
-<span><span class="co">#&gt; 4                                                                                                   Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span></span>
-<span><span class="co">#&gt; 5  1) Unchanged abundances of Salinibacter ruber (extreme halophilic), Rhizobium radiobacter (found in soils and plants), and Alicyclobacillus acidiphilu (thermo-acidophilic) 2) Increase of Enterococcus after ASCT.</span></span>
-<span><span class="co">#&gt; 6                                                                     Decrease of Lactobacillus in samples with high Nugent scores (bacterial vaginosis) and increase of bacteria isolated during bacterial vaginosis.</span></span></code></pre></div>
+<span><span class="co">#&gt;                                                                                                                                                                                               Biological.ground.truth</span></span>
+<span><span class="co">#&gt; 1                                                                                                  Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span></span>
+<span><span class="co">#&gt; 2                                                                                                  Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span></span>
+<span><span class="co">#&gt; 3                                                                                                  Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span></span>
+<span><span class="co">#&gt; 4                                                                                                  Enrichment of aerobic taxa in the supragingival plaque and enrichment of anaerobic taxa in the subgingival plaque.</span></span>
+<span><span class="co">#&gt; 5 Same bacterial loads of the spike-in bacteria across all samples: Salinibacter ruber (extreme halophilic), Rhizobium radiobacter (found in soils and plants), and Alicyclobacillus acidiphilu (thermo-acidophilic).</span></span>
+<span><span class="co">#&gt; 6                                                                    Decrease of Lactobacillus and increase of bacteria isolated during bacterial vaginosis in samples with high Nugent scores (bacterial vaginosis).</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="access-a-single-dataset">Access a single dataset<a class="anchor" aria-label="anchor" href="#access-a-single-dataset"></a>
 </h3>
-<p>In order to import a dataset, the <code>getBenchmarkData</code> function must be used with the name of the dataset as the first argument (<code>x</code>) and the <code>dryrun</code> argument set to <code>FALSE</code>. The output is a list vector with the dataset imported as a TreeSummarizedExperiment object.</p>
+<p>In order to import a dataset, the <code>getBenchmarkData</code>
+function must be used with the name of the dataset as the first argument
+(<code>x</code>) and the <code>dryrun</code> argument set to
+<code>FALSE</code>. The output is a list vector with the dataset
+imported as a TreeSummarizedExperiment object.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tse</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getBenchmarkData.html">getBenchmarkData</a></span><span class="op">(</span><span class="st">'HMP_2012_16S_gingival_V35_subset'</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; adding rname 'https://zenodo.org/record/6911027/files/HMP_2012_16S_gingival_V35_subset_count_matrix.tsv'</span></span>
@@ -283,7 +296,8 @@
 <div class="section level3">
 <h3 id="access-a-few-datasets">Access a few datasets<a class="anchor" aria-label="anchor" href="#access-a-few-datasets"></a>
 </h3>
-<p>Several datasets can be imported simultaneously by giving the names of the different datasets in a character vector:</p>
+<p>Several datasets can be imported simultaneously by giving the names
+of the different datasets in a character vector:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">list_tse</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getBenchmarkData.html">getBenchmarkData</a></span><span class="op">(</span><span class="va">dats</span><span class="op">$</span><span class="va">Dataset</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; adding rname 'https://zenodo.org/record/6911027/files/HMP_2012_16S_gingival_V35_count_matrix.tsv'</span></span>
@@ -304,7 +318,8 @@
 <div class="section level3">
 <h3 id="access-all-of-the-datasets">Access all of the datasets<a class="anchor" aria-label="anchor" href="#access-all-of-the-datasets"></a>
 </h3>
-<p>If all of the datasets must to be imported, this can be done by providing the <code>dryrun = FALSE</code> argument alone.</p>
+<p>If all of the datasets must to be imported, this can be done by
+providing the <code>dryrun = FALSE</code> argument alone.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mbd</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getBenchmarkData.html">getBenchmarkData</a></span><span class="op">(</span>dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; adding rname 'https://zenodo.org/record/6911027/files/HMP_2012_16S_gingival_V13_count_matrix.tsv'</span></span>
@@ -335,7 +350,8 @@
 <div class="section level2">
 <h2 id="annotations-for-each-taxa-are-included-in-rowdata">Annotations for each taxa are included in rowData<a class="anchor" aria-label="anchor" href="#annotations-for-each-taxa-are-included-in-rowdata"></a>
 </h2>
-<p>The biological annotations of each taxa are provided as a column in the <code>rowData</code> slot of the TreeSummarizedExperiment.</p>
+<p>The biological annotations of each taxa are provided as a column in
+the <code>rowData</code> slot of the TreeSummarizedExperiment.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## In the case, the column is named as taxon_annotation </span></span>
 <span><span class="va">tse</span> <span class="op">&lt;-</span> <span class="va">mbd</span><span class="op">$</span><span class="va">HMP_2012_16S_gingival_V35_subset</span></span>
@@ -371,7 +387,9 @@
 <div class="section level2">
 <h2 id="cache">Cache<a class="anchor" aria-label="anchor" href="#cache"></a>
 </h2>
-<p>The datasets are cached so they’re only downloaded once. The cache and all of the files contained in it can be removed with the <code>removeCache</code> function.</p>
+<p>The datasets are cached so they’re only downloaded once. The cache
+and all of the files contained in it can be removed with the
+<code>removeCache</code> function.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/removeCache.html">removeCache</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -399,7 +417,7 @@
 <span><span class="co">#&gt; [8] base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] purrr_0.3.4                    MicrobiomeBenchmarkData_0.99.0</span></span>
+<span><span class="co">#&gt;  [1] purrr_0.3.5                    MicrobiomeBenchmarkData_0.99.3</span></span>
 <span><span class="co">#&gt;  [3] TreeSummarizedExperiment_2.4.0 Biostrings_2.64.1             </span></span>
 <span><span class="co">#&gt;  [5] XVector_0.36.0                 SingleCellExperiment_1.18.1   </span></span>
 <span><span class="co">#&gt;  [7] SummarizedExperiment_1.26.1    Biobase_2.56.0                </span></span>
@@ -413,28 +431,28 @@
 <span><span class="co">#&gt;  [4] bit64_4.0.5            filelock_1.0.2         httr_1.4.4            </span></span>
 <span><span class="co">#&gt;  [7] rprojroot_2.0.3        tools_4.2.1            bslib_0.4.0           </span></span>
 <span><span class="co">#&gt; [10] utf8_1.2.2             R6_2.5.1               DBI_1.1.3             </span></span>
-<span><span class="co">#&gt; [13] lazyeval_0.2.2         tidyselect_1.1.2       bit_4.0.4             </span></span>
-<span><span class="co">#&gt; [16] curl_4.3.2             compiler_4.2.1         textshaping_0.3.6     </span></span>
-<span><span class="co">#&gt; [19] cli_3.4.1              desc_1.4.2             DelayedArray_0.22.0   </span></span>
-<span><span class="co">#&gt; [22] bookdown_0.29          sass_0.4.2             rappdirs_0.3.3        </span></span>
-<span><span class="co">#&gt; [25] pkgdown_2.0.6          systemfonts_1.0.4      stringr_1.4.1         </span></span>
-<span><span class="co">#&gt; [28] digest_0.6.29          yulab.utils_0.0.5      rmarkdown_2.16        </span></span>
-<span><span class="co">#&gt; [31] pkgconfig_2.0.3        htmltools_0.5.3        dbplyr_2.2.1          </span></span>
-<span><span class="co">#&gt; [34] fastmap_1.1.0          highr_0.9              rlang_1.0.6           </span></span>
-<span><span class="co">#&gt; [37] RSQLite_2.2.17         jquerylib_0.1.4        generics_0.1.3        </span></span>
-<span><span class="co">#&gt; [40] jsonlite_1.8.0         BiocParallel_1.30.3    dplyr_1.0.10          </span></span>
-<span><span class="co">#&gt; [43] RCurl_1.98-1.8         magrittr_2.0.3         GenomeInfoDbData_1.2.8</span></span>
-<span><span class="co">#&gt; [46] Matrix_1.5-1           Rcpp_1.0.9             fansi_1.0.3           </span></span>
-<span><span class="co">#&gt; [49] ape_5.6-2              lifecycle_1.0.2        stringi_1.7.8         </span></span>
-<span><span class="co">#&gt; [52] yaml_2.3.5             zlibbioc_1.42.0        BiocFileCache_2.4.0   </span></span>
-<span><span class="co">#&gt; [55] grid_4.2.1             blob_1.2.3             parallel_4.2.1        </span></span>
-<span><span class="co">#&gt; [58] crayon_1.5.2           lattice_0.20-45        knitr_1.40            </span></span>
-<span><span class="co">#&gt; [61] pillar_1.8.1           codetools_0.2-18       glue_1.6.2            </span></span>
-<span><span class="co">#&gt; [64] evaluate_0.16          BiocManager_1.30.18    vctrs_0.4.2           </span></span>
-<span><span class="co">#&gt; [67] treeio_1.20.2          tidyr_1.2.1            assertthat_0.2.1      </span></span>
-<span><span class="co">#&gt; [70] cachem_1.0.6           xfun_0.33              tidytree_0.4.1        </span></span>
-<span><span class="co">#&gt; [73] ragg_1.2.3             tibble_3.1.8           memoise_2.0.1         </span></span>
-<span><span class="co">#&gt; [76] ellipsis_0.3.2</span></span></code></pre></div>
+<span><span class="co">#&gt; [13] lazyeval_0.2.2         withr_2.5.0            tidyselect_1.2.0      </span></span>
+<span><span class="co">#&gt; [16] bit_4.0.4              curl_4.3.3             compiler_4.2.1        </span></span>
+<span><span class="co">#&gt; [19] textshaping_0.3.6      cli_3.4.1              desc_1.4.2            </span></span>
+<span><span class="co">#&gt; [22] DelayedArray_0.22.0    bookdown_0.29          sass_0.4.2            </span></span>
+<span><span class="co">#&gt; [25] rappdirs_0.3.3         pkgdown_2.0.6          systemfonts_1.0.4     </span></span>
+<span><span class="co">#&gt; [28] stringr_1.4.1          digest_0.6.30          yulab.utils_0.0.5     </span></span>
+<span><span class="co">#&gt; [31] rmarkdown_2.17         pkgconfig_2.0.3        htmltools_0.5.3       </span></span>
+<span><span class="co">#&gt; [34] dbplyr_2.2.1           fastmap_1.1.0          highr_0.9             </span></span>
+<span><span class="co">#&gt; [37] rlang_1.0.6            RSQLite_2.2.18         jquerylib_0.1.4       </span></span>
+<span><span class="co">#&gt; [40] generics_0.1.3         jsonlite_1.8.3         BiocParallel_1.30.4   </span></span>
+<span><span class="co">#&gt; [43] dplyr_1.0.10           RCurl_1.98-1.9         magrittr_2.0.3        </span></span>
+<span><span class="co">#&gt; [46] GenomeInfoDbData_1.2.8 Matrix_1.5-1           Rcpp_1.0.9            </span></span>
+<span><span class="co">#&gt; [49] fansi_1.0.3            ape_5.6-2              lifecycle_1.0.3       </span></span>
+<span><span class="co">#&gt; [52] stringi_1.7.8          yaml_2.3.6             zlibbioc_1.42.0       </span></span>
+<span><span class="co">#&gt; [55] BiocFileCache_2.4.0    grid_4.2.1             blob_1.2.3            </span></span>
+<span><span class="co">#&gt; [58] parallel_4.2.1         crayon_1.5.2           lattice_0.20-45       </span></span>
+<span><span class="co">#&gt; [61] knitr_1.40             pillar_1.8.1           codetools_0.2-18      </span></span>
+<span><span class="co">#&gt; [64] glue_1.6.2             evaluate_0.17          BiocManager_1.30.19   </span></span>
+<span><span class="co">#&gt; [67] vctrs_0.5.0            treeio_1.20.2          tidyr_1.2.1           </span></span>
+<span><span class="co">#&gt; [70] assertthat_0.2.1       cachem_1.0.6           xfun_0.34             </span></span>
+<span><span class="co">#&gt; [73] tidytree_0.4.1         ragg_1.2.4             tibble_3.1.8          </span></span>
+<span><span class="co">#&gt; [76] memoise_2.0.1</span></span></code></pre></div>
 </div>
   </div>
 
