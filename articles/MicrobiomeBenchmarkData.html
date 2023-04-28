@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MicrobiomeBenchmarkData</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.0</span>
       </span>
     </div>
 
@@ -398,13 +398,13 @@ and all of the files contained in it can be removed with the
 </h2>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; R version 4.2.2 (2022-10-31)</span></span>
+<span><span class="co">#&gt; R version 4.3.0 (2023-04-21)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
-<span><span class="co">#&gt; Running under: Ubuntu 20.04.5 LTS</span></span>
+<span><span class="co">#&gt; Running under: Ubuntu 22.04.2 LTS</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
-<span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0</span></span>
-<span><span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0</span></span>
+<span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
+<span><span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; locale:</span></span>
 <span><span class="co">#&gt;  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       </span></span>
@@ -412,47 +412,49 @@ and all of the files contained in it can be removed with the
 <span><span class="co">#&gt;  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          </span></span>
 <span><span class="co">#&gt; [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   </span></span>
 <span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; time zone: UTC</span></span>
+<span><span class="co">#&gt; tzcode source: system (glibc)</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; attached base packages:</span></span>
 <span><span class="co">#&gt; [1] stats4    stats     graphics  grDevices utils     datasets  methods  </span></span>
 <span><span class="co">#&gt; [8] base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] purrr_0.3.5                    MicrobiomeBenchmarkData_1.0.0 </span></span>
-<span><span class="co">#&gt;  [3] TreeSummarizedExperiment_2.4.0 Biostrings_2.64.1             </span></span>
-<span><span class="co">#&gt;  [5] XVector_0.36.0                 SingleCellExperiment_1.18.1   </span></span>
-<span><span class="co">#&gt;  [7] SummarizedExperiment_1.26.1    Biobase_2.56.0                </span></span>
-<span><span class="co">#&gt;  [9] GenomicRanges_1.48.0           GenomeInfoDb_1.32.4           </span></span>
-<span><span class="co">#&gt; [11] IRanges_2.30.1                 S4Vectors_0.34.0              </span></span>
-<span><span class="co">#&gt; [13] BiocGenerics_0.42.0            MatrixGenerics_1.8.1          </span></span>
-<span><span class="co">#&gt; [15] matrixStats_0.62.0             BiocStyle_2.24.0              </span></span>
+<span><span class="co">#&gt;  [1] purrr_1.0.1                    MicrobiomeBenchmarkData_1.3.0 </span></span>
+<span><span class="co">#&gt;  [3] TreeSummarizedExperiment_2.8.0 Biostrings_2.68.0             </span></span>
+<span><span class="co">#&gt;  [5] XVector_0.40.0                 SingleCellExperiment_1.22.0   </span></span>
+<span><span class="co">#&gt;  [7] SummarizedExperiment_1.30.0    Biobase_2.60.0                </span></span>
+<span><span class="co">#&gt;  [9] GenomicRanges_1.52.0           GenomeInfoDb_1.36.0           </span></span>
+<span><span class="co">#&gt; [11] IRanges_2.34.0                 S4Vectors_0.38.0              </span></span>
+<span><span class="co">#&gt; [13] BiocGenerics_0.46.0            MatrixGenerics_1.12.0         </span></span>
+<span><span class="co">#&gt; [15] matrixStats_0.63.0             BiocStyle_2.28.0              </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;  [1] nlme_3.1-160           bitops_1.0-7           fs_1.5.2              </span></span>
-<span><span class="co">#&gt;  [4] bit64_4.0.5            filelock_1.0.2         httr_1.4.4            </span></span>
-<span><span class="co">#&gt;  [7] rprojroot_2.0.3        tools_4.2.2            bslib_0.4.1           </span></span>
-<span><span class="co">#&gt; [10] utf8_1.2.2             R6_2.5.1               DBI_1.1.3             </span></span>
-<span><span class="co">#&gt; [13] lazyeval_0.2.2         withr_2.5.0            tidyselect_1.2.0      </span></span>
-<span><span class="co">#&gt; [16] bit_4.0.4              curl_4.3.3             compiler_4.2.2        </span></span>
-<span><span class="co">#&gt; [19] textshaping_0.3.6      cli_3.4.1              desc_1.4.2            </span></span>
-<span><span class="co">#&gt; [22] DelayedArray_0.22.0    bookdown_0.29          sass_0.4.2            </span></span>
-<span><span class="co">#&gt; [25] rappdirs_0.3.3         pkgdown_2.0.6          systemfonts_1.0.4     </span></span>
-<span><span class="co">#&gt; [28] stringr_1.4.1          digest_0.6.30          yulab.utils_0.0.5     </span></span>
-<span><span class="co">#&gt; [31] rmarkdown_2.17         pkgconfig_2.0.3        htmltools_0.5.3       </span></span>
-<span><span class="co">#&gt; [34] dbplyr_2.2.1           fastmap_1.1.0          highr_0.9             </span></span>
-<span><span class="co">#&gt; [37] rlang_1.0.6            RSQLite_2.2.18         jquerylib_0.1.4       </span></span>
-<span><span class="co">#&gt; [40] generics_0.1.3         jsonlite_1.8.3         BiocParallel_1.30.4   </span></span>
-<span><span class="co">#&gt; [43] dplyr_1.0.10           RCurl_1.98-1.9         magrittr_2.0.3        </span></span>
-<span><span class="co">#&gt; [46] GenomeInfoDbData_1.2.8 Matrix_1.5-1           Rcpp_1.0.9            </span></span>
-<span><span class="co">#&gt; [49] fansi_1.0.3            ape_5.6-2              lifecycle_1.0.3       </span></span>
-<span><span class="co">#&gt; [52] stringi_1.7.8          yaml_2.3.6             zlibbioc_1.42.0       </span></span>
-<span><span class="co">#&gt; [55] BiocFileCache_2.4.0    grid_4.2.2             blob_1.2.3            </span></span>
-<span><span class="co">#&gt; [58] parallel_4.2.2         crayon_1.5.2           lattice_0.20-45       </span></span>
-<span><span class="co">#&gt; [61] knitr_1.40             pillar_1.8.1           codetools_0.2-18      </span></span>
-<span><span class="co">#&gt; [64] glue_1.6.2             evaluate_0.18          BiocManager_1.30.19   </span></span>
-<span><span class="co">#&gt; [67] vctrs_0.5.0            treeio_1.20.2          tidyr_1.2.1           </span></span>
-<span><span class="co">#&gt; [70] assertthat_0.2.1       cachem_1.0.6           xfun_0.34             </span></span>
-<span><span class="co">#&gt; [73] tidytree_0.4.1         ragg_1.2.4             tibble_3.1.8          </span></span>
-<span><span class="co">#&gt; [76] memoise_2.0.1</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] xfun_0.39               bslib_0.4.2             lattice_0.21-8         </span></span>
+<span><span class="co">#&gt;  [4] yulab.utils_0.0.6       vctrs_0.6.2             tools_4.3.0            </span></span>
+<span><span class="co">#&gt;  [7] bitops_1.0-7            generics_0.1.3          curl_5.0.0             </span></span>
+<span><span class="co">#&gt; [10] parallel_4.3.0          RSQLite_2.3.1           tibble_3.2.1           </span></span>
+<span><span class="co">#&gt; [13] fansi_1.0.4             blob_1.2.4              pkgconfig_2.0.3        </span></span>
+<span><span class="co">#&gt; [16] Matrix_1.5-4            dbplyr_2.3.2            desc_1.4.2             </span></span>
+<span><span class="co">#&gt; [19] lifecycle_1.0.3         GenomeInfoDbData_1.2.10 compiler_4.3.0         </span></span>
+<span><span class="co">#&gt; [22] stringr_1.5.0           treeio_1.24.0           textshaping_0.3.6      </span></span>
+<span><span class="co">#&gt; [25] codetools_0.2-19        htmltools_0.5.5         sass_0.4.5             </span></span>
+<span><span class="co">#&gt; [28] lazyeval_0.2.2          RCurl_1.98-1.12         yaml_2.3.7             </span></span>
+<span><span class="co">#&gt; [31] tidyr_1.3.0             pkgdown_2.0.7           pillar_1.9.0           </span></span>
+<span><span class="co">#&gt; [34] crayon_1.5.2            jquerylib_0.1.4         BiocParallel_1.34.0    </span></span>
+<span><span class="co">#&gt; [37] DelayedArray_0.25.0     cachem_1.0.7            nlme_3.1-162           </span></span>
+<span><span class="co">#&gt; [40] tidyselect_1.2.0        digest_0.6.31           stringi_1.7.12         </span></span>
+<span><span class="co">#&gt; [43] dplyr_1.1.2             bookdown_0.33           rprojroot_2.0.3        </span></span>
+<span><span class="co">#&gt; [46] fastmap_1.1.1           grid_4.3.0              cli_3.6.1              </span></span>
+<span><span class="co">#&gt; [49] magrittr_2.0.3          utf8_1.2.3              ape_5.7-1              </span></span>
+<span><span class="co">#&gt; [52] withr_2.5.0             filelock_1.0.2          bit64_4.0.5            </span></span>
+<span><span class="co">#&gt; [55] httr_1.4.5              rmarkdown_2.21          bit_4.0.5              </span></span>
+<span><span class="co">#&gt; [58] ragg_1.2.5              memoise_2.0.1           evaluate_0.20          </span></span>
+<span><span class="co">#&gt; [61] knitr_1.42              BiocFileCache_2.8.0     rlang_1.1.0            </span></span>
+<span><span class="co">#&gt; [64] Rcpp_1.0.10             DBI_1.1.3               tidytree_0.4.2         </span></span>
+<span><span class="co">#&gt; [67] glue_1.6.2              BiocManager_1.30.20     jsonlite_1.8.4         </span></span>
+<span><span class="co">#&gt; [70] R6_2.5.1                systemfonts_1.0.4       fs_1.6.2               </span></span>
+<span><span class="co">#&gt; [73] zlibbioc_1.46.0</span></span></code></pre></div>
 </div>
   </div>
 
@@ -473,7 +475,7 @@ and all of the files contained in it can be removed with the
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
