@@ -8,21 +8,15 @@ Description: The MicrobiomeBenchmarkData package provides functionality to
     are provided as TreeSummarizedExperiment objects. Currently, 
     only datasets suitable for benchmarking differential abundance
     methods are available.
-Authors@R: 
-    c(
-        person(
-            given = "Samuel", family = "Gamboa", 
-            role = c("aut", "cre"),
-            email = "Samuel.Gamboa.Tuz@gmail.com",
-            comment = c(ORCID = "0000-0002-6863-7943")
-        ),
-        person(
-            given = "Levi", family = "Waldron",
-            role = c("aut"),
-            comment = c(ORCID = "0000-0003-2725-0694")
-        ),
-        person("Marcel", "Ramos", role = "ctb")
-    )
+Authors@R: c(
+    person("Samuel", "Gamboa", , "Samuel.Gamboa.Tuz@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-6863-7943")),
+    person("Levi", "Waldron", role = "aut",
+           comment = c(ORCID = "0000-0003-2725-0694")),
+    person("Marcel", "Ramos", role = "ctb"),
+    person("NCI", role = "fnd",
+           comment = c(GrantNo. = "R01CA230551"))
+  )
 License: Artistic-2.0
 LazyData: false 
 Depends: 
