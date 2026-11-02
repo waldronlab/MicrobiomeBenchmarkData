@@ -1,5 +1,8 @@
 # MicrobiomeBenchmarkData
 
+[![Bioconductor CI](https://github.com/waldronlab/MicrobiomeBenchmarkData/actions/workflows/ci.yml/badge.svg)](https://github.com/waldronlab/MicrobiomeBenchmarkData/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/waldronlab/MicrobiomeBenchmarkData/graph/badge.svg)](https://codecov.io/gh/waldronlab/MicrobiomeBenchmarkData)
+
 Access to a resource of datasets with biological ground truth for benchmarking
 differential abundance methods. The datasets are available from Zenodo: 
 https://doi.org/10.5281/zenodo.6911026

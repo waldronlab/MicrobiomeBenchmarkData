@@ -1,3 +1,7 @@
+# Changes in version 1.15.2 (2026-11-02)
+
++ Levi Waldron is now the maintainer.
+
 # Changes in version 0.99.0 (2021-09-26)
 
 + Added a `NEWS.md` file to track changes to the package.
